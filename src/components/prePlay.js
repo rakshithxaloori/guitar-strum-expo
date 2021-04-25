@@ -28,17 +28,20 @@ class PrePlay extends Component {
 
     this.state = {
       chords: chords,
+      bpm: 10,
     };
   }
 
-  confirmSelectedChords = () => {
+  confirmConfig = () => {
     let finalSelectedChords = [];
     for (i = 0; i < this.state.chords.length; i++) {
       if (this.state.chords[i].isSelected) {
         finalSelectedChords.push(this.state.chords[i].chordText);
       }
     }
+    console.log("---------------------------------------------");
     console.log("Final selected chords", finalSelectedChords);
+    console.log("BPM: ", this.state.bpm);
   };
 
   selectChord = (chordObj) => {
@@ -63,8 +66,13 @@ class PrePlay extends Component {
           chords={this.state.chords}
           selectChord={this.selectChord}
         />
-        <BPMSelect />
-        <Button title="Press me!" onPress={this.confirmSelectedChords} />
+        <BPMSelect
+          bpm={this.state.bpm}
+          setBPM={(bpmValue) => {
+            this.setState({ bpm: bpmValue });
+          }}
+        />
+        <Button title="Press me!" onPress={this.confirmConfig} />
       </View>
     );
   };

@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { View, Text } from "react-native";
-import Slider from "react-native-sliders";
+import Slider from "@react-native-community/slider";
 
 const BPMSelect = (props) => {
-  const [bpm, setBPM] = useState(10);
   return (
     <View style={styles.viewStyling}>
       <Slider
-        value={bpm}
+        value={props.bpm}
         step={1}
         minimumValue={10}
         maximumValue={280}
-        onValueChange={(value) => setBPM(value)}
+        onValueChange={(value) => props.setBPM(value)}
       />
-      <Text>{bpm + " "} BPM</Text>
+      <Text>{props.bpm + " "} BPM</Text>
     </View>
   );
 };
