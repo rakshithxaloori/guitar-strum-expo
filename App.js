@@ -2,13 +2,13 @@ import React from "react";
 import { StyleSheet } from "react-native";
 
 import Header from "./src/components/header";
-import ChordsSelect from "./src/components/chordSelect";
+import PrePlay from "./src/components/prePlay";
 
 export default function App() {
   return (
     <>
       <Header />
-      <ChordsSelect />
+      <PrePlay />
     </>
   );
 }
