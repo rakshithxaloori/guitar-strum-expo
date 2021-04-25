@@ -1,76 +1,36 @@
-import React, { Component } from "react";
-import { TouchableOpacity, Text, View, Button } from "react-native";
+import React from "react";
+import { TouchableOpacity, Text, View } from "react-native";
 
-class ChordsSelect extends Component {
-  constructor(props) {
-    super(props);
-    const chords = ["A", "Am", "C", "D", "Dm", "E", "Em", "F", "Fmaj7", "G"];
-    let selectedChords = [];
+const ChordsSelect = (props) => {
+  const {
+    textStyling,
+    touchableOpacityNormalStyling,
+    touchableOpacitySelectedStyling,
+    viewStyling,
+  } = styles;
 
-    for (i = 0; i < chords.length; i++) {
-      selectedChords = [
-        ...selectedChords,
-        { chordText: chords[i], isSelected: false },
-      ];
-    }
-
-    this.state = {
-      selectedChords: selectedChords,
-    };
-  }
-
-  confirmSelectedChords = () => {
-    let finalSelectedChords = [];
-    for (i = 0; i < this.state.selectedChords.length; i++) {
-      if (this.state.selectedChords[i].isSelected) {
-        finalSelectedChords.push(this.state.selectedChords[i].chordText);
-      }
-    }
-    this.props.selectChords(finalSelectedChords);
-  };
-
-  render = () => {
-    const {
-      textStyling,
-      touchableOpacityNormalStyling,
-      touchableOpacitySelectedStyling,
-      viewStyling,
-    } = styles;
-    return (
-      <View>
-        <View style={viewStyling}>
-          {this.state.selectedChords.map((chordObj, index) => (
-            <TouchableOpacity
-              key={index}
-              style={
-                chordObj.isSelected
-                  ? touchableOpacitySelectedStyling
-                  : touchableOpacityNormalStyling
-              }
-              onPress={() => {
-                this.setState((prevState) => {
-                  let newSelectedChordsState = [...prevState.selectedChords];
-                  let chordIndex = this.state.selectedChords.findIndex(
-                    (findChord) => findChord === chordObj
-                  );
-                  let newSelectedChord = {
-                    ...newSelectedChordsState[chordIndex],
-                  };
-                  newSelectedChord.isSelected = !newSelectedChord.isSelected;
-                  newSelectedChordsState[chordIndex] = newSelectedChord;
-                  return { selectedChords: newSelectedChordsState };
-                });
-              }}
-            >
-              <Text style={textStyling}>{chordObj.chordText}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-        <Button title="Press me!" onPress={this.confirmSelectedChords} />
+  return (
+    <View>
+      <View style={viewStyling}>
+        {props.chords.map((chordObj, index) => (
+          <TouchableOpacity
+            key={index}
+            style={
+              chordObj.isSelected
+                ? touchableOpacitySelectedStyling
+                : touchableOpacityNormalStyling
+            }
+            onPress={() => {
+              props.selectChord(chordObj);
+            }}
+          >
+            <Text style={textStyling}>{chordObj.chordText}</Text>
+          </TouchableOpacity>
+        ))}
       </View>
-    );
-  };
-}
+    </View>
+  );
+};
 
 const inheritStyles = {
   touchableStyling: {
