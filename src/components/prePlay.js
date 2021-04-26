@@ -39,9 +39,6 @@ class PrePlay extends Component {
         finalSelectedChords.push(this.state.chords[i].chordText);
       }
     }
-    console.log("---------------------------------------------");
-    console.log("Final selected chords", finalSelectedChords);
-    console.log("BPM: ", this.state.bpm);
   };
 
   selectChord = (chordObj) => {

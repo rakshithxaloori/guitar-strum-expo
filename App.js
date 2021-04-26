@@ -1,25 +1,15 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Animated } from "react-native";
 
 import Header from "./src/components/header";
-import PrePlay from "./src/components/prePlay";
-import Bar from "./src/components/bar";
+import Play from "./src/components/play";
 
 export default function App() {
-  const barConfig = [1, 1, 1, 0, 1, 0, 1, 0];
+  const barConfig = [1, 1, 1, 0, 1, 0, 1, 1];
   return (
     <View>
-      {/* <Header />
-      <PrePlay /> */}
-      <Bar
-        barConfig={barConfig}
-        bpm={120}
-        xInit={50}
-        xSep={50}
-        arrowY1={50}
-        arrowLineHeight={50}
-        forkHeight={60}
-      />
+      <Header />
+      <Play barConfig={barConfig} bpm={30} />
     </View>
   );
 }
