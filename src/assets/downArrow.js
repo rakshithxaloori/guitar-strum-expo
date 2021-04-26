@@ -1,5 +1,5 @@
 import React from "react";
-import { Svg, G, Path, Line, Polygon } from "react-native-svg";
+import { Svg, Polygon } from "react-native-svg";
 
 const DownArrow = (props) => {
   const lineHalfWidth = 5;
@@ -11,15 +11,16 @@ const DownArrow = (props) => {
     arrowHeadWidth: arrowCoordinate * Math.sqrt(2) - lineHalfWidth,
     arrowHeadHeight: 2 * lineHalfWidth * Math.sqrt(2),
   };
-  console.log(point);
 
-  const points = `${point.x - lineHalfWidth},${point.y1} ${
-    point.x + lineHalfWidth
-  },${point.y1} ${point.x + lineHalfWidth},${point.y2} ${
-    point.x + lineHalfWidth + point.arrowHeadWidth
-  },${point.y2} ${point.x},${point.y2 + point.arrowHeadHeight} ${
-    point.x - lineHalfWidth - point.arrowHeadWidth
-  },${point.y2} ${point.x - lineHalfWidth},${point.y2}`;
+  const points = `
+  ${point.x - lineHalfWidth},${point.y1}
+  ${point.x + lineHalfWidth},${point.y1} 
+  ${point.x + lineHalfWidth},${point.y2} 
+  ${point.x + lineHalfWidth + point.arrowHeadWidth},${point.y2} 
+  ${point.x},${point.y2 + point.arrowHeadHeight} 
+  ${point.x - lineHalfWidth - point.arrowHeadWidth},${point.y2} 
+  ${point.x - lineHalfWidth},${point.y2}
+  `;
 
   return (
     <Svg>

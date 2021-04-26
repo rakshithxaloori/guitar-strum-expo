@@ -1,35 +1,34 @@
 import React from "react";
-import { Svg, G, Path, Line } from "react-native-svg";
+import { Svg, Polygon } from "react-native-svg";
 
 const UpArrow = (props) => {
+  const lineHalfWidth = 5;
+  const arrowCoordinate = 8;
   const point = {
     x: props.x,
     y1: props.y1,
-    y2: props.arrowHeight + props.y1,
+    y2: props.arrowLineHeight + props.y1,
+    arrowHeadWidth: arrowCoordinate * Math.sqrt(2) - lineHalfWidth,
+    arrowHeadHeight: 2 * lineHalfWidth * Math.sqrt(2),
   };
 
-  return (
-    <Svg height="500" width="1000">
-      <G
-        rotation={(Math.atan2(point.y2 - point.y1, 0) * 180) / Math.PI + 45}
-        origin={`${point.x}, ${point.y1}`}
-      >
-        <Path
-          d={`M ${point.x + 8} ${point.y1 + 8} L ${point.x - 10} ${
-            point.y1 + 10
-          } L ${point.x - 8} ${point.y1 - 8} z`}
-          fill="#1abc9c"
-          stroke="#1abc9c"
-        />
-      </G>
+  const points = `
+  ${point.x + lineHalfWidth},${point.y2} 
+  ${point.x - lineHalfWidth},${point.y2}
+  ${point.x - lineHalfWidth},${point.y1}
+  ${point.x - lineHalfWidth - point.arrowHeadWidth},${point.y1} 
+  ${point.x},${point.y1 - point.arrowHeadHeight}
+  ${point.x + lineHalfWidth + point.arrowHeadWidth},${point.y1} 
+  ${point.x + lineHalfWidth},${point.y1} 
+  `;
 
-      <Line
-        x1={point.x}
-        y1={point.y1}
-        x2={point.x}
-        y2={point.y2}
+  return (
+    <Svg>
+      <Polygon
+        points={points}
+        fill="#1abc9c"
         stroke="#1abc9c"
-        strokeWidth="10"
+        strokeWidth="1"
       />
     </Svg>
   );
