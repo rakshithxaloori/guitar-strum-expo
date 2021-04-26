@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { Button, View } from "react-native";
 import { Svg } from "react-native-svg";
 
 import UpArrow from "../assets/upArrow";
@@ -9,8 +9,24 @@ import Fork from "../assets/fork";
 class Bar extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      beatIndex: 0,
+    };
   }
+
+  intervalID = null;
+
+  componentDidMount = () => {
+    this.intervalID = setInterval(() => {
+      this.setState({
+        beatIndex: this.state.beatIndex < 7 ? this.state.beatIndex + 1 : 0,
+      });
+    }, 1000 * (60.0 / (2 * this.props.bpm)));
+  };
+
+  componentWillUnmount = () => {
+    clearInterval(this.intervalID);
+  };
 
   renderArrows = () => {
     const arrowsList = [];
@@ -21,18 +37,20 @@ class Bar extends Component {
           arrowsList.push(
             <DownArrow
               key={i}
+              highlight={i === this.state.beatIndex % 8}
               x={this.props.xInit + i * this.props.xSep}
               y1={this.props.arrowY1}
-              arrowHeight={this.props.arrowHeight}
+              arrowLineHeight={this.props.arrowLineHeight}
             />
           );
         else
           arrowsList.push(
             <UpArrow
               key={i}
+              highlight={i === this.state.beatIndex % 8}
               x={this.props.xInit + i * this.props.xSep}
               y1={this.props.arrowY1}
-              arrowHeight={this.props.arrowHeight}
+              arrowLineHeight={this.props.arrowLineHeight}
             />
           );
       }
@@ -65,6 +83,11 @@ class Bar extends Component {
           {this.renderArrows()}
           {this.renderForks()}
         </Svg>
+        <Button
+          style={{ flex: 1 }}
+          title="Stop"
+          onPress={() => clearInterval(this.intervalID)}
+        />
       </View>
     );
   };
