@@ -1,17 +1,15 @@
 import React from "react";
 import { Svg, G, Path, Line } from "react-native-svg";
 
-const Arrow = (props) => {
-  console.log(props);
-  const fill = false;
+const UpArrow = (props) => {
   const point = {
     x: props.x,
-    y1: 20,
-    y2: 120,
+    y1: props.y1,
+    y2: props.arrowHeight + props.y1,
   };
 
   return (
-    <Svg height="1000" width="1000">
+    <Svg height="500" width="1000">
       <G
         rotation={(Math.atan2(point.y2 - point.y1, 0) * 180) / Math.PI + 45}
         origin={`${point.x}, ${point.y1}`}
@@ -37,4 +35,4 @@ const Arrow = (props) => {
   );
 };
 
-export default Arrow;
+export default UpArrow;

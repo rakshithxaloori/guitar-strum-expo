@@ -8,12 +8,19 @@ import Bar from "./src/components/bar";
 import Arrow from "./src/assets/upArrow";
 
 export default function App() {
-  const barConfig = [1, 0, 1, 0, 1, 0, 1, 0];
+  const barConfig = [1, 1, 1, 0, 1, 0, 1, 0];
   return (
     <View>
       {/* <Header />
       <PrePlay /> */}
-      <Bar barConfig={barConfig} />
+      <Bar
+        barConfig={barConfig}
+        xInit={50}
+        xSep={50}
+        arrowY1={50}
+        arrowHeight={50}
+        forkHeight={60}
+      />
     </View>
   );
 }

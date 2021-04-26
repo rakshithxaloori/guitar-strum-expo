@@ -4,6 +4,7 @@ import { Svg } from "react-native-svg";
 
 import UpArrow from "../assets/upArrow";
 import DownArrow from "../assets/downArrow";
+import Fork from "../assets/fork";
 
 class Bar extends Component {
   constructor(props) {
@@ -11,23 +12,61 @@ class Bar extends Component {
     this.state = {};
   }
 
-  renderArrows = (xInit) => {
+  renderArrows = () => {
     const arrowsList = [];
 
     for (var i = 0; i < this.props.barConfig.length; i++) {
       if (this.props.barConfig[i]) {
         if (i % 2 === 0)
-          arrowsList.push(<DownArrow key={i} x={xInit + i * 50} />);
-        else arrowsList.push(<UpArrow key={i} x={xInit + i * 50} />);
+          arrowsList.push(
+            <DownArrow
+              key={i}
+              x={this.props.xInit + i * this.props.xSep}
+              y1={this.props.arrowY1}
+              arrowHeight={this.props.arrowHeight}
+            />
+          );
+        else
+          arrowsList.push(
+            <UpArrow
+              key={i}
+              x={this.props.xInit + i * this.props.xSep}
+              y1={this.props.arrowY1}
+              arrowHeight={this.props.arrowHeight}
+            />
+          );
       }
     }
 
-    console.log(arrowsList.length);
     return arrowsList;
   };
 
+  renderForks = () => {
+    const forksList = [];
+    for (var i = 0; i < this.props.barConfig.length / 2; i++) {
+      forksList.push(
+        <Fork
+          key={i}
+          x={this.props.xInit + 2 * i * this.props.xSep}
+          xSep={this.props.xSep}
+          y1={this.props.arrowY1 + 75}
+          forkHeight={this.props.forkHeight}
+        />
+      );
+    }
+
+    return forksList;
+  };
+
   render = () => {
-    return <Svg>{this.renderArrows(50)}</Svg>;
+    return (
+      <View>
+        <Svg>
+          {this.renderArrows()}
+          {this.renderForks()}
+        </Svg>
+      </View>
+    );
   };
 }
 
