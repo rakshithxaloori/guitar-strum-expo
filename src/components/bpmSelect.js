@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import Slider from "@react-native-community/slider";
 
 const BPMSelect = (props) => {
@@ -17,10 +17,10 @@ const BPMSelect = (props) => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   viewStyling: {
     margin: 20,
   },
-};
+});
 
 export default BPMSelect;

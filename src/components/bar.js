@@ -1,14 +1,13 @@
 import React from "react";
 import { View } from "react-native";
-import { Divider } from "react-native-paper";
 import { Svg } from "react-native-svg";
 
 import UpArrow from "../assets/upArrow";
 import DownArrow from "../assets/downArrow";
-import Fork from "../assets/fork";
+import CountAnd from "../assets/countAnd";
+import ChordBar from "../assets/chordBar";
 
 const Bar = (props) => {
-  console.log(props);
   const renderArrows = () => {
     const arrowsList = [];
     for (var i = 0; i < props.barConfig.length; i++) {
@@ -41,34 +40,26 @@ const Bar = (props) => {
           );
       }
     }
-    console.log(arrowsList.length);
     return arrowsList;
-  };
-
-  const renderForks = () => {
-    const forksList = [];
-    for (var i = 0; i < props.barConfig.length / 2; i++) {
-      forksList.push(
-        <Fork
-          key={i}
-          x={props.xInit + 2 * i * props.xSep}
-          xSep={props.xSep}
-          y1={props.arrowY1 + 75}
-          forkHeight={props.forkHeight}
-        />
-      );
-    }
-    console.log(forksList.length);
-    return forksList;
   };
 
   return (
     <View>
       <Svg>
         {renderArrows()}
-        {renderForks()}
+        <CountAnd
+          xInit={props.xInit}
+          xSep={props.xSep}
+          y={props.arrowY1 + 100}
+        />
+        <ChordBar
+          chords={["A", null, "D", null, null]}
+          xInit={props.xInit}
+          xSep={props.xSep}
+          y={props.arrowY1}
+        />
       </Svg>
-      <Divider style={{ color: "black" }} />
+      {/* <Divider style={{ color: "black" }} /> */}
     </View>
   );
 };

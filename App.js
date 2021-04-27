@@ -7,7 +7,7 @@ import Play from "./src/components/play";
 export default function App() {
   const barConfig = [1, 1, 1, 0, 1, 0, 1, 1];
   return (
-    <View>
+    <View style={styles.container}>
       <Header />
       <Play barConfig={barConfig} bpm={30} />
     </View>
@@ -17,8 +17,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#c3c4c6",
+    // alignItems: "center",
   },
 });

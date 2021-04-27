@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View, Dimensions } from "react-native";
 import { Svg } from "react-native-svg";
 
 import Bar from "./bar";
@@ -27,6 +27,9 @@ class Play extends Component {
   };
 
   renderBars = () => {
+    const windowWidth = Dimensions.get("window").width;
+    const windowHeight = Dimensions.get("window").height;
+
     const barsList = [];
     for (var i = 0; i < 3; i++) {
       barsList.push(
@@ -35,11 +38,11 @@ class Play extends Component {
           barIndex={i}
           beatIndex={this.state.beatIndex}
           barConfig={this.props.barConfig}
-          xInit={50}
-          xSep={50}
+          xInit={20}
+          xSep={(windowWidth - 40) / 7}
           arrowY1={20 + i * 200}
           arrowLineHeight={50}
-          forkHeight={60}
+          // forkHeight={60}
         />
       );
     }
