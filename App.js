@@ -1,23 +1,20 @@
-import React from "react";
-import { View, StyleSheet, Animated } from "react-native";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 
-import Header from "./src/components/header";
-import Play from "./src/components/play";
+import PrePlayScreen from "./src/components/prePlay";
+import PlayScreen from "./src/components/play";
 
-export default function App() {
-  const barConfig = [1, 1, 1, 0, 1, 0, 1, 1];
-  return (
-    <View style={styles.container}>
-      <Header />
-      <Play barConfig={barConfig} bpm={30} />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#c3c4c6",
-    // alignItems: "center",
+const navigator = createStackNavigator(
+  {
+    PrePlay: PrePlayScreen,
+    Play: PlayScreen,
   },
-});
+  {
+    initialRouteName: "PrePlay",
+    defaultNavigationOptions: {
+      title: "Chord Changes",
+    },
+  }
+);
+
+export default createAppContainer(navigator);

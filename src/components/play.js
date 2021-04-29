@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Dimensions } from "react-native";
-import { Svg } from "react-native-svg";
+import { Svg, Text as SvgText } from "react-native-svg";
 
 import Bar from "./bar";
 
@@ -19,7 +19,7 @@ class Play extends Component {
       this.setState({
         beatIndex: this.state.beatIndex <= 22 ? this.state.beatIndex + 1 : 0,
       });
-    }, 1000 * (60.0 / (2 * this.props.bpm)));
+    }, 1000 * (60.0 / (2 * this.props.navigation.getParam("bpm"))));
   };
 
   componentWillUnmount = () => {
@@ -32,15 +32,20 @@ class Play extends Component {
 
     const barsList = [];
     for (var i = 0; i < 3; i++) {
+      const yChordBar = 20 + i * 200;
+      const xInit = 25;
       barsList.push(
         <Bar
           key={i}
           barIndex={i}
           beatIndex={this.state.beatIndex}
-          barConfig={this.props.barConfig}
-          xInit={20}
-          xSep={(windowWidth - 40) / 7}
-          arrowY1={20 + i * 200}
+          // pattern={this.props.pattern}
+          pattern={this.props.navigation.getParam("pattern")}
+          xInit={25}
+          xSep={(windowWidth - 2 * xInit) / 7}
+          yChordBar={yChordBar}
+          yArrow={yChordBar + 70}
+          yCountAnd={yChordBar + 160}
           arrowLineHeight={50}
           // forkHeight={60}
         />
@@ -53,7 +58,19 @@ class Play extends Component {
   render = () => {
     return (
       <View>
-        <Svg>{this.renderBars()}</Svg>
+        <Svg>
+          {this.renderBars()}
+          <SvgText
+            fill="black"
+            stroke="white"
+            fontSize="40"
+            fontWeight="bolder"
+            x={Dimensions.get("window").width / 2 - 50}
+            y={Dimensions.get("window").height - 100}
+          >
+            BPM: {this.props.navigation.getParam("bpm")}
+          </SvgText>
+        </Svg>
       </View>
     );
   };

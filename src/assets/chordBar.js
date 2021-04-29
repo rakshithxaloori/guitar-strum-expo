@@ -9,12 +9,13 @@ const ChordBar = (props) => {
       if (props.chords[i] !== null) {
         chordsList.push(
           <SvgText
+            key={i}
             fill="white"
             stroke="white"
             fontSize="20"
             fontWeight="bold"
             x={props.xInit + i * props.xSep}
-            y={props.y}
+            y={props.y + 25} // props.py+ rect.height/2
           >
             {chords[i]}
           </SvgText>
@@ -26,9 +27,9 @@ const ChordBar = (props) => {
   return (
     <Svg>
       <Rect
-        x={props.xInit}
+        x={props.xInit - 5}
         y={props.y}
-        width={props.xSep * 7}
+        width={props.xSep * 7 + 10}
         height="50"
         fill="rgb(0,0,255)"
         strokeWidth="3"

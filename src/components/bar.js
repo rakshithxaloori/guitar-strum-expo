@@ -10,8 +10,8 @@ import ChordBar from "../assets/chordBar";
 const Bar = (props) => {
   const renderArrows = () => {
     const arrowsList = [];
-    for (var i = 0; i < props.barConfig.length; i++) {
-      if (props.barConfig[i]) {
+    for (var i = 0; i < props.pattern.length; i++) {
+      if (props.pattern[i]) {
         if (i % 2 === 0)
           arrowsList.push(
             <DownArrow
@@ -21,7 +21,7 @@ const Bar = (props) => {
                 props.barIndex === Math.floor(props.beatIndex / 8)
               }
               x={props.xInit + i * props.xSep}
-              y1={props.arrowY1}
+              y1={props.yArrow}
               arrowLineHeight={props.arrowLineHeight}
             />
           );
@@ -34,7 +34,7 @@ const Bar = (props) => {
                 props.barIndex === Math.floor(props.beatIndex / 8)
               }
               x={props.xInit + i * props.xSep}
-              y1={props.arrowY1}
+              y1={props.yArrow}
               arrowLineHeight={props.arrowLineHeight}
             />
           );
@@ -47,16 +47,12 @@ const Bar = (props) => {
     <View>
       <Svg>
         {renderArrows()}
-        <CountAnd
-          xInit={props.xInit}
-          xSep={props.xSep}
-          y={props.arrowY1 + 100}
-        />
+        <CountAnd xInit={props.xInit} xSep={props.xSep} y={props.yCountAnd} />
         <ChordBar
-          chords={["A", null, "D", null, null]}
+          chords={["A", null, "D", null, "E", null, "Dm", null]}
           xInit={props.xInit}
           xSep={props.xSep}
-          y={props.arrowY1}
+          y={props.yChordBar}
         />
       </Svg>
       {/* <Divider style={{ color: "black" }} /> */}

@@ -9,10 +9,20 @@ const BPMSelect = (props) => {
         value={props.bpm}
         step={1}
         minimumValue={10}
-        maximumValue={280}
+        maximumValue={240}
         onValueChange={(value) => props.setBPM(value)}
       />
-      <Text>{props.bpm + " "} BPM</Text>
+      <Text>
+        {props.bpm + " "} BPM{" "}
+        {props.bpm > 180
+          ? "Insane"
+          : props.bpm > 120
+          ? "Sprint"
+          : props.bpm > 90
+          ? "Agile"
+          : "Breeze"}
+      </Text>
+      <Text></Text>
     </View>
   );
 };
