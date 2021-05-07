@@ -23,23 +23,21 @@ class SecondClass extends Component {
 
   render = () => {
     return (
-      // <View
-      //   style={{
-      //     alignItems: "center",
-      //     justifyContent: "center",
-      //     paddingTop: 100,
-      //   }}
-      // >
-      <PatternSelect
-        pattern={this.state.pattern}
-        changeStrum={(index) => {
-          const newPattern = [...this.state.pattern];
-          newPattern[index] = newPattern[index] === 0 ? 1 : 0;
-          this.setState({ pattern: newPattern });
+      <View
+        style={{
+          flex: 1,
         }}
-      />
-      //   <Button title="Press me?" onPress={this.confirmConfig} />
-      // </View>
+      >
+        <PatternSelect
+          pattern={this.state.pattern}
+          changeStrum={(index) => {
+            const newPattern = [...this.state.pattern];
+            newPattern[index] = newPattern[index] === 0 ? 1 : 0;
+            this.setState({ pattern: newPattern });
+          }}
+        />
+        <Button title="Press me?" onPress={this.confirmConfig} />
+      </View>
     );
   };
 }

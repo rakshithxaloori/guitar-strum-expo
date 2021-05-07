@@ -5,17 +5,18 @@ import { Svg, Rect } from "react-native-svg";
 import Arrow from "../assets/arrow";
 
 const styles = StyleSheet.create({
-  touch: {
+  touchableArrowStyling: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "center",
   },
+  arrowsStyling: { flexDirection: "row", borderColor: "black", borderWidth: 5 },
 });
 
 const TouchArrow = ({ index, highlight, changeStrum, size = 100 }) => {
   return (
     <TouchableOpacity
-      style={styles.touch}
+      style={styles.touchableArrowStyling}
       onPress={() => {
         console.log(index);
         changeStrum(index);
@@ -35,12 +36,7 @@ const TouchArrow = ({ index, highlight, changeStrum, size = 100 }) => {
 const PatternSelect = (props) => {
   console.log(props.pattern);
   return (
-    <View
-      style={[
-        styles.touch,
-        { flexDirection: "row", borderColor: "black", borderWidth: 5 },
-      ]}
-    >
+    <View style={[styles.touchableArrowStyling, styles.arrowsStyling]}>
       {props.pattern.map((highlight, index) => (
         <TouchArrow
           key={index}

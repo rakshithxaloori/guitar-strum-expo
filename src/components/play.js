@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import { Svg, Text as SvgText } from "react-native-svg";
 
 import Bar from "./bar";
@@ -57,20 +57,21 @@ class Play extends Component {
 
   render = () => {
     return (
-      <View>
-        <Svg>
-          {this.renderBars()}
+      <View style={{ flex: 1 }}>
+        <View style={{ flex: 4 }}>{this.renderBars()}</View>
+        <View style={{ flex: 1 }}>
           <SvgText
+            style={{ flex: 1 }}
             fill="black"
             stroke="white"
-            fontSize="40"
+            // fontSize="40"
             fontWeight="bolder"
-            x={Dimensions.get("window").width / 2 - 50}
-            y={Dimensions.get("window").height - 100}
+            // x={Dimensions.get("window").width / 2 - 50}
+            // y={Dimensions.get("window").height - 100}
           >
             BPM: {this.props.navigation.getParam("bpm")}
           </SvgText>
-        </Svg>
+        </View>
       </View>
     );
   };

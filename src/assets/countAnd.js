@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { Svg, Text as SvgText } from "react-native-svg";
 
 const CountAnd = (props) => {
@@ -21,8 +21,8 @@ const CountAnd = (props) => {
             key={i}
             style={style.svgTextStyling}
             viewBox="0 0 32 32"
-            // x={props.xInit + i * props.xSep}
-            // y={props.y}
+            x={props.xInit + i * props.xSep}
+            y={props.y}
             textAnchor="middle"
           >
             {(i / 2 + 1).toString()}
@@ -34,8 +34,8 @@ const CountAnd = (props) => {
             key={i}
             style={style.svgTextStyling}
             viewBox="0 0 32 32"
-            // x={props.xInit + i * props.xSep}
-            // y={props.y}
+            x={props.xInit + i * props.xSep}
+            y={props.y}
             textAnchor="middle"
           >
             {"&"}
@@ -48,14 +48,10 @@ const CountAnd = (props) => {
   };
 
   return (
-    <View>
-      <Svg style={{ flexDirection: "row" }}>{renderItems()}</Svg>
+    <View style={{ flex: 1 }}>
+      <Svg style={{ flex: 1, flexDirection: "row" }}>{renderItems()}</Svg>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  and: { flex: 1 },
-});
 
 export default CountAnd;
