@@ -3,9 +3,8 @@ import { View, Button } from "react-native";
 
 import ChordSelect from "./chordSelect";
 import BPMSelect from "./bpmSelect";
-import PatternSelect from "./patternSelect";
 
-class PrePlay extends Component {
+class FirstScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -30,12 +29,11 @@ class PrePlay extends Component {
     this.state = {
       chords: chords,
       bpm: 60,
-      pattern: [],
     };
   }
 
   confirmConfig = () => {
-    // Check atleast one chord, one 1 in pattern
+    // Check atleast one chord
 
     let finalSelectedChords = [];
     for (var i = 0; i < this.state.chords.length; i++) {
@@ -44,8 +42,8 @@ class PrePlay extends Component {
       }
     }
 
-    this.props.navigation.navigate("Play", {
-      pattern: [1, 1, 1, 0, 1, 0, 1, 1],
+    this.props.navigation.navigate("SecondScreen", {
+      finalSelectedChords,
       bpm: this.state.bpm,
     });
   };
@@ -78,16 +76,10 @@ class PrePlay extends Component {
             this.setState({ bpm: bpmValue });
           }}
         />
-        <PatternSelect
-          pattern={this.state.pattern}
-          setPattern={(newPattern) => {
-            this.setState({ pattern: newPattern });
-          }}
-        />
         <Button title="Press me!" onPress={this.confirmConfig} />
       </View>
     );
   };
 }
 
-export default PrePlay;
+export default FirstScreen;

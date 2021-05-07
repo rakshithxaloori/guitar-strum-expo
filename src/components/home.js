@@ -3,14 +3,14 @@ import { View, StyleSheet } from "react-native";
 
 import Header from "./header";
 import Play from "./play";
-import PrePlay from "./prePlay";
+import FirstScreen from "./firstScreen";
 
 export default function Home() {
   const pattern = [1, 1, 1, 0, 1, 0, 1, 1];
   return (
     <View style={styles.container}>
       <Header />
-      {/* <PrePlay /> */}
+      {/* <FirstScreen /> */}
       <Play pattern={pattern} bpm={30} />
     </View>
   );

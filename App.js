@@ -1,16 +1,18 @@
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
-import PrePlayScreen from "./src/components/prePlay";
+import FirstScreenScreen from "./src/components/firstScreen";
+import SecondScreenScreen from "./src/components/secondScreen";
 import PlayScreen from "./src/components/play";
 
 const navigator = createStackNavigator(
   {
-    PrePlay: PrePlayScreen,
+    FirstScreen: FirstScreenScreen,
+    SecondScreen: SecondScreenScreen,
     Play: PlayScreen,
   },
   {
-    initialRouteName: "PrePlay",
+    initialRouteName: "FirstScreen",
     defaultNavigationOptions: {
       title: "Chord Changes",
     },

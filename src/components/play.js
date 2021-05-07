@@ -28,7 +28,7 @@ class Play extends Component {
 
   renderBars = () => {
     const windowWidth = Dimensions.get("window").width;
-    const windowHeight = Dimensions.get("window").height;
+    // const windowHeight = Dimensions.get("window").height;
 
     const barsList = [];
     for (var i = 0; i < 3; i++) {
@@ -44,7 +44,7 @@ class Play extends Component {
           xInit={25}
           xSep={(windowWidth - 2 * xInit) / 7}
           yChordBar={yChordBar}
-          yArrow={yChordBar + 70}
+          y={yChordBar + 70}
           yCountAnd={yChordBar + 160}
           arrowLineHeight={50}
           // forkHeight={60}

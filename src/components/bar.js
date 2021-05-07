@@ -21,7 +21,7 @@ const Bar = (props) => {
                 props.barIndex === Math.floor(props.beatIndex / 8)
               }
               x={props.xInit + i * props.xSep}
-              y1={props.yArrow}
+              y1={props.y}
               arrowLineHeight={props.arrowLineHeight}
             />
           );
@@ -34,7 +34,7 @@ const Bar = (props) => {
                 props.barIndex === Math.floor(props.beatIndex / 8)
               }
               x={props.xInit + i * props.xSep}
-              y1={props.yArrow}
+              y1={props.y}
               arrowLineHeight={props.arrowLineHeight}
             />
           );
