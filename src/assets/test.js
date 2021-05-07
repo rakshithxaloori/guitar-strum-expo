@@ -1,8 +1,16 @@
 import React from "react";
 import { Svg, Polygon } from "react-native-svg";
 
-const DownArrow = (props) => {
-  const { point, lineHalfWidth } = props;
+const Test = (props) => {
+  const lineHalfWidth = 5;
+  const arrowCoordinate = 8;
+  const point = {
+    x: 16,
+    y1: 0,
+    y2: 50,
+    arrowHeadWidth: arrowCoordinate * Math.sqrt(2) - lineHalfWidth,
+    arrowHeadHeight: 2 * lineHalfWidth * Math.sqrt(2),
+  };
 
   const points = `
   ${point.x - lineHalfWidth},${point.y1}
@@ -26,4 +34,4 @@ const DownArrow = (props) => {
   );
 };
 
-export default DownArrow;
+export default Test;

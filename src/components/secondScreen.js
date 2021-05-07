@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Button, Dimensions } from "react-native";
+import { Svg } from "react-native-svg";
 
 import PatternSelect from "./patternSelect";
 
@@ -22,22 +23,23 @@ class SecondClass extends Component {
 
   render = () => {
     return (
-      <View>
-        <PatternSelect
-          xInit={25}
-          xSep={(Dimensions.get("window").width - 2 * 25) / 7}
-          y={20}
-          arrowLineHeight={50}
-          pattern={this.state.pattern}
-          changeStrum={(index) => {
-            const newPattern = [...this.state.pattern];
-            newPattern[index] = newPattern[index] === 0 ? 1 : 0;
-            this.setState({ pattern: newPattern });
-          }}
-        />
-
-        <Button title="Press me?" onPress={this.confirmConfig} />
-      </View>
+      // <View
+      //   style={{
+      //     alignItems: "center",
+      //     justifyContent: "center",
+      //     paddingTop: 100,
+      //   }}
+      // >
+      <PatternSelect
+        pattern={this.state.pattern}
+        changeStrum={(index) => {
+          const newPattern = [...this.state.pattern];
+          newPattern[index] = newPattern[index] === 0 ? 1 : 0;
+          this.setState({ pattern: newPattern });
+        }}
+      />
+      //   <Button title="Press me?" onPress={this.confirmConfig} />
+      // </View>
     );
   };
 }

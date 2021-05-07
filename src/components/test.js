@@ -12,16 +12,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const TouchArrow = ({ index, highlight, changeStrum, size = 100 }) => {
+const TouchArrow = ({ index, highlight, size = 100 }) => {
   return (
     <TouchableOpacity
       style={styles.touch}
       onPress={() => {
         console.log(index);
-        changeStrum(index);
       }}
     >
-      <Svg height={size} width={size} viewBox="0 0 35 100">
+      <Svg height={size} width={size} viewBox="0 0 100 100">
         <Arrow
           opaque={index}
           direction={index % 2 === 0}
@@ -33,21 +32,11 @@ const TouchArrow = ({ index, highlight, changeStrum, size = 100 }) => {
 };
 
 const PatternSelect = (props) => {
-  console.log(props.pattern);
+  const pattern = [1, 1, 0, 0, 0, 0, 0, 0];
   return (
-    <View
-      style={[
-        styles.touch,
-        { flexDirection: "row", borderColor: "black", borderWidth: 5 },
-      ]}
-    >
-      {props.pattern.map((highlight, index) => (
-        <TouchArrow
-          key={index}
-          index={index}
-          highlight={highlight}
-          changeStrum={props.changeStrum}
-        />
+    <View style={[styles.touch, { flexDirection: "row" }]}>
+      {pattern.map((highlight, index) => (
+        <TouchArrow key={index} index={index} highlight={highlight} />
       ))}
     </View>
   );
