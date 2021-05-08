@@ -2,7 +2,6 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 
 const CountAnd = (props) => {
-
   const renderItems = () => {
     const textList = [];
     for (var i = 0; i < 8; i++) {
@@ -50,6 +49,7 @@ const styles = StyleSheet.create({
   listStyling: {
     flex: 1,
     flexDirection: "row",
+    paddingHorizontal: 10,
   },
 });
 

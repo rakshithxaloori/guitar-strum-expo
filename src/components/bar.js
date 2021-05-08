@@ -10,12 +10,12 @@ const Bar = (props) => {
   const size = 70;
   return (
     <View style={styles.barStyling}>
-      {/* <ChordBar
+      <ChordBar
         chords={["A", null, "D", null, "E", null, "Dm", null]}
         xInit={props.xInit}
         xSep={props.xSep}
         y={props.yChordBar}
-      /> */}
+      />
 
       <View style={[styles.arrowsStyling, { flexDirection: "row" }]}>
         {props.pattern.map((patternVal, index) => (
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   arrowsStyling: {
-    flex: 3,
+    flex: 2,
     // flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "center",
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderColor: "black",
     borderWidth: 5,
+    paddingHorizontal: 10,
   },
 });
 
