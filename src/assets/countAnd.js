@@ -1,45 +1,34 @@
 import React from "react";
-import { View } from "react-native";
-import { Svg, Text as SvgText } from "react-native-svg";
+import { View, StyleSheet, Text } from "react-native";
 
 const CountAnd = (props) => {
-  const style = {
-    svgTextStyling: {
-      flex: 1,
-      fill: "#ce8529",
-      fontSize: 20,
-      fontWeight: "bolder",
-    },
-  };
 
   const renderItems = () => {
     const textList = [];
     for (var i = 0; i < 8; i++) {
       if (i % 2 === 0) {
         textList.push(
-          <SvgText
-            key={i}
-            style={style.svgTextStyling}
-            viewBox="0 0 32 32"
-            x={props.xInit + i * props.xSep}
-            y={props.y}
-            textAnchor="middle"
-          >
-            {(i / 2 + 1).toString()}
-          </SvgText>
+          <View key={i} style={styles.textStyling}>
+            <Text
+              style={styles.svgTextStyling}
+              viewBox="0 0 35 100"
+              textAnchor="middle"
+            >
+              {(i / 2 + 1).toString()}
+            </Text>
+          </View>
         );
       } else {
         textList.push(
-          <SvgText
-            key={i}
-            style={style.svgTextStyling}
-            viewBox="0 0 32 32"
-            x={props.xInit + i * props.xSep}
-            y={props.y}
-            textAnchor="middle"
-          >
-            {"&"}
-          </SvgText>
+          <View key={i} style={styles.textStyling}>
+            <Text
+              style={styles.svgTextStyling}
+              viewBox="0 0 35 100"
+              textAnchor="middle"
+            >
+              {"&"}
+            </Text>
+          </View>
         );
       }
     }
@@ -47,11 +36,21 @@ const CountAnd = (props) => {
     return textList;
   };
 
-  return (
-    <View style={{ flex: 1 }}>
-      <Svg style={{ flex: 1, flexDirection: "row" }}>{renderItems()}</Svg>
-    </View>
-  );
+  return <View style={styles.listStyling}>{renderItems()}</View>;
 };
+
+const styles = StyleSheet.create({
+  svgTextStyling: {
+    fontSize: 25,
+    color: "#ce8529",
+  },
+  textStyling: {
+    flex: 1,
+  },
+  listStyling: {
+    flex: 1,
+    flexDirection: "row",
+  },
+});
 
 export default CountAnd;

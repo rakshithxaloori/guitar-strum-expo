@@ -7,13 +7,20 @@ import CountAnd from "../assets/countAnd";
 import ChordBar from "../assets/chordBar";
 
 const Bar = (props) => {
-  const size = 100;
+  const size = 70;
   return (
     <View style={styles.barStyling}>
+      {/* <ChordBar
+        chords={["A", null, "D", null, "E", null, "Dm", null]}
+        xInit={props.xInit}
+        xSep={props.xSep}
+        y={props.yChordBar}
+      /> */}
+
       <View style={[styles.arrowsStyling, { flexDirection: "row" }]}>
         {props.pattern.map((patternVal, index) => (
-          <View style={styles.arrowStyling}>
-            <Svg key={index} height={size} width={size} viewBox="0 0 35 100">
+          <View key={index} style={styles.arrowStyling}>
+            <Svg height={size} width={size} viewBox="0 0 35 100">
               <Arrow
                 opaque={patternVal}
                 direction={index % 2 === 0}
@@ -26,13 +33,8 @@ const Bar = (props) => {
           </View>
         ))}
       </View>
-      <CountAnd xInit={props.xInit} xSep={props.xSep} y={props.yCountAnd} />
-      {/* <ChordBar
-        chords={["A", null, "D", null, "E", null, "Dm", null]}
-        xInit={props.xInit}
-        xSep={props.xSep}
-        y={props.yChordBar}
-      /> */}
+
+      <CountAnd />
     </View>
   );
 };
@@ -40,6 +42,7 @@ const Bar = (props) => {
 const styles = StyleSheet.create({
   arrowStyling: {
     flex: 1,
+    paddingTop: 15,
     alignItems: "center",
     justifyContent: "center",
   },
