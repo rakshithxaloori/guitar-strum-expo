@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
   listStyling: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "purple",
-    borderColor: "purple",
+    backgroundColor: "blue",
+    borderColor: "black",
     borderWidth: 3,
     paddingHorizontal: 10,
   },
