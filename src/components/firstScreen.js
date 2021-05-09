@@ -43,7 +43,7 @@ class FirstScreen extends Component {
     }
 
     this.props.navigation.navigate("StrummingPattern", {
-      finalSelectedChords,
+      chords: finalSelectedChords,
       bpm: this.state.bpm,
     });
   };
