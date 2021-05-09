@@ -1,12 +1,43 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
-import { Svg, Text as SvgText } from "react-native-svg";
+import { View, StyleSheet } from "react-native";
 
 import Bar from "./bar";
 
 class Play extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
+    const { navigation } = this.props;
+
+    const chordsBar = [[], [], []];
+    // According to #chord changes, pattern
+    // populate the chordsBar
+    const pattern = navigation.getParam("pattern");
+    console.log("PATTERN", pattern);
+    const chordChanges = navigation.getParam("chordChanges");
+    const chordChangesList = [
+      [0, 1, 0, 1],
+      [1, 1, 0, 0],
+      [1, 0, 1, 0],
+    ];
+
+    // TODO chordChangesList
+    // Don't chordChange at [2][3]
+    // Choose a chord
+    let chord = "a";
+    for (let j = 0; j < chordsBar.length; j++) {
+      for (let i = 0; i < pattern.length; i += 2) {
+        chordsBar[j][i] = chord;
+        chordsBar[j][i + 1] = chord;
+        if (chordChangesList[j][i / 2] === 1) {
+          // Choose new chord
+          // newChord(chord, chords)
+          chord += 1;
+        }
+      }
+    }
+    console.log(chordsBar);
+
     this.state = {
       beatIndex: 0,
     };
@@ -27,9 +58,6 @@ class Play extends Component {
   };
 
   renderBars = () => {
-    const windowWidth = Dimensions.get("window").width;
-    // const windowHeight = Dimensions.get("window").height;
-
     const barsList = [];
     for (var i = 0; i < 3; i++) {
       const yChordBar = 20 + i * 200;
@@ -40,14 +68,8 @@ class Play extends Component {
           barIndex={i}
           beatIndex={this.state.beatIndex}
           // pattern={this.props.pattern}
+          chords={[]}
           pattern={this.props.navigation.getParam("pattern")}
-          xInit={25}
-          xSep={(windowWidth - 2 * xInit) / 7}
-          yChordBar={yChordBar}
-          y={yChordBar + 70}
-          yCountAnd={yChordBar + 160}
-          arrowLineHeight={50}
-          // forkHeight={60}
         />
       );
     }
@@ -59,19 +81,6 @@ class Play extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={{ flex: 4 }}>{this.renderBars()}</View>
-        <View style={{ flex: 1 }}>
-          <SvgText
-            style={{ flex: 1 }}
-            fill="black"
-            stroke="white"
-            // fontSize="40"
-            fontWeight="bolder"
-            // x={Dimensions.get("window").width / 2 - 50}
-            // y={Dimensions.get("window").height - 100}
-          >
-            BPM: {this.props.navigation.getParam("bpm")}
-          </SvgText>
-        </View>
       </View>
     );
   };

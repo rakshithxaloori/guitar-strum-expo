@@ -22,7 +22,7 @@ const Bar = (props) => {
           <View key={index} style={styles.arrowStyling}>
             <Svg height={size} width={size} viewBox="0 0 35 100">
               <Arrow
-                opaque={patternVal}
+                opaque={patternVal === 1}
                 direction={index % 2 === 0}
                 highlight={
                   index === props.beatIndex % 8 &&

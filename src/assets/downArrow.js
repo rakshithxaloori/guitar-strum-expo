@@ -18,8 +18,8 @@ const DownArrow = (props) => {
     <Svg>
       <Polygon
         points={points}
-        fill={props.highlight ? "#1abc9c" : "none"}
-        stroke="#1abc9c"
+        fill={props.opaque ? (props.highlight ? "#1abc9c" : "none") : "none"}
+        stroke={props.opaque ? "#1abc9c" : "none"}
         strokeWidth="1"
       />
     </Svg>

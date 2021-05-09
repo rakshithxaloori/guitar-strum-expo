@@ -18,13 +18,12 @@ const TouchArrow = ({ index, highlight, changeStrum, size = 100 }) => {
     <TouchableOpacity
       style={styles.touchableArrowStyling}
       onPress={() => {
-        console.log(index);
         changeStrum(index);
       }}
     >
       <Svg height={size} width={size} viewBox="0 0 35 100">
         <Arrow
-          opaque={index}
+          opaque={true}
           direction={index % 2 === 0}
           highlight={highlight}
         />
@@ -34,7 +33,6 @@ const TouchArrow = ({ index, highlight, changeStrum, size = 100 }) => {
 };
 
 const PatternSelect = (props) => {
-  console.log(props.pattern);
   return (
     <View style={[styles.touchableArrowStyling, styles.arrowsStyling]}>
       {props.pattern.map((highlight, index) => (

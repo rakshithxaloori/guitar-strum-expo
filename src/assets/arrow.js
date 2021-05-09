@@ -20,6 +20,7 @@ const Arrow = ({ opaque, direction, highlight }) => {
   if (direction)
     return (
       <DownArrow
+        opaque={opaque}
         style={styles.arrow}
         point={point}
         lineHalfWidth={lineHalfWidth}
@@ -29,6 +30,7 @@ const Arrow = ({ opaque, direction, highlight }) => {
   else
     return (
       <UpArrow
+        opaque={opaque}
         style={styles.arrow}
         point={point}
         lineHalfWidth={lineHalfWidth}
