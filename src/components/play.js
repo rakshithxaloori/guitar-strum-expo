@@ -3,10 +3,18 @@ import { View, StyleSheet } from "react-native";
 
 import Bar from "./bar";
 
+function shuffle(array) {
+  let newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+}
+
 class Play extends Component {
   constructor(props) {
     super(props);
-    console.log(props.navigation.state.params);
     const { navigation } = this.props;
 
     const chordsBar = [[], [], []];
@@ -33,20 +41,26 @@ class Play extends Component {
       }
     }
 
-    console.log("chordChangesList", chordChangesList);
-
     // Choose a chord
-    let chord = "a";
+    const chords = navigation.getParam("chords");
+    console.log("Chords", chords);
+    // Chords array should be exactly chordChanges+1
+    console.log("Shuffled", shuffle(chords));
+    let fullChords = [];
+    while (fullChords.length < 3 * chordChanges + 1)
+      fullChords = [...fullChords, ...shuffle(chords)];
+
+    console.log(fullChords);
+
+    let chordIndex = 0;
     for (let j = 0; j < chordsBar.length; j++) {
       for (let i = 0; i < pattern.length; i += 2) {
-        if (pattern[i] === 1) chordsBar[j][i] = chord;
+        if (pattern[i] === 1) chordsBar[j][i] = fullChords[chordIndex];
         else chordsBar[j][i] = null;
-        if (pattern[i + 1] === 1) chordsBar[j][i + 1] = chord;
+        if (pattern[i + 1] === 1) chordsBar[j][i + 1] = fullChords[chordIndex];
         else chordsBar[j][i + 1] = null;
         if (chordChangesList[j][i / 2] === 1) {
-          // Choose new chord
-          // newChord(chord, chords)
-          chord += 1;
+          chordIndex += 1;
         }
       }
     }
@@ -66,6 +80,7 @@ class Play extends Component {
         beatIndex: this.state.beatIndex <= 22 ? this.state.beatIndex + 1 : 0,
       });
     }, 1000 * (60.0 / (2 * this.props.navigation.getParam("bpm"))));
+    // This number is for both up and down, which is why we do 2 * bpm
   };
 
   componentWillUnmount = () => {

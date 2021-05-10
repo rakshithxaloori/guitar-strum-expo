@@ -11,7 +11,7 @@ const Bar = (props) => {
   return (
     <View style={styles.barStyling}>
       <ChordBar
-        chords={["A", null, "D", null, "E", null, "Dm", null]}
+        chords={props.chords}
         xInit={props.xInit}
         xSep={props.xSep}
         y={props.yChordBar}
