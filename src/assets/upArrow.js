@@ -21,9 +21,9 @@ const UpArrow = (props) => {
       <Polygon
         points={points}
         fill={
-          props.opaque ? (props.highlight ? color.tertiary : "none") : "none"
+          props.opaque ? (props.highlight ? color.secondary : "none") : "none"
         }
-        stroke={props.opaque ? color.tertiary : "none"}
+        stroke={props.opaque ? color.secondary : "none"}
         strokeWidth="2"
       />
     </Svg>

@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
+import { color } from "../constants";
+
 const ChordBar = (props) => {
   const renderChords = () => {
     const chords = props.chords;
@@ -22,14 +24,14 @@ const ChordBar = (props) => {
 const styles = StyleSheet.create({
   textStyling: {
     flex: 1,
-    color: "white",
+    color: color.primary,
     fontSize: 25,
   },
   listStyling: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "blue",
-    borderColor: "black",
+    backgroundColor: color.tertiary,
+    borderColor: color.secondary,
     borderWidth: 3,
     paddingHorizontal: 10,
   },

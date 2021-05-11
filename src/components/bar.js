@@ -6,16 +6,13 @@ import Arrow from "../assets/arrow";
 import CountAnd from "../assets/countAnd";
 import ChordBar from "../assets/chordBar";
 
+import { color } from "../constants";
+
 const Bar = (props) => {
   const size = 70;
   return (
     <View style={styles.barStyling}>
-      <ChordBar
-        chords={props.chords}
-        xInit={props.xInit}
-        xSep={props.xSep}
-        y={props.yChordBar}
-      />
+      <ChordBar chords={props.chords} />
 
       <View style={[styles.arrowsStyling, { flexDirection: "row" }]}>
         {props.pattern.map((patternVal, index) => (
@@ -54,8 +51,8 @@ const styles = StyleSheet.create({
   },
   barStyling: {
     flex: 1,
-    borderColor: "black",
-    borderWidth: 5,
+    // borderColor: color.secondary,
+    // borderWidth: 2,
     paddingHorizontal: 10,
   },
 });

@@ -1,7 +1,9 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 
-const CountAnd = (props) => {
+import { color } from "../constants";
+
+const CountAnd = () => {
   const renderItems = () => {
     const textList = [];
     for (var i = 0; i < 8; i++) {
@@ -41,7 +43,7 @@ const CountAnd = (props) => {
 const styles = StyleSheet.create({
   svgTextStyling: {
     fontSize: 25,
-    color: "#ce8529",
+    color: color.tertiary,
   },
   textStyling: {
     flex: 1,
