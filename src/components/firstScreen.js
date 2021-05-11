@@ -145,7 +145,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   touchableOpacityStyling: {
-    flex: 1,
+    margin: 10,
+    padding: 15,
     backgroundColor: color.tertiary,
     alignItems: "center",
     justifyContent: "center",

@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   viewStyling: {
     flexDirection: "row",
     flexWrap: "wrap",
-    padding: 5,
+    padding: 10,
     alignItems: "center",
     justifyContent: "space-evenly",
   },

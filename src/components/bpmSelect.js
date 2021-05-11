@@ -17,24 +17,34 @@ const BPMSelect = (props) => {
         maximumValue={240}
         onValueChange={(value) => props.setBPM(value)}
       />
-      <Text>
-        {props.bpm + " "} BPM{" "}
-        {props.bpm > 180
-          ? "Insane"
-          : props.bpm > 120
-          ? "Sprint"
-          : props.bpm > 90
-          ? "Agile"
-          : "Breeze"}
-      </Text>
-      <Text></Text>
+      <View style={styles.textViewStyling}>
+        <Text style={styles.textStyling}>{props.bpm + " "} BPM </Text>
+        <Text style={{ fontWeight: "bold" }}>
+          {props.bpm >= 180
+            ? "Insane"
+            : props.bpm >= 120
+            ? "Sprint"
+            : props.bpm >= 90
+            ? "Agile"
+            : "Breeze"}
+        </Text>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  textStyling: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  textViewStyling: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
   viewStyling: {
-    margin: 20,
+    margin: 10,
+    padding: 10,
   },
 });
 

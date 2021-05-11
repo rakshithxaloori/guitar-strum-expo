@@ -15,12 +15,11 @@ function shuffle(array) {
 class Play extends Component {
   constructor(props) {
     super(props);
-    const { navigation } = this.props;
+    // TODO change let to const?
+    let { bpm, chords, chordChanges, pattern } = this.props.route;
 
     const chordsBar = [[], [], []];
-    const pattern = navigation.getParam("pattern");
-    // const chordChanges = navigation.getParam("chordChanges");
-    const chordChanges = 3;
+    chordChanges = 3;
 
     const chordChangesList = [
       [0, 0, 0, 0],
@@ -41,16 +40,10 @@ class Play extends Component {
       }
     }
 
-    // Choose a chord
-    const chords = navigation.getParam("chords");
-    console.log("Chords", chords);
     // Chords array should be exactly chordChanges+1
-    console.log("Shuffled", shuffle(chords));
     let fullChords = [];
     while (fullChords.length < 3 * chordChanges + 1)
       fullChords = [...fullChords, ...shuffle(chords)];
-
-    console.log(fullChords);
 
     let chordIndex = 0;
     for (let j = 0; j < chordsBar.length; j++) {
@@ -64,7 +57,6 @@ class Play extends Component {
         }
       }
     }
-    console.log(chordsBar);
 
     this.state = {
       beatIndex: 0,
@@ -79,7 +71,7 @@ class Play extends Component {
       this.setState({
         beatIndex: this.state.beatIndex <= 22 ? this.state.beatIndex + 1 : 0,
       });
-    }, 1000 * (60.0 / (2 * this.props.navigation.getParam("bpm"))));
+    }, 1000 * (60.0 / (2 * this.props.route.bpm)));
     // This number is for both up and down, which is why we do 2 * bpm
   };
 
@@ -98,7 +90,7 @@ class Play extends Component {
           barIndex={i}
           beatIndex={this.state.beatIndex}
           chords={this.state.chordsBar[i]}
-          pattern={this.props.navigation.getParam("pattern")}
+          pattern={this.props.route.bpm}
         />
       );
     }
