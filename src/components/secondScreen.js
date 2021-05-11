@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { View, Button, Text } from "react-native";
-import DropDownPicker from "react-native-dropdown-picker";
 
 import PatternSelect from "./patternSelect";
 
@@ -41,7 +40,7 @@ class SecondClass extends Component {
         />
         <View style={{ flex: 1, alignItems: "center", padding: 10 }}>
           <Text>#Chord Changes in a Bar</Text>
-          <DropDownPicker
+          {/* <DropDownPicker
             searchable={false}
             placeholder="Select #chord changes"
             items={[
@@ -62,7 +61,7 @@ class SecondClass extends Component {
             setOpen={() =>
               this.setState((prevState) => ({ open: !prevState.open }))
             }
-          />
+          /> */}
         </View>
         <Button title="Press me?" onPress={this.confirmConfig} />
       </View>

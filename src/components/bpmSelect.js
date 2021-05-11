@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Slider from "@react-native-community/slider";
 
+import { color } from "../constants";
+
 const BPMSelect = (props) => {
   return (
     <View style={styles.viewStyling}>
       <Slider
+        minimumTrackTintColor={color.secondary}
+        thumbTintColor={color.secondary}
+        maximumTrackTintColor={color.tertiary}
         value={props.bpm}
         step={1}
         minimumValue={10}

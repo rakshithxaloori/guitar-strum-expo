@@ -3,6 +3,8 @@ import { StyleSheet } from "react-native";
 import { Text, View } from "react-native";
 import Constants from "expo-constants";
 
+import { color } from "../constants";
+
 const Header = () => {
   const { textStyling, viewStyling } = styles;
 
@@ -19,7 +21,7 @@ const styles = StyleSheet.create({
   },
   viewStyling: {
     marginTop: Constants.statusBarHeight,
-    backgroundColor: "grey",
+    backgroundColor: color.primary,
     height: 50,
     alignItems: "center",
     justifyContent: "center",

@@ -1,17 +1,10 @@
 import React from "react";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
-import { Svg, Rect } from "react-native-svg";
+import { Svg } from "react-native-svg";
 
 import Arrow from "../assets/arrow";
 
-const styles = StyleSheet.create({
-  touchableArrowStyling: {
-    flex: 1,
-    alignItems: "center",
-    // justifyContent: "center",
-  },
-  arrowsStyling: { flexDirection: "row", borderColor: "black", borderWidth: 5 },
-});
+import { color } from "../constants";
 
 const TouchArrow = ({ index, highlight, changeStrum, size = 100 }) => {
   return (
@@ -46,5 +39,17 @@ const PatternSelect = (props) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  touchableArrowStyling: {
+    flex: 1,
+    alignItems: "center",
+  },
+  arrowsStyling: {
+    flexDirection: "row",
+    borderColor: color.secondary,
+    borderWidth: 2,
+  },
+});
 
 export default PatternSelect;

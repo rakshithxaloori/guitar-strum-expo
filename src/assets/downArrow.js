@@ -1,6 +1,8 @@
 import React from "react";
 import { Svg, Polygon } from "react-native-svg";
 
+import { color } from "../constants";
+
 const DownArrow = (props) => {
   const { point, lineHalfWidth } = props;
 
@@ -18,9 +20,11 @@ const DownArrow = (props) => {
     <Svg>
       <Polygon
         points={points}
-        fill={props.opaque ? (props.highlight ? "#1abc9c" : "none") : "none"}
-        stroke={props.opaque ? "#1abc9c" : "none"}
-        strokeWidth="1"
+        fill={
+          props.opaque ? (props.highlight ? color.secondary : "none") : "none"
+        }
+        stroke={props.opaque ? color.secondary : "none"}
+        strokeWidth="2"
       />
     </Svg>
   );
