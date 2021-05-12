@@ -8,11 +8,12 @@ class SplashScreen extends Component {
     this.state = {
       isVisible: true,
       funFacts: [
-        "The First Guitar was Created in Ancient Egypt!",
-        "Guitars were always constructed with hollow bodies, until electric guitars came and made that design choice obsolete!",
+        "Guitars were always constructed with hollow bodies, until electric guitars came!",
         "During middle ages, guitars were used almost exclusively as rhythm instruments!",
         "Electric guitars have electromagnetic pickups that convert string vibrations into electrical signals!",
         "The Shortest Guitar is Just 10 Microns, smaller than the with of your hair!",
+        "The Standard Tuning of Guitar is E A D G B E (Even Average Dogs Get Bone Everyday)",
+        "Humans can detect sounds in a frequency range from about 20 Hz to 20 kHz!",
       ],
     };
   }
@@ -39,12 +40,12 @@ class SplashScreen extends Component {
           </View>
           <View style={[styles.childViewStyling, { flex: 1 }]}>
             <Text style={styles.textStyling}>
-              {/* {
+              {
                 this.state.funFacts[
                   Math.floor(Math.random() * this.state.funFacts.length)
                 ]
-              } */}
-              {this.state.funFacts[1]}
+              }
+              {/* {this.state.funFacts[this.state.funFacts.length - 1]} */}
             </Text>
           </View>
         </View>
