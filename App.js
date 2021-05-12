@@ -1,6 +1,8 @@
 import React from "react";
+import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import Constants from "expo-constants";
 
 import SplashScreen from "./src/components/splashScreen";
 import ConfigScreen from "./src/components/firstScreen";
@@ -14,17 +16,23 @@ const App = () => {
         <Stack.Screen
           name="Splash"
           component={SplashScreen}
-          options={{ title: "Splash", headerShown: false }}
+          options={{ title: "Splash" }}
         />
         <Stack.Screen
           name="Config"
           component={ConfigScreen}
-          options={{ title: "Chord Change Practise" }}
+          options={{
+            title: "",
+            headerStyle: { height: Constants.statusBarHeight },
+          }}
         />
         <Stack.Screen
           name="Play"
           component={PlayScreen}
-          options={{ title: "Play" }}
+          options={{
+            title: "",
+            headerStyle: { height: Constants.statusBarHeight },
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

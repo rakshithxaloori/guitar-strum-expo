@@ -9,27 +9,25 @@ const CountAnd = () => {
     for (var i = 0; i < 8; i++) {
       if (i % 2 === 0) {
         textList.push(
-          <View key={i} style={styles.textStyling}>
-            <Text
-              style={styles.svgTextStyling}
-              viewBox="0 0 35 100"
-              textAnchor="middle"
-            >
-              {(i / 2 + 1).toString()}
-            </Text>
-          </View>
+          <Text
+            key={i}
+            style={styles.textStyling}
+            viewBox="0 0 35 100"
+            textAnchor="middle"
+          >
+            {(i / 2 + 1).toString()}
+          </Text>
         );
       } else {
         textList.push(
-          <View key={i} style={styles.textStyling}>
-            <Text
-              style={styles.svgTextStyling}
-              viewBox="0 0 35 100"
-              textAnchor="middle"
-            >
-              {"&"}
-            </Text>
-          </View>
+          <Text
+            key={i}
+            style={styles.textStyling}
+            viewBox="0 0 35 100"
+            textAnchor="middle"
+          >
+            {"&"}
+          </Text>
         );
       }
     }
@@ -41,17 +39,19 @@ const CountAnd = () => {
 };
 
 const styles = StyleSheet.create({
-  svgTextStyling: {
-    fontSize: 25,
-    color: color.tertiary,
-  },
   textStyling: {
     flex: 1,
+    fontSize: 25,
+    color: color.tertiary,
+    textAlign: "center",
+    // borderWidth: 2,
+    // borderColor: color.primary,
   },
   listStyling: {
     flex: 1,
     flexDirection: "row",
-    paddingHorizontal: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

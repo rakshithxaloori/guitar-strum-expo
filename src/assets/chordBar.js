@@ -5,16 +5,24 @@ import { color } from "../constants";
 
 const ChordBar = (props) => {
   const renderChords = () => {
-    const chords = props.chords;
+    const { chords } = props;
     const chordsList = [];
-    for (var i = 0; i < props.chords.length; i++) {
-      if (props.chords[i] !== null) {
-        chordsList.push(
-          <Text key={i} style={styles.textStyling}>
-            {chords[i]}
-          </Text>
-        );
+    for (let i = 0; i < chords.length; i += 2) {
+      let textStr = "";
+      if (chords[i] !== null || chords[i + 1] !== null) {
+        textStr = chords[i];
+      } else {
+        if (chords[i] === null && chords[i + 1] === null) {
+          textStr = "  ";
+        }
       }
+      chordsList.push(
+        <Text key={i} style={styles.textStyling}>
+          {textStr}
+        </Text>
+      );
+      if (i <= 4)
+        chordsList.push(<View key={i + 8} style={styles.verticleLine}></View>);
     }
     return chordsList;
   };
@@ -26,14 +34,19 @@ const styles = StyleSheet.create({
     flex: 1,
     color: color.primary,
     fontSize: 25,
+    textAlign: "center",
+  },
+  verticleLine: {
+    height: "100%",
+    width: 3,
+    backgroundColor: color.primary,
   },
   listStyling: {
     flex: 1,
     flexDirection: "row",
     backgroundColor: color.tertiary,
-    borderColor: color.secondary,
-    borderWidth: 3,
-    paddingHorizontal: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

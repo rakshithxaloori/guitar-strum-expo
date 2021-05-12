@@ -59,7 +59,6 @@ class FirstScreen extends Component {
 
   confirmConfig = () => {
     // Check if atleast one strum selected
-    console.log("CONFIRM CALLED");
     if (this.state.pattern.indexOf(1) === -1) {
       this.strumAlert();
       return;
@@ -71,7 +70,6 @@ class FirstScreen extends Component {
         finalSelectedChords.push(this.state.chords[i].chordText);
       }
     }
-    console.log("CHECKING #CHORDS");
 
     // Check if atleast one chord selected
     if (finalSelectedChords.length < 1) {
@@ -79,7 +77,6 @@ class FirstScreen extends Component {
       return;
     }
 
-    console.log("ALL OKE");
     this.props.navigation.navigate("Play", {
       chords: finalSelectedChords,
       bpm: this.state.bpm,
@@ -124,9 +121,6 @@ class FirstScreen extends Component {
             this.setState({ pattern: newPattern });
           }}
         />
-        {/* <View style={{ flex: 1, alignItems: "center", padding: 10 }}>
-          <Text>#Chord Changes in a Bar</Text>
-        </View> */}
         <TouchableOpacity
           style={styles.touchableOpacityStyling}
           onPress={this.confirmConfig}

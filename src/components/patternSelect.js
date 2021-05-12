@@ -14,7 +14,7 @@ const TouchArrow = ({ index, highlight, changeStrum, size = 100 }) => {
         changeStrum(index);
       }}
     >
-      <Svg height={size} width={size} viewBox="0 0 35 100">
+      <Svg height={size} width={size} viewBox="0 0 35 80">
         <Arrow
           opaque={true}
           direction={index % 2 === 0}
@@ -47,8 +47,6 @@ const styles = StyleSheet.create({
   },
   arrowsStyling: {
     flexDirection: "row",
-    borderColor: color.secondary,
-    borderWidth: 2,
   },
 });
 

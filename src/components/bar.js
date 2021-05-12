@@ -12,12 +12,13 @@ const Bar = (props) => {
   const size = 70;
   return (
     <View style={styles.barStyling}>
+      <View style={styles.horizontalLine}></View>
       <ChordBar chords={props.chords} />
 
       <View style={[styles.arrowsStyling, { flexDirection: "row" }]}>
         {props.pattern.map((patternVal, index) => (
           <View key={index} style={styles.arrowStyling}>
-            <Svg height={size} width={size} viewBox="0 0 35 100">
+            <Svg height={size} width={size} viewBox="0 0 35 80">
               <Arrow
                 opaque={patternVal === 1}
                 direction={index % 2 === 0}
@@ -37,6 +38,11 @@ const Bar = (props) => {
 };
 
 const styles = StyleSheet.create({
+  horizontalLine: {
+    width: "100%",
+    borderBottomColor: color.secondary,
+    borderBottomWidth: 5,
+  },
   arrowStyling: {
     flex: 1,
     paddingTop: 15,

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
 import Bar from "./bar";
+
+import { color } from "../constants";
 
 function shuffle(array) {
   let newArray = [...array];
@@ -16,7 +18,7 @@ class Play extends Component {
   constructor(props) {
     super(props);
     // TODO change let to const?
-    let { bpm, chords, chordChanges, pattern } = this.props.route;
+    let { bpm, chords, chordChanges, pattern } = this.props.route.params;
 
     const chordsBar = [[], [], []];
     chordChanges = 3;
@@ -48,10 +50,9 @@ class Play extends Component {
     let chordIndex = 0;
     for (let j = 0; j < chordsBar.length; j++) {
       for (let i = 0; i < pattern.length; i += 2) {
-        if (pattern[i] === 1) chordsBar[j][i] = fullChords[chordIndex];
+        if (pattern[i] === 1 || pattern[i + 1] === 1)
+          chordsBar[j][i] = fullChords[chordIndex];
         else chordsBar[j][i] = null;
-        if (pattern[i + 1] === 1) chordsBar[j][i + 1] = fullChords[chordIndex];
-        else chordsBar[j][i + 1] = null;
         if (chordChangesList[j][i / 2] === 1) {
           chordIndex += 1;
         }
@@ -71,7 +72,7 @@ class Play extends Component {
       this.setState({
         beatIndex: this.state.beatIndex <= 22 ? this.state.beatIndex + 1 : 0,
       });
-    }, 1000 * (60.0 / (2 * this.props.route.bpm)));
+    }, 1000 * (60.0 / (2 * this.props.route.params.bpm)));
     // This number is for both up and down, which is why we do 2 * bpm
   };
 
@@ -81,16 +82,14 @@ class Play extends Component {
 
   renderBars = () => {
     const barsList = [];
-    for (var i = 0; i < 3; i++) {
-      const yChordBar = 20 + i * 200;
-      const xInit = 25;
+    for (let i = 0; i < 3; i++) {
       barsList.push(
         <Bar
           key={i}
           barIndex={i}
           beatIndex={this.state.beatIndex}
           chords={this.state.chordsBar[i]}
-          pattern={this.props.route.bpm}
+          pattern={this.props.route.params.pattern}
         />
       );
     }

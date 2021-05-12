@@ -5,6 +5,8 @@ import { color } from "../constants";
 
 const UpArrow = (props) => {
   const { point, lineHalfWidth } = props;
+  point.y2 += point.arrowHeadHeight + 2;
+  point.y1 += point.arrowHeadHeight + 2;
 
   const points = `
   ${point.x + lineHalfWidth},${point.y2} 
