@@ -16,7 +16,7 @@ const App = () => {
         <Stack.Screen
           name="Splash"
           component={SplashScreen}
-          options={{ title: "Splash" }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Config"

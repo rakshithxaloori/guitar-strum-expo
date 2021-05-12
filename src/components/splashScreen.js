@@ -41,7 +41,7 @@ class SplashScreen extends Component {
         <View style={styles.rootViewStyling}>
           <View style={[styles.childViewStyling, { flex: 3 }]}>
             <Image
-              source={require("../../assets/guitar-icon.png")}
+              source={require("../../assets/guitar-splash-icon.png")}
               style={{ width: "120%", resizeMode: "contain" }}
             />
           </View>
