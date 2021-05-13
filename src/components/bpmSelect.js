@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Slider from "@react-native-community/slider";
+import Icon from "react-native-vector-icons/AntDesign";
 
 import { color } from "../constants";
 
@@ -17,17 +18,41 @@ const BPMSelect = (props) => {
         maximumValue={240}
         onValueChange={(value) => props.setBPM(value)}
       />
-      <View style={styles.textViewStyling}>
-        <Text style={styles.textStyling}>{props.bpm + " "} BPM </Text>
-        <Text style={[styles.textStyling, { fontWeight: "bold" }]}>
-          {props.bpm >= 180
-            ? "Insane"
-            : props.bpm >= 120
-            ? "Sprint"
-            : props.bpm >= 90
-            ? "Agile"
-            : "Breeze"}
-        </Text>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <TouchableOpacity
+          style={styles.iconTouchableStyling}
+          onPress={() => {
+            props.setBPM(props.bpm - 1);
+          }}
+        >
+          <Icon name="minuscircle" color={color.secondary} size={25} />
+        </TouchableOpacity>
+        <View style={styles.textViewStyling}>
+          <Text style={styles.textStyling}>{props.bpm + " "} BPM </Text>
+          <Text style={[styles.textStyling, { fontWeight: "bold" }]}>
+            {props.bpm >= 180
+              ? "Insane"
+              : props.bpm >= 120
+              ? "Sprint"
+              : props.bpm >= 90
+              ? "Agile"
+              : "Breeze"}
+          </Text>
+        </View>
+        <TouchableOpacity
+          style={styles.iconTouchableStyling}
+          onPress={() => {
+            props.setBPM(props.bpm + 1);
+          }}
+        >
+          <Icon name="pluscircle" color={color.secondary} size={25} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -42,6 +67,9 @@ const styles = StyleSheet.create({
   textViewStyling: {
     alignItems: "center",
     justifyContent: "center",
+  },
+  iconTouchableStyling: {
+    paddingHorizontal: 25,
   },
   viewStyling: {
     margin: 10,
