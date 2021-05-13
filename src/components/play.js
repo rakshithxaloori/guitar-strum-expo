@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 
 import Bar from "./bar";
 
@@ -99,12 +100,34 @@ class Play extends Component {
     return (
       <View style={styles.screenStyling}>
         <View style={{ flex: 4 }}>{this.renderBars()}</View>
+        <TouchableOpacity
+          style={styles.touchableOpacityStyling}
+          onPress={() => this.props.navigation.goBack()}
+        >
+          <Icon name="musical-note" color={color.primary} size={20} />
+          <Text style={styles.textStyling}>Go Back</Text>
+        </TouchableOpacity>
       </View>
     );
   };
 }
 
 const styles = StyleSheet.create({
+  textStyling: {
+    fontSize: 20,
+    paddingHorizontal: 5,
+    color: color.primary,
+    fontWeight: "bold",
+  },
+  touchableOpacityStyling: {
+    flexDirection: "row",
+    margin: 25,
+    padding: 15,
+    backgroundColor: color.secondary,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 15,
+  },
   screenStyling: {
     flex: 1,
     paddingVertical: 10,
