@@ -122,22 +122,13 @@ class FirstScreen extends Component {
             this.setState({ pattern: newPattern });
           }}
         />
-        {/* <TouchableOpacity
+        <TouchableOpacity
           style={styles.touchableOpacityStyling}
           onPress={this.confirmConfig}
         >
-          <Text style={styles.touchableOpacityTextStyling}>Preview</Text>
-        </TouchableOpacity> */}
-        <View style={styles.touchableOpacityStyling}>
-          <Icon.Button
-            name="musical-note"
-            color={color.primary}
-            backgroundColor={color.tertiary}
-            onPress={this.confirmConfig}
-          >
-            <Text style={styles.touchableOpacityTextStyling}>Play</Text>
-          </Icon.Button>
-        </View>
+          <Icon name="musical-note" color={color.primary} size={20} />
+          <Text style={styles.textStyling}>Play</Text>
+        </TouchableOpacity>
         <FlashMessage ref="localFlashMessage" />
       </View>
     );
@@ -145,18 +136,20 @@ class FirstScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  touchableOpacityTextStyling: {
+  textStyling: {
     fontSize: 20,
+    paddingHorizontal: 5,
     color: color.primary,
     fontWeight: "bold",
   },
   touchableOpacityStyling: {
+    flexDirection: "row",
     margin: 25,
-    padding: 5,
+    padding: 15,
     backgroundColor: color.tertiary,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 20,
+    borderRadius: 15,
   },
   screenStyling: {
     flex: 1,

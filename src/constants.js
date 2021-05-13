@@ -10,4 +10,10 @@ const palatte_two = {
   tertiary: "#8e9775",
 };
 
-export const color = { ...palatte_two };
+const palatte_three = {
+  primary: "#faf2da",
+  secondary: "#2d3142", // black
+  tertiary: "#ef8354", // orange
+};
+
+export const color = { ...palatte_three };
