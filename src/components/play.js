@@ -17,11 +17,9 @@ function shuffle(array) {
 class Play extends Component {
   constructor(props) {
     super(props);
-    // TODO change let to const?
-    let { bpm, chords, chordChanges, pattern } = this.props.route.params;
+    const { bpm, chords, chordChanges, pattern } = this.props.route.params;
 
     const chordsBar = [[], [], []];
-    chordChanges = 3;
 
     const chordChangesList = [
       [0, 0, 0, 0],

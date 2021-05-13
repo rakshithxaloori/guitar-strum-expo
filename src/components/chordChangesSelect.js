@@ -4,29 +4,25 @@ import Slider from "@react-native-community/slider";
 
 import { color } from "../constants";
 
-const BPMSelect = (props) => {
+const ChordChangesSelect = (props) => {
   return (
     <View style={styles.viewStyling}>
       <Slider
         minimumTrackTintColor={color.secondary}
         thumbTintColor={color.secondary}
         maximumTrackTintColor={color.tertiary}
-        value={props.bpm}
+        value={props.chordChanges}
         step={1}
-        minimumValue={10}
-        maximumValue={240}
-        onValueChange={(value) => props.setBPM(value)}
+        minimumValue={1}
+        maximumValue={4}
+        onValueChange={(value) => props.setChordChanges(value)}
       />
       <View style={styles.textViewStyling}>
-        <Text style={styles.textStyling}>{props.bpm + " "} BPM </Text>
         <Text style={[styles.textStyling, { fontWeight: "bold" }]}>
-          {props.bpm >= 180
-            ? "Insane"
-            : props.bpm >= 120
-            ? "Sprint"
-            : props.bpm >= 90
-            ? "Agile"
-            : "Breeze"}
+          {props.chordChanges + " "}
+        </Text>
+        <Text style={styles.textViewStyling}>
+          Chord {props.chordChanges === 1 ? "Change" : "Changes"} in a Bar
         </Text>
       </View>
     </View>
@@ -40,6 +36,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   textViewStyling: {
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -49,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BPMSelect;
+export default ChordChangesSelect;

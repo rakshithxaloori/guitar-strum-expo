@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 
+import ChordChangesSelect from "./chordChangesSelect";
 import ChordSelect from "./chordSelect";
 import BPMSelect from "./bpmSelect";
 import PatternSelect from "./patternSelect";
@@ -34,7 +35,7 @@ class FirstScreen extends Component {
       chords: chords,
       bpm: 60,
       pattern: [0, 0, 0, 0, 0, 0, 0, 0],
-      chordChanges: null,
+      chordChanges: 1,
       open: false,
     };
   }
@@ -99,6 +100,12 @@ class FirstScreen extends Component {
         <ChordSelect
           chords={this.state.chords}
           selectChord={this.selectChord}
+        />
+        <ChordChangesSelect
+          chordChanges={this.state.chordChanges}
+          setChordChanges={(value) => {
+            this.setState({ chordChanges: value });
+          }}
         />
         <BPMSelect
           bpm={this.state.bpm}
