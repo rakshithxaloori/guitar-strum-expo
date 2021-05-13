@@ -91,7 +91,8 @@ async function schedulePushNotification() {
       body: "Pick her up, practise and maybe have some good time? 🎶",
     },
     // trigger: { seconds: 5, repeats: true },
-    trigger: { day: 2, repeats: true },
+    // Below seconds value, inefficient?
+    trigger: { seconds: 172800, repeats: true },
   });
 }
 
