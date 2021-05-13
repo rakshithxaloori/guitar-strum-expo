@@ -19,7 +19,7 @@ const BPMSelect = (props) => {
       />
       <View style={styles.textViewStyling}>
         <Text style={styles.textStyling}>{props.bpm + " "} BPM </Text>
-        <Text style={{ fontWeight: "bold" }}>
+        <Text style={[styles.textStyling, { fontWeight: "bold" }]}>
           {props.bpm >= 180
             ? "Insane"
             : props.bpm >= 120
@@ -35,6 +35,7 @@ const BPMSelect = (props) => {
 
 const styles = StyleSheet.create({
   textStyling: {
+    color: color.secondary,
     alignItems: "center",
     justifyContent: "center",
   },

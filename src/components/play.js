@@ -99,11 +99,19 @@ class Play extends Component {
 
   render = () => {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.screenStyling}>
         <View style={{ flex: 4 }}>{this.renderBars()}</View>
       </View>
     );
   };
 }
+
+const styles = StyleSheet.create({
+  screenStyling: {
+    flex: 1,
+    paddingVertical: 10,
+    backgroundColor: color.primary,
+  },
+});
 
 export default Play;

@@ -32,6 +32,7 @@ const App = () => {
           options={{
             title: "",
             headerStyle: { height: Constants.statusBarHeight },
+            headerLeft: null,
           }}
         />
       </Stack.Navigator>

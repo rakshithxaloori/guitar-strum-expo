@@ -39,28 +39,21 @@ class FirstScreen extends Component {
     };
   }
 
-  strumAlert = () => {
+  flashAlert = (message) => {
     showMessage({
-      message: "Select atleast one strum",
+      message: message,
       type: "info",
       icon: "auto",
       position: "bottom",
-    });
-  };
-
-  chordsAlert = () => {
-    showMessage({
-      message: "Select atleast one chord",
-      type: "info",
-      icon: "auto",
-      position: "bottom",
+      backgroundColor: color.secondary,
+      style: { height: 50 },
     });
   };
 
   confirmConfig = () => {
     // Check if atleast one strum selected
     if (this.state.pattern.indexOf(1) === -1) {
-      this.strumAlert();
+      this.flashAlert("Select atleast one strum");
       return;
     }
 
@@ -73,7 +66,7 @@ class FirstScreen extends Component {
 
     // Check if atleast one chord selected
     if (finalSelectedChords.length < 1) {
-      this.chordsAlert();
+      this.flashAlert("Select atleast one chord");
       return;
     }
 
@@ -102,7 +95,7 @@ class FirstScreen extends Component {
 
   render = () => {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.screenStyling}>
         <ChordSelect
           chords={this.state.chords}
           selectChord={this.selectChord}
@@ -146,6 +139,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 20,
     margin: 20,
+  },
+  screenStyling: {
+    flex: 1,
+    paddingVertical: 10,
+    backgroundColor: color.primary,
   },
 });
 

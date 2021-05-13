@@ -8,7 +8,7 @@
     "splash": {
       "image": "./assets/guitar-splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ef8354"
+      "backgroundColor": "#8e9775"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
