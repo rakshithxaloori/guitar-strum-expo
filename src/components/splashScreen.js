@@ -9,12 +9,17 @@ class SplashScreen extends Component {
     super(props);
     this.state = {
       isVisible: true,
+      suggestions: [
+        // Suggestions
+        "If you are a beginner, practise first with the Down strums only!",
+      ],
       funFacts: [
+        // Facts
         "Guitars were always constructed with hollow bodies, until electric guitars came!",
         "During middle ages, guitars were used almost exclusively as rhythm instruments!",
         "Electric guitars have electromagnetic pickups that convert string vibrations into electrical signals!",
         "The Shortest Guitar is Just 10 Microns, smaller than the width of your hair!",
-        "The Standard Tuning of Guitar is E A D G B E (Even Average Dogs Get Bone Everyday)",
+        "The Standard Tuning of Guitar is E A D G B e (Even Average Dogs Get Bone everyday)",
         "Humans can detect sounds in a frequency range from about 20 Hz to 20 kHz!",
       ],
     };
@@ -48,9 +53,14 @@ class SplashScreen extends Component {
           <View style={[styles.childViewStyling, { flex: 1 }]}>
             <Text style={styles.textStyling}>
               {
-                this.state.funFacts[
-                  Math.floor(Math.random() * this.state.funFacts.length)
-                ]
+                // Dispaying suggestions with 2 * P of fun facts
+                Math.floor(Math.random() * 3) === 0
+                  ? this.state.funFacts[
+                      Math.floor(Math.random() * this.state.funFacts.length)
+                    ]
+                  : this.state.suggestions[
+                      Math.floor(Math.random() * this.state.suggestions.length)
+                    ]
               }
               {/* {this.state.funFacts[this.state.funFacts.length - 1]} */}
             </Text>
