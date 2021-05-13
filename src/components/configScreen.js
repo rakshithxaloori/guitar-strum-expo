@@ -10,7 +10,7 @@ import PatternSelect from "./patternSelect";
 
 import { color } from "../constants";
 
-class FirstScreen extends Component {
+class ConfigScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -158,4 +158,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FirstScreen;
+export default ConfigScreen;

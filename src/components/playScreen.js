@@ -15,7 +15,7 @@ function shuffle(array) {
   return newArray;
 }
 
-class Play extends Component {
+class PlayScreen extends Component {
   constructor(props) {
     super(props);
     const { bpm, chords, chordChanges, pattern } = this.props.route.params;
@@ -135,4 +135,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Play;
+export default PlayScreen;

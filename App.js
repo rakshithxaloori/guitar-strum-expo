@@ -5,8 +5,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Constants from "expo-constants";
 
 import SplashScreen from "./src/components/splashScreen";
-import ConfigScreen from "./src/components/firstScreen";
-import PlayScreen from "./src/components/play";
+import ConfigScreen from "./src/components/configScreen";
+import PlayScreen from "./src/components/playScreen";
 
 const Stack = createStackNavigator();
 const App = () => {
