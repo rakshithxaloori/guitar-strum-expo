@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 
 import ChordChangesSelect from "./chordChangesSelect";
@@ -121,12 +122,22 @@ class FirstScreen extends Component {
             this.setState({ pattern: newPattern });
           }}
         />
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.touchableOpacityStyling}
           onPress={this.confirmConfig}
         >
           <Text style={styles.touchableOpacityTextStyling}>Preview</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <View style={styles.touchableOpacityStyling}>
+          <Icon.Button
+            name="musical-note"
+            color={color.primary}
+            backgroundColor={color.tertiary}
+            onPress={this.confirmConfig}
+          >
+            <Text style={styles.touchableOpacityTextStyling}>Play</Text>
+          </Icon.Button>
+        </View>
         <FlashMessage ref="localFlashMessage" />
       </View>
     );
@@ -135,17 +146,17 @@ class FirstScreen extends Component {
 
 const styles = StyleSheet.create({
   touchableOpacityTextStyling: {
+    fontSize: 20,
     color: color.primary,
     fontWeight: "bold",
   },
   touchableOpacityStyling: {
-    margin: 10,
-    padding: 15,
+    margin: 25,
+    padding: 5,
     backgroundColor: color.tertiary,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 20,
-    margin: 20,
   },
   screenStyling: {
     flex: 1,
