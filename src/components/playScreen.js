@@ -85,7 +85,7 @@ class PlayScreen extends Component {
 
     this.beatIntervalID = setInterval(async () => {
       try {
-        if (this.state.beatIndex) {
+        if (this.state.beatIndex !== null) {
           this.setState({
             beatIndex:
               this.state.beatIndex <= 25 ? this.state.beatIndex + 1 : 0,
