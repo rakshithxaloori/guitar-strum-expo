@@ -18,13 +18,9 @@
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+      "package": "com.rakshithxaloori.guitarstrumchordchanges",
+      "versionCode": 3,
+      "permissions": []
     }
   }
 }

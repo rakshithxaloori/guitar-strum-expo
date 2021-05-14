@@ -60,7 +60,7 @@ class PlayScreen extends Component {
     }
 
     this.state = {
-      beatIndex: 0,
+      beatIndex: null,
       chordsBar: chordsBar,
       beatSound: null,
     };
@@ -84,6 +84,19 @@ class PlayScreen extends Component {
     }
 
     this.beatIntervalID = setInterval(async () => {
+      try {
+        if (this.state.beatIndex) {
+          this.setState({
+            beatIndex:
+              this.state.beatIndex <= 25 ? this.state.beatIndex + 1 : 0,
+          });
+        } else {
+          this.setState({ beatIndex: 0 });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
       if (this.state.beatIndex % 2 === 0) {
         try {
           console.log("Playing Sound");
@@ -92,9 +105,6 @@ class PlayScreen extends Component {
           console.log(error);
         }
       }
-      this.setState({
-        beatIndex: this.state.beatIndex <= 22 ? this.state.beatIndex + 1 : 0,
-      });
     }, 1000 * (60.0 / (2 * this.props.route.params.bpm)));
     // This number is for both up and down, which is why we do 2 * bpm
   };
