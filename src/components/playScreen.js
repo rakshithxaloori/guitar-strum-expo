@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { Audio } from "expo-av";
 
 import Bar from "./bar";
 
@@ -61,13 +62,36 @@ class PlayScreen extends Component {
     this.state = {
       beatIndex: 0,
       chordsBar: chordsBar,
+      beatSound: null,
     };
   }
 
+  setSound = async () => {
+    console.log("Loading Sound");
+    const { sound } = await Audio.Sound.createAsync(
+      require("../../assets/beat_1.m4a")
+    );
+    this.setState({ beatSound: sound });
+  };
+
   beatIntervalID = null;
 
-  componentDidMount = () => {
-    this.beatIntervalID = setInterval(() => {
+  componentDidMount = async () => {
+    try {
+      await this.setSound();
+    } catch (error) {
+      console.log(error);
+    }
+
+    this.beatIntervalID = setInterval(async () => {
+      if (this.state.beatIndex % 2 === 0) {
+        try {
+          console.log("Playing Sound");
+          await this.state.beatSound.replayAsync();
+        } catch (error) {
+          console.log(error);
+        }
+      }
       this.setState({
         beatIndex: this.state.beatIndex <= 22 ? this.state.beatIndex + 1 : 0,
       });
@@ -77,6 +101,8 @@ class PlayScreen extends Component {
 
   componentWillUnmount = () => {
     clearInterval(this.beatIntervalID);
+    console.log("Unloading Sound");
+    this.state.beatSound.unloadAsync();
   };
 
   renderBars = () => {
