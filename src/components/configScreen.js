@@ -41,14 +41,14 @@ class ConfigScreen extends Component {
     };
   }
 
-  flashAlert = (message) => {
+  flashAlert = (message, big = false) => {
     showMessage({
       message: message,
       type: "info",
       icon: "auto",
       position: "bottom",
       backgroundColor: color.secondary,
-      style: { height: 50 },
+      style: { height: big ? 60 : 50 },
     });
   };
 
@@ -59,8 +59,22 @@ class ConfigScreen extends Component {
       return;
     }
 
+    let patternCount = 0;
+    for (let i = 0; i < this.state.pattern.length; i += 2) {
+      if (this.state.pattern[i] === 1 || this.state.pattern[i + 1] === 1)
+        patternCount++;
+    }
+
+    if (patternCount < this.state.chordChanges) {
+      this.flashAlert(
+        `Select more strums for ${this.state.chordChanges} chord changes in a bar`,
+        true
+      );
+      return;
+    }
+
     let finalSelectedChords = [];
-    for (var i = 0; i < this.state.chords.length; i++) {
+    for (let i = 0; i < this.state.chords.length; i++) {
       if (this.state.chords[i].isSelected) {
         finalSelectedChords.push(this.state.chords[i].chordText);
       }
