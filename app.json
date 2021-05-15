@@ -19,7 +19,7 @@
     },
     "android": {
       "package": "com.rakshithxaloori.guitarstrumchordchanges",
-      "versionCode": 3,
+      "versionCode": 4,
       "permissions": []
     }
   }
