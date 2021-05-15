@@ -87,8 +87,7 @@ class PlayScreen extends Component {
       try {
         if (this.state.beatIndex !== null) {
           this.setState({
-            beatIndex:
-              this.state.beatIndex <= 25 ? this.state.beatIndex + 1 : 0,
+            beatIndex: this.state.beatIndex < 23 ? this.state.beatIndex + 1 : 0,
           });
         } else {
           this.setState({ beatIndex: 0 });
@@ -100,6 +99,7 @@ class PlayScreen extends Component {
       if (this.state.beatIndex % 2 === 0) {
         try {
           console.log("Playing Sound");
+          console.log(this.state.beatIndex);
           await this.state.beatSound.replayAsync();
         } catch (error) {
           console.log(error);

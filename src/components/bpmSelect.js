@@ -14,7 +14,7 @@ const BPMSelect = (props) => {
         maximumTrackTintColor={color.tertiary}
         value={props.bpm}
         step={1}
-        minimumValue={10}
+        minimumValue={30}
         maximumValue={240}
         onValueChange={(value) => props.setBPM(value)}
       />
