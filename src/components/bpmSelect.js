@@ -6,6 +6,9 @@ import Icon from "react-native-vector-icons/AntDesign";
 import { color } from "../constants";
 
 const BPMSelect = (props) => {
+  const minBPMValue = 30;
+  const maxBPMValue = 240;
+
   return (
     <View style={styles.viewStyling}>
       <Slider
@@ -14,8 +17,8 @@ const BPMSelect = (props) => {
         maximumTrackTintColor={color.tertiary}
         value={props.bpm}
         step={1}
-        minimumValue={30}
-        maximumValue={240}
+        minimumValue={minBPMValue}
+        maximumValue={maxBPMValue}
         onValueChange={(value) => props.setBPM(value)}
       />
       <View
@@ -28,7 +31,7 @@ const BPMSelect = (props) => {
         <TouchableOpacity
           style={styles.iconTouchableStyling}
           onPress={() => {
-            props.setBPM(props.bpm - 1);
+            if (props.bpm > minBPMValue) props.setBPM(props.bpm - 1);
           }}
         >
           <Icon name="minuscircle" color={color.secondary} size={25} />
@@ -48,7 +51,7 @@ const BPMSelect = (props) => {
         <TouchableOpacity
           style={styles.iconTouchableStyling}
           onPress={() => {
-            props.setBPM(props.bpm + 1);
+            if (props.bpm < maxBPMValue) props.setBPM(props.bpm + 1);
           }}
         >
           <Icon name="pluscircle" color={color.secondary} size={25} />
