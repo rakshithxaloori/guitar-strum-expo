@@ -7,6 +7,7 @@ import Constants from "expo-constants";
 import SplashScreen from "./src/components/splashScreen";
 import ConfigScreen from "./src/components/configScreen";
 import PlayScreen from "./src/components/playScreen";
+import InstructionsScreen from "./src/components/instructionsScreen";
 
 const Stack = createStackNavigator();
 Notifications.setNotificationHandler({
@@ -73,6 +74,15 @@ const App = () => {
         <Stack.Screen
           name="Play"
           component={PlayScreen}
+          options={{
+            title: "",
+            headerStyle: { height: Constants.statusBarHeight },
+            headerLeft: null,
+          }}
+        />
+        <Stack.Screen
+          name="Instructions"
+          component={InstructionsScreen}
           options={{
             title: "",
             headerStyle: { height: Constants.statusBarHeight },

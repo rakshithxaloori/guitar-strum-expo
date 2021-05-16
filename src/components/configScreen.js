@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import IonIcon from "react-native-vector-icons/Ionicons";
+import AntDesignIcon from "react-native-vector-icons/AntDesign";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 
 import ChordChangesSelect from "./chordChangesSelect";
@@ -81,8 +82,8 @@ class ConfigScreen extends Component {
     }
 
     // Check if atleast one chord selected
-    if (finalSelectedChords.length < 1) {
-      this.flashAlert("Select atleast one chord");
+    if (finalSelectedChords.length < 2) {
+      this.flashAlert("Select atleast two chords");
       return;
     }
 
@@ -136,13 +137,31 @@ class ConfigScreen extends Component {
             this.setState({ pattern: newPattern });
           }}
         />
-        <TouchableOpacity
-          style={styles.touchableOpacityStyling}
-          onPress={this.confirmConfig}
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            paddingHorizontal: 10,
+          }}
         >
-          <Icon name="musical-note" color={color.primary} size={20} />
-          <Text style={styles.textStyling}>Play</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.touchableOpacityInstructionsStyling}
+            onPress={() => this.props.navigation.navigate("Instructions")}
+          >
+            <AntDesignIcon
+              name="questioncircleo"
+              color={color.secondary}
+              size={40}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.touchableOpacityButtonStyling}
+            onPress={this.confirmConfig}
+          >
+            <IonIcon name="musical-note" color={color.primary} size={20} />
+            <Text style={styles.textStyling}>Play</Text>
+          </TouchableOpacity>
+        </View>
         <FlashMessage ref="localFlashMessage" />
       </View>
     );
@@ -156,10 +175,17 @@ const styles = StyleSheet.create({
     color: color.primary,
     fontWeight: "bold",
   },
-  touchableOpacityStyling: {
+  touchableOpacityInstructionsStyling: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  touchableOpacityButtonStyling: {
+    flex: 4,
     flexDirection: "row",
-    margin: 25,
-    padding: 15,
+    marginVertical: 30,
+    marginHorizontal: 10,
+    paddingHorizontal: 10,
     backgroundColor: color.tertiary,
     alignItems: "center",
     justifyContent: "center",
