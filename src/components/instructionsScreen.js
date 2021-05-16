@@ -1,35 +1,112 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
+import AppIntroSlider from "react-native-app-intro-slider";
 
 import { color } from "../constants";
 
-const InstructionsScreen = () => {
-  const instructions = [
-    "Select atleast two chords to begin with. If you are a beginner, start with any two of A, D or E chords",
-    "Minimum BPM you can select is 30 and the maximum is 240 (Hypersonic mode)",
-    "The number of chord changes you can choose in a bar is 1 to 4(since there are only 4 beats at max)",
-    "Choose atleast 2 strums, an up or down from a set, an up or down from other set, for 1 chord change",
-    "Choose an up or down from all sets(pair that has up and down strum), if you want to pracitse 4 chord changes in a bar",
-  ];
+const slides = [
+  {
+    key: "1",
+    title: "Chords",
+    text: "Choose atleast two chords\n\nStart with A, D or E if you are a beginner",
+    image: require("../../assets/D.png"),
+  },
+  {
+    key: "2",
+    title: "BPM and Chord Changes",
+    text: "Minimum BPM to choose is 30 and maximum is 240 (Hypersonic mode)\n\nThe number of chord changes you can choose in a bar is 1 to 4 (since there are only 4 beats at max in a bar)",
+    image: require("../../assets/metronome.png"),
+  },
+  {
+    key: "3",
+    title: "Strumming Pattern",
+    text: "Choose atleast 2 strums, an up or down from a set, an up or down from another, for 1 chord change",
+  },
+];
+
+const InstructionsScreen = (props) => {
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.slide}>
+        <Text style={styles.title}>{item.title}</Text>
+        {item.image && <Image style={styles.image} source={item.image} />}
+        <Text style={styles.text}>{item.text}</Text>
+      </View>
+    );
+  };
+
+  const _renderNextButton = () => {
+    return (
+      <View style={styles.buttonCircle}>
+        <Icon
+          name="arrow-forward-circle-outline"
+          color={color.primary}
+          size={45}
+        />
+      </View>
+    );
+  };
+
+  const _renderPrevButton = () => {
+    return (
+      <View style={styles.buttonCircle}>
+        <Icon
+          name="arrow-back-circle-outline"
+          color={color.primary}
+          size={45}
+        />
+      </View>
+    );
+  };
+
+  const _renderDoneButton = () => {
+    return (
+      <View style={styles.buttonCircle}>
+        <Icon name="checkmark-circle-outline" color={color.primary} size={45} />
+      </View>
+    );
+  };
 
   return (
-    <View style={styles.screenStyling}>
-      {instructions.map((instruction, index) => (
-        <Text
-          key={index}
-          style={styles.textStyling}
-        >{`\u2022 ${instruction}`}</Text>
-      ))}
-    </View>
+    <AppIntroSlider
+      renderItem={renderItem}
+      data={slides}
+      onDone={() => {
+        props.navigation.popToTop();
+      }}
+      showPrevButton={true}
+      renderDoneButton={_renderDoneButton}
+      renderPrevButton={_renderPrevButton}
+      renderNextButton={_renderNextButton}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  textStyling: { color: color.secondary },
-  screenStyling: {
+  text: {
+    flex: 2,
+    color: color.primary,
+    fontSize: 15,
+  },
+  title: {
+    flex: 1,
+    color: color.primary,
+    fontSize: 25,
+  },
+  image: {
+    flex: 2,
+    width: 180,
+    height: 180,
+    marginVertical: 32,
+    resizeMode: "contain",
+  },
+  slide: {
     flex: 1,
     padding: 30,
-    backgroundColor: color.primary,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: color.secondary,
   },
 });
 
