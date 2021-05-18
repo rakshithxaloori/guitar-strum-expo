@@ -1,12 +1,10 @@
 import React from "react";
-import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { View, TouchableOpacity, StyleSheet, Dimensions } from "react-native";
 import { Svg } from "react-native-svg";
 
 import Arrow from "../assets/arrow";
 
-import { color } from "../constants";
-
-const TouchArrow = ({ index, highlight, changeStrum, size = 100 }) => {
+const TouchArrow = ({ index, highlight, changeStrum, width, height }) => {
   return (
     <TouchableOpacity
       style={styles.touchableArrowStyling}
@@ -14,7 +12,7 @@ const TouchArrow = ({ index, highlight, changeStrum, size = 100 }) => {
         changeStrum(index);
       }}
     >
-      <Svg height={size} width={size} viewBox="0 0 35 80">
+      <Svg viewBox={`-5 0 ${width} ${height}`}>
         <Arrow
           opaque={true}
           direction={index % 2 === 0}
@@ -26,6 +24,9 @@ const TouchArrow = ({ index, highlight, changeStrum, size = 100 }) => {
 };
 
 const PatternSelect = (props) => {
+  let { width, height } = Dimensions.get("window");
+  width = width / 8;
+  height = height / 10;
   return (
     <View style={[styles.touchableArrowStyling, styles.arrowsStyling]}>
       {props.pattern.map((highlight, index) => (
@@ -34,6 +35,8 @@ const PatternSelect = (props) => {
           index={index}
           highlight={highlight}
           changeStrum={props.changeStrum}
+          width={width}
+          height={height}
         />
       ))}
     </View>
