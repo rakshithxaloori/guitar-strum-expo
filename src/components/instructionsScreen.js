@@ -22,6 +22,7 @@ const slides = [
     key: "3",
     title: "Strumming Pattern",
     text: "Choose atleast 2 strums, an up or down from a set, an up or down from another, for 1 chord change",
+    image: require("../../assets/bar.png"),
   },
 ];
 
@@ -93,11 +94,11 @@ const styles = StyleSheet.create({
     flex: 1,
     color: color.primary,
     fontSize: 25,
+    fontWeight: "bold",
   },
   image: {
-    flex: 2,
-    width: 180,
-    height: 180,
+    width: 320,
+    height: 320,
     marginVertical: 32,
     resizeMode: "contain",
   },
