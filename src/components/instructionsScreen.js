@@ -15,7 +15,7 @@ const slides = [
   {
     key: "2",
     title: "BPM and Chord Changes",
-    text: "Minimum BPM to choose is 30 and maximum is 240 (Hypersonic mode)\n\nThe number of chord changes you can choose in a bar is 1 to 4 (since there are only 4 beats at max in a bar)",
+    text: "BPM varies from 30 to 240 (Hypersonic mode)\n\nStart with 1 chord change if you are a beginner",
     image: require("../../assets/metronome.png"),
   },
   {
@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   image: {
-    width: 320,
-    height: 320,
+    width: 280,
+    height: 280,
     marginVertical: 32,
     resizeMode: "contain",
   },
