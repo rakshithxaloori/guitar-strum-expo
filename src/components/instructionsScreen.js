@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import AppIntroSlider from "react-native-app-intro-slider";
 
-import { color } from "../constants";
+import { color, windowHeightRatio, windowWidthRatio } from "../constants";
 
 const slides = [
   {
@@ -88,17 +88,17 @@ const styles = StyleSheet.create({
   text: {
     flex: 2,
     color: color.primary,
-    fontSize: 15,
+    fontSize: 15 * windowHeightRatio,
   },
   title: {
     flex: 1,
     color: color.primary,
-    fontSize: 25,
+    fontSize: 25 * windowHeightRatio,
     fontWeight: "bold",
   },
   image: {
-    width: 280,
-    height: 280,
+    width: 280 * windowWidthRatio,
+    height: 280 * windowWidthRatio,
     marginVertical: 32,
     resizeMode: "contain",
   },
