@@ -5,7 +5,7 @@ import { Audio } from "expo-av";
 
 import Bar from "./bar";
 
-import { color } from "../constants";
+import { color, windowHeightRatio } from "../constants";
 
 function shuffle(array) {
   let newArray = [...array];
@@ -140,7 +140,11 @@ class PlayScreen extends Component {
           style={styles.touchableOpacityStyling}
           onPress={() => this.props.navigation.goBack()}
         >
-          <Icon name="musical-note" color={color.primary} size={20} />
+          <Icon
+            name="musical-note"
+            color={color.primary}
+            size={20 * windowHeightRatio}
+          />
           <Text style={styles.textStyling}>Go Back</Text>
         </TouchableOpacity>
       </View>
@@ -150,7 +154,7 @@ class PlayScreen extends Component {
 
 const styles = StyleSheet.create({
   textStyling: {
-    fontSize: 20,
+    fontSize: 20 * windowHeightRatio,
     paddingHorizontal: 5,
     color: color.primary,
     fontWeight: "bold",

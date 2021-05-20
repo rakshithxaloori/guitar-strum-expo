@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-import { color } from "../constants";
+import { color, windowHeightRatio } from "../constants";
 
 const ChordBar = (props) => {
   const renderChords = () => {
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   textStyling: {
     flex: 1,
     color: color.primary,
-    fontSize: 25,
+    fontSize: 25 * windowHeightRatio,
     textAlign: "center",
   },
   verticleLine: {

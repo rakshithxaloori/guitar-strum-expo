@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 
-import { color } from "../constants";
+import { color, windowHeightRatio } from "../constants";
 
 const CountAnd = () => {
   const renderItems = () => {
@@ -9,23 +9,13 @@ const CountAnd = () => {
     for (var i = 0; i < 8; i++) {
       if (i % 2 === 0) {
         textList.push(
-          <Text
-            key={i}
-            style={styles.textStyling}
-            viewBox="0 0 35 100"
-            textAnchor="middle"
-          >
+          <Text key={i} style={styles.textStyling} textAnchor="middle">
             {(i / 2 + 1).toString()}
           </Text>
         );
       } else {
         textList.push(
-          <Text
-            key={i}
-            style={styles.textStyling}
-            viewBox="0 0 35 100"
-            textAnchor="middle"
-          >
+          <Text key={i} style={styles.textStyling} textAnchor="middle">
             {"&"}
           </Text>
         );
@@ -41,11 +31,9 @@ const CountAnd = () => {
 const styles = StyleSheet.create({
   textStyling: {
     flex: 1,
-    fontSize: 25,
+    fontSize: 25 * windowHeightRatio,
     color: color.tertiary,
     textAlign: "center",
-    // borderWidth: 2,
-    // borderColor: color.primary,
   },
   listStyling: {
     flex: 1,

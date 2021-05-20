@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
 
-import { color } from "../constants";
+import { color, windowHeightRatio, windowWidthRatio } from "../constants";
 
 const ChordsSelect = (props) => {
   return (
@@ -39,14 +39,14 @@ const inheritStyles = StyleSheet.create({
   touchableStyling: {
     padding: 7,
     margin: 5,
-    width: 75,
-    borderWidth: 3,
+    width: 75 * windowWidthRatio,
+    borderWidth: 3 * windowWidthRatio,
     borderRadius: 15,
   },
   textStyling: {
     justifyContent: "center",
     alignSelf: "center",
-    fontSize: 15,
+    fontSize: 15 * windowHeightRatio,
   },
 });
 

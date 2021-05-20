@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { CommonActions } from "@react-navigation/native";
 
-import { color } from "../constants";
+import { color, windowHeightRatio } from "../constants";
 
 class SplashScreen extends Component {
   constructor(props) {
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   textStyling: {
     textAlign: "center",
     color: color.primary,
-    fontSize: 13,
+    fontSize: 13 * windowHeightRatio,
     fontStyle: "italic",
     fontWeight: "bold",
   },

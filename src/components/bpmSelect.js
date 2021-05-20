@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Slider from "@react-native-community/slider";
 import Icon from "react-native-vector-icons/AntDesign";
 
-import { color } from "../constants";
+import { color, windowHeightRatio } from "../constants";
 
 const BPMSelect = (props) => {
   const minBPMValue = 30;
@@ -34,7 +34,11 @@ const BPMSelect = (props) => {
             if (props.bpm > minBPMValue) props.setBPM(props.bpm - 1);
           }}
         >
-          <Icon name="minuscircle" color={color.secondary} size={25} />
+          <Icon
+            name="minuscircle"
+            color={color.secondary}
+            size={25 * windowHeightRatio}
+          />
         </TouchableOpacity>
         <View style={styles.textViewStyling}>
           <Text style={styles.textStyling}>{props.bpm + " "} BPM </Text>
@@ -54,7 +58,11 @@ const BPMSelect = (props) => {
             if (props.bpm < maxBPMValue) props.setBPM(props.bpm + 1);
           }}
         >
-          <Icon name="pluscircle" color={color.secondary} size={25} />
+          <Icon
+            name="pluscircle"
+            color={color.secondary}
+            size={25 * windowHeightRatio}
+          />
         </TouchableOpacity>
       </View>
     </View>
@@ -64,6 +72,7 @@ const BPMSelect = (props) => {
 const styles = StyleSheet.create({
   textStyling: {
     color: color.secondary,
+    fontSize: 14 * windowHeightRatio,
     alignItems: "center",
     justifyContent: "center",
   },

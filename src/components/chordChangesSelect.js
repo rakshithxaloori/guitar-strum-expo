@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Slider from "@react-native-community/slider";
 
-import { color } from "../constants";
+import { color, windowHeightRatio } from "../constants";
 
 const ChordChangesSelect = (props) => {
   return (
@@ -21,7 +21,7 @@ const ChordChangesSelect = (props) => {
         <Text style={[styles.textStyling, { fontWeight: "bold" }]}>
           {props.chordChanges + " "}
         </Text>
-        <Text style={styles.textViewStyling}>
+        <Text style={styles.textStyling}>
           Chord {props.chordChanges === 1 ? "Change" : "Changes"} in a Bar
         </Text>
       </View>
@@ -32,6 +32,7 @@ const ChordChangesSelect = (props) => {
 const styles = StyleSheet.create({
   textStyling: {
     color: color.secondary,
+    fontSize: 14 * windowHeightRatio,
     alignItems: "center",
     justifyContent: "center",
   },

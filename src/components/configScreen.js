@@ -9,7 +9,7 @@ import ChordSelect from "./chordSelect";
 import BPMSelect from "./bpmSelect";
 import PatternSelect from "./patternSelect";
 
-import { color } from "../constants";
+import { color, windowHeightRatio } from "../constants";
 
 class ConfigScreen extends Component {
   constructor(props) {
@@ -49,7 +49,10 @@ class ConfigScreen extends Component {
       icon: "auto",
       position: "bottom",
       backgroundColor: color.secondary,
-      style: { height: big ? 60 : 50 },
+      style: {
+        fontSize: 14 * windowHeightRatio,
+        height: big ? 60 * windowHeightRatio : 50 * windowHeightRatio,
+      },
     });
   };
 
@@ -151,14 +154,18 @@ class ConfigScreen extends Component {
             <AntDesignIcon
               name="questioncircleo"
               color={color.secondary}
-              size={40}
+              size={40 * windowHeightRatio}
             />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.touchableOpacityButtonStyling}
             onPress={this.confirmConfig}
           >
-            <IonIcon name="musical-note" color={color.primary} size={20} />
+            <IonIcon
+              name="musical-note"
+              color={color.primary}
+              size={20 * windowHeightRatio}
+            />
             <Text style={styles.textStyling}>Play</Text>
           </TouchableOpacity>
         </View>
@@ -170,7 +177,7 @@ class ConfigScreen extends Component {
 
 const styles = StyleSheet.create({
   textStyling: {
-    fontSize: 20,
+    fontSize: 20 * windowHeightRatio,
     paddingHorizontal: 5,
     color: color.primary,
     fontWeight: "bold",
