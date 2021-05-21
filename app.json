@@ -16,7 +16,7 @@
     "assetBundlePatterns": ["**/*"],
     "android": {
       "package": "com.rakshithxaloori.guitarstrumchordchanges",
-      "versionCode": 8,
+      "versionCode": 9,
       "permissions": []
     }
   }
