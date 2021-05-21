@@ -13,13 +13,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.rakshithxaloori.guitarstrumchordchanges"
-    },
+    "assetBundlePatterns": ["**/*"],
     "android": {
       "package": "com.rakshithxaloori.guitarstrumchordchanges",
       "versionCode": 8,
