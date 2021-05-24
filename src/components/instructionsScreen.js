@@ -15,13 +15,13 @@ const slides = [
   {
     key: "2",
     title: "BPM and Chord Changes",
-    text: "BPM varies from 30 to 240 (Hypersonic mode)\n\nStart with 1 chord change if you are a beginner",
+    text: "BPM varies from 30 to 240 (Hypersonic mode)\n\nStart with 30/60 BPM and 1 chord change if you are a beginner",
     image: require("../../assets/metronome.png"),
   },
   {
     key: "3",
     title: "Strumming Pattern",
-    text: "Choose atleast 2 strums, an up or down from a set, an up or down from another, for 1 chord change",
+    text: "Choose atleast 2 strums for 1 chord change, an up or down from a set, an up or down from another",
     image: require("../../assets/bar.png"),
   },
 ];
@@ -39,11 +39,11 @@ const InstructionsScreen = (props) => {
 
   const _renderNextButton = () => {
     return (
-      <View style={styles.buttonCircle}>
+      <View style={styles.icon}>
         <Icon
           name="arrow-forward-circle-outline"
           color={color.primary}
-          size={45}
+          size={45 * windowHeightRatio}
         />
       </View>
     );
@@ -51,11 +51,11 @@ const InstructionsScreen = (props) => {
 
   const _renderPrevButton = () => {
     return (
-      <View style={styles.buttonCircle}>
+      <View style={styles.icon}>
         <Icon
           name="arrow-back-circle-outline"
           color={color.primary}
-          size={45}
+          size={45 * windowHeightRatio}
         />
       </View>
     );
@@ -63,8 +63,12 @@ const InstructionsScreen = (props) => {
 
   const _renderDoneButton = () => {
     return (
-      <View style={styles.buttonCircle}>
-        <Icon name="checkmark-circle-outline" color={color.primary} size={45} />
+      <View style={styles.icon}>
+        <Icon
+          name="checkmark-circle-outline"
+          color={color.primary}
+          size={45 * windowHeightRatio}
+        />
       </View>
     );
   };
@@ -102,6 +106,7 @@ const styles = StyleSheet.create({
     marginVertical: 32,
     resizeMode: "contain",
   },
+  icon: { paddingVertical: 0 },
   slide: {
     flex: 1,
     padding: 30,

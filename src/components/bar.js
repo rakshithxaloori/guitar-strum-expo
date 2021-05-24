@@ -6,10 +6,9 @@ import Arrow from "../assets/arrow";
 import CountAnd from "../assets/countAnd";
 import ChordBar from "../assets/chordBar";
 
-import { color } from "../constants";
+import { color, windowHeightRatio, windowWidthRatio } from "../constants";
 
 const Bar = (props) => {
-  const size = 70;
   return (
     <View style={styles.barStyling}>
       <View style={styles.horizontalLine}></View>
@@ -18,7 +17,9 @@ const Bar = (props) => {
       <View style={[styles.arrowsStyling, { flexDirection: "row" }]}>
         {props.pattern.map((patternVal, index) => (
           <View key={index} style={styles.arrowStyling}>
-            <Svg height={size} width={size} viewBox="0 0 35 80">
+            <Svg
+              viewBox={`0 0 ${35 * windowWidthRatio} ${80 * windowHeightRatio}`}
+            >
               <Arrow
                 opaque={patternVal === 1}
                 direction={index % 2 === 0}

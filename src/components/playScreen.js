@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Audio } from "expo-av";
+import { activateKeepAwake, deactivateKeepAwake } from "expo-keep-awake";
 
 import Bar from "./bar";
 
@@ -77,6 +78,7 @@ class PlayScreen extends Component {
   beatIntervalID = null;
 
   componentDidMount = async () => {
+    activateKeepAwake();
     try {
       await this.setSound();
     } catch (error) {
@@ -110,6 +112,7 @@ class PlayScreen extends Component {
   };
 
   componentWillUnmount = () => {
+    deactivateKeepAwake();
     clearInterval(this.beatIntervalID);
     console.log("Unloading Sound");
     this.state.beatSound.unloadAsync();

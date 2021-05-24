@@ -49,10 +49,8 @@ class ConfigScreen extends Component {
       icon: "auto",
       position: "bottom",
       backgroundColor: color.secondary,
-      style: {
-        fontSize: 14 * windowHeightRatio,
-        height: big ? 60 * windowHeightRatio : 50 * windowHeightRatio,
-      },
+      textStyle: { fontSize: 14 * windowHeightRatio },
+      style: { height: big ? 60 * windowHeightRatio : 50 * windowHeightRatio },
     });
   };
 
@@ -145,6 +143,7 @@ class ConfigScreen extends Component {
             flex: 1,
             flexDirection: "row",
             paddingHorizontal: 10,
+            paddingVertical: 15 / windowHeightRatio,
           }}
         >
           <TouchableOpacity
@@ -188,11 +187,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   touchableOpacityButtonStyling: {
+    maxHeight: 100 * windowHeightRatio,
     flex: 4,
     flexDirection: "row",
-    marginVertical: 30,
-    marginHorizontal: 10,
-    paddingHorizontal: 10,
     backgroundColor: color.tertiary,
     alignItems: "center",
     justifyContent: "center",

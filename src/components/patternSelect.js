@@ -45,7 +45,7 @@ const PatternSelect = (props) => {
 
 const styles = StyleSheet.create({
   touchableArrowStyling: {
-    flex: 1,
+    flex: 2,
     alignItems: "center",
   },
   arrowsStyling: {

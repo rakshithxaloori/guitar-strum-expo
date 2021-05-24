@@ -13,7 +13,7 @@ const Arrow = ({ opaque, direction, highlight }) => {
   const lineHalfWidth = 5 * windowWidthRatio;
   const arrowCoordinate = 8 * windowWidthRatio;
   const point = {
-    x: 16,
+    x: 16 * windowWidthRatio,
     y1: 0,
     y2: 50 * windowHeightRatio,
     arrowHeadWidth: arrowCoordinate * Math.sqrt(2) - lineHalfWidth,

@@ -1,7 +1,7 @@
 import React from "react";
 import { Svg, Polygon } from "react-native-svg";
 
-import { color } from "../constants";
+import { color, windowWidthRatio } from "../constants";
 
 const UpArrow = (props) => {
   const { point, lineHalfWidth } = props;
@@ -26,7 +26,7 @@ const UpArrow = (props) => {
           props.opaque ? (props.highlight ? color.secondary : "none") : "none"
         }
         stroke={props.opaque ? color.secondary : "none"}
-        strokeWidth="2"
+        strokeWidth={2 * windowWidthRatio}
       />
     </Svg>
   );
