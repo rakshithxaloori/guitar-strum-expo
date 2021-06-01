@@ -5,6 +5,7 @@ import { Audio } from "expo-av";
 import { activateKeepAwake, deactivateKeepAwake } from "expo-keep-awake";
 
 import Bar from "./bar";
+import Timer from "../assets/timer";
 
 import { color, windowHeightRatio } from "../constants";
 
@@ -77,6 +78,30 @@ class PlayScreen extends Component {
 
   beatIntervalID = null;
 
+  playTimer = async () => {
+    try {
+      if (this.state.beatIndex !== null) {
+        this.setState({
+          beatIndex: this.state.beatIndex < 23 ? this.state.beatIndex + 1 : 0,
+        });
+      } else {
+        this.setState({ beatIndex: 0 });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    if (this.state.beatIndex % 2 === 0) {
+      try {
+        console.log("Playing Sound");
+        console.log(this.state.beatIndex);
+        await this.state.beatSound.replayAsync();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   componentDidMount = async () => {
     activateKeepAwake();
     try {
@@ -85,35 +110,18 @@ class PlayScreen extends Component {
       console.log(error);
     }
 
-    this.beatIntervalID = setInterval(async () => {
-      try {
-        if (this.state.beatIndex !== null) {
-          this.setState({
-            beatIndex: this.state.beatIndex < 23 ? this.state.beatIndex + 1 : 0,
-          });
-        } else {
-          this.setState({ beatIndex: 0 });
-        }
-      } catch (error) {
-        console.log(error);
-      }
-
-      if (this.state.beatIndex % 2 === 0) {
-        try {
-          console.log("Playing Sound");
-          console.log(this.state.beatIndex);
-          await this.state.beatSound.replayAsync();
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    }, 1000 * (60.0 / (2 * this.props.route.params.bpm)));
+    this.beatIntervalID = new Timer(
+      this.playTimer,
+      1000 * (60.0 / (2 * this.props.route.params.bpm)),
+      { immediate: true }
+    );
     // This number is for both up and down, which is why we do 2 * bpm
   };
 
   componentWillUnmount = () => {
     deactivateKeepAwake();
-    clearInterval(this.beatIntervalID);
+    // clearInterval(this.beatIntervalID);
+    this.beatIntervalID.stop();
     console.log("Unloading Sound");
     this.state.beatSound.unloadAsync();
   };
