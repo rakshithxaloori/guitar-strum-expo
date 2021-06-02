@@ -71,7 +71,7 @@ class PlayScreen extends Component {
   setSound = async () => {
     console.log("Loading Sound");
     const { sound } = await Audio.Sound.createAsync(
-      require("../../assets/beat_1.m4a")
+      require("../../assets/beat_1.mp3")
     );
     this.setState({ beatSound: sound });
   };
