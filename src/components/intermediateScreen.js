@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import IonIcon from "react-native-vector-icons/Ionicons";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Accordion from "react-native-collapsible/Accordion";
 
 import ChordSelect from "./chordSelect";
 
-import { color, windowHeightRatio } from "../constants";
+import { color, windowHeightRatio, windowWidthRatio } from "../constants";
 
 class IntermediateScreen extends Component {
   constructor(props) {
@@ -323,6 +324,11 @@ class IntermediateScreen extends Component {
   _renderHeader = (section) => {
     return (
       <View style={styles.headerAccordion}>
+        <MaterialCommunityIcons
+          name="music-circle-outline"
+          color={color.primary}
+          size={20 * windowHeightRatio}
+        />
         <Text style={styles.headerTextAccordion}>
           {section.title + " Chords"}
         </Text>
@@ -338,9 +344,36 @@ class IntermediateScreen extends Component {
     this.setState({ activeSections });
   };
 
+  _keyExtractor = (item) => {
+    return item.title;
+  };
+
   render = () => {
     return (
       <View style={styles.screenStyling}>
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "row",
+          }}
+        >
+          <MaterialCommunityIcons
+            name="playlist-music"
+            color={color.secondary}
+            size={40 * windowHeightRatio}
+          />
+          <Text
+            style={{
+              color: color.secondary,
+              paddingVertical: 5,
+              fontWeight: "bold",
+              fontSize: 40 * windowWidthRatio,
+            }}
+          >
+            Choose Chords
+          </Text>
+        </View>
         <Accordion
           containerStyle={{ flex: 1 }}
           touchableComponent={TouchableOpacity}
@@ -349,6 +382,8 @@ class IntermediateScreen extends Component {
           renderHeader={this._renderHeader}
           renderContent={this._renderContent}
           onChange={this._updateSections}
+          keyExtractor={this._keyExtractor}
+          renderAsFlatList
         />
         <View>{/*Show selected chords here*/}</View>
         <TouchableOpacity
@@ -381,25 +416,31 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingHorizontal: 30,
     paddingVertical: 15 / windowHeightRatio,
+    marginHorizontal: 10,
     backgroundColor: color.tertiary,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 15,
   },
   headerTextAccordion: {
-    fontSize: 20 * windowHeightRatio,
-    color: color.secondary,
+    fontSize: 15 * windowHeightRatio,
+    color: color.primary,
     fontWeight: "bold",
-    paddingVertical: 10 * windowHeightRatio,
+    paddingVertical: 8 * windowHeightRatio,
+    paddingHorizontal: 5 * windowWidthRatio,
   },
   headerAccordion: {
     alignItems: "center",
-    // backgroundColor: color.secondary,
+    backgroundColor: color.secondary,
+    flexDirection: "row",
+    justifyContent: "center",
+    marginVertical: 5,
+    marginHorizontal: 10,
+    borderRadius: 15,
   },
   screenStyling: {
     flex: 1,
     paddingVertical: 10,
-    // justifyContent: "center",
     backgroundColor: color.primary,
   },
 });
