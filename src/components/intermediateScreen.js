@@ -23,11 +23,11 @@ class IntermediateScreen extends Component {
     };
     const seventhChords = {
       type: "Seventh",
-      chords: ["E 7", "A 7", "C 7", "D 7", "B 7"],
+      chords: ["E7", "A7", "C7", "D7", "B7"],
     };
     const sixthChords = {
       type: "Sixth",
-      chords: ["E 6", "A 6", "C 6", "D 6", "G 6"],
+      chords: ["E6", "A6", "C6", "D6", "G6"],
     };
     const suspendedChords = {
       type: "Suspended",
@@ -39,15 +39,15 @@ class IntermediateScreen extends Component {
     };
     const diminishedChords = {
       type: "Diminished",
-      chords: ["D dim", "E dim", "G dim", "B dim", "F dim"],
+      chords: ["Ddim", "Edim", "Gdim", "Bdim", "Fdim"],
     };
     const augmentedChords = {
       type: "Augmented",
-      chords: ["E aug", "A aug", "D aug"],
+      chords: ["Eaug", "Aaug", "Daug"],
     };
     const triadChords = {
       type: "Triad",
-      chords: ["F", "Fm", "F dim", "F aug"],
+      chords: ["F", "Fm", "Fdim", "Faug"],
     };
     const allChords = [
       majorChords,
