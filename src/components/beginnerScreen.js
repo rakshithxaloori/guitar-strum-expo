@@ -11,7 +11,7 @@ import PatternSelect from "./patternSelect";
 
 import { color, windowHeightRatio } from "../constants";
 
-class ConfigScreen extends Component {
+class BeginnerScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -202,4 +202,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ConfigScreen;
+export default BeginnerScreen;
