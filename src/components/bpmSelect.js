@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
   },
   viewStyling: {
+    flex: 1,
     margin: 10,
     padding: 10,
   },

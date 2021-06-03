@@ -145,7 +145,8 @@ const styles = StyleSheet.create({
   },
   screenStyling: {
     flex: 1,
-    paddingVertical: 10,
+    paddingTop: 40,
+    paddingBottom: 20,
     backgroundColor: color.primary,
   },
 });
