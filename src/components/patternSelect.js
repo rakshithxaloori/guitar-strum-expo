@@ -3,6 +3,7 @@ import { View, TouchableOpacity, StyleSheet, Dimensions } from "react-native";
 import { Svg } from "react-native-svg";
 
 import Arrow from "../assets/arrow";
+import CountAnd from "../assets/countAnd";
 
 const TouchArrow = ({ index, highlight, changeStrum, width, height }) => {
   return (
@@ -28,17 +29,20 @@ const PatternSelect = (props) => {
   width = width / 8;
   height = height / 10;
   return (
-    <View style={[styles.touchableArrowStyling, styles.arrowsStyling]}>
-      {props.pattern.map((highlight, index) => (
-        <TouchArrow
-          key={index}
-          index={index}
-          highlight={highlight}
-          changeStrum={props.changeStrum}
-          width={width}
-          height={height}
-        />
-      ))}
+    <View style={{ flex: 1 }}>
+      <View style={[styles.touchableArrowStyling, styles.arrowsStyling]}>
+        {props.pattern.map((highlight, index) => (
+          <TouchArrow
+            key={index}
+            index={index}
+            highlight={highlight}
+            changeStrum={props.changeStrum}
+            width={width}
+            height={height}
+          />
+        ))}
+      </View>
+      <CountAnd />
     </View>
   );
 };
