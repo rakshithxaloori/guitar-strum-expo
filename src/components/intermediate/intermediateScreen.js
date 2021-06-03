@@ -5,9 +5,9 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Accordion from "react-native-collapsible/Accordion";
 
-import ChordSelect from "./chordSelect";
+import ChordSelect from "../chordSelect";
 
-import { color, windowHeightRatio, windowWidthRatio } from "../constants";
+import { color, windowHeightRatio, windowWidthRatio } from "../../constants";
 
 class IntermediateScreen extends Component {
   constructor(props) {
