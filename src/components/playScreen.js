@@ -69,7 +69,7 @@ class PlayScreen extends Component {
   }
 
   setSound = async () => {
-    console.log("Loading Sound");
+    // console.log("Loading Sound");
     const { sound } = await Audio.Sound.createAsync(
       require("../../assets/beat_1.mp3")
     );
@@ -88,16 +88,16 @@ class PlayScreen extends Component {
         this.setState({ beatIndex: 0 });
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
 
     if (this.state.beatIndex % 2 === 0) {
       try {
-        console.log("Playing Sound");
-        console.log(this.state.beatIndex);
+        // console.log("Playing Sound");
+        // console.log(this.state.beatIndex);
         await this.state.beatSound.replayAsync();
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     }
   };
@@ -107,7 +107,7 @@ class PlayScreen extends Component {
     try {
       await this.setSound();
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
 
     this.beatIntervalID = new Timer(
@@ -122,7 +122,7 @@ class PlayScreen extends Component {
     deactivateKeepAwake();
     // clearInterval(this.beatIntervalID);
     this.beatIntervalID.stop();
-    console.log("Unloading Sound");
+    // console.log("Unloading Sound");
     this.state.beatSound.unloadAsync();
   };
 

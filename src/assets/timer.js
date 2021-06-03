@@ -3,10 +3,6 @@ class Timer {
     this.callback = callback;
     this.timeInterval = timeInterval;
     this.options = options;
-    console.log(callback);
-    console.log(timeInterval);
-    console.log(options);
-    console.log(this.options);
 
     this.start();
   }
@@ -23,18 +19,18 @@ class Timer {
     }
 
     this.timeout = setTimeout(this.round, this.timeInterval);
-    console.log("Timer Started");
+    // console.log("Timer Started");
   };
 
   // Add method to stop timer
   stop = () => {
     clearTimeout(this.timeout);
-    console.log("Timer Stopped");
+    // console.log("Timer Stopped");
   };
 
   // Round method that takes care of running the callback and adjusting the time
   round = () => {
-    console.log("timeout", this.timeout);
+    // console.log("timeout", this.timeout);
     // The drift will be the current moment in time for this round minus the expected time..
     let drift = Date.now() - this.expected;
     // Run error callback if drift is greater than time interval, and if the callback is provided
@@ -47,8 +43,8 @@ class Timer {
     this.callback();
     // Increment expected time by time interval for every round after running the callback function.
     this.expected += this.timeInterval;
-    console.log("Drift:", drift);
-    console.log("Next round time interval:", this.timeInterval - drift);
+    // console.log("Drift:", drift);
+    // console.log("Next round time interval:", this.timeInterval - drift);
     // Run timeout again and set the timeInterval of the next iteration to the original time interval minus the drift.
     this.timeout = setTimeout(this.round, this.timeInterval - drift);
   };
