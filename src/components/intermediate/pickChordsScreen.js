@@ -133,6 +133,11 @@ class IntermediateScreen extends Component {
     if (this.state.displaySelectedChords.length >= 6) {
       this.flashAlert("Choose atmost 6 chords only");
       return;
+    } else {
+      if (this.state.displaySelectedChords.length < 2) {
+        this.flashAlert("Choose atleast 2 chords");
+        return;
+      }
     }
     let newChordsState = [...chordState.chords];
     let chordIndex = chordState.chords.findIndex(
