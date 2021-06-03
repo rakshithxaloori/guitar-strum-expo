@@ -4,12 +4,12 @@ import IonIcon from "react-native-vector-icons/Ionicons";
 import AntDesignIcon from "react-native-vector-icons/AntDesign";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 
-import ChordChangesSelect from "./chordChangesSelect";
-import ChordSelect from "./chordSelect";
-import BPMSelect from "./bpmSelect";
-import PatternSelect from "./patternSelect";
+import ChordChangesSelect from "../chordChangesSelect";
+import ChordSelect from "../chordSelect";
+import BPMSelect from "../bpmSelect";
+import PatternSelect from "../patternSelect";
 
-import { color, windowHeightRatio } from "../constants";
+import { color, windowHeightRatio } from "../../constants";
 
 class BeginnerScreen extends Component {
   constructor(props) {
