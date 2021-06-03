@@ -9,7 +9,7 @@ import ChordSelect from "../chordSelect";
 
 import { color, windowHeightRatio, windowWidthRatio } from "../../constants";
 
-class IntermediateScreen extends Component {
+class IntermediateChordsScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -100,32 +100,14 @@ class IntermediateScreen extends Component {
   };
 
   confirmConfig = () => {
-    const allChords = [
-      this.state.majorChords,
-      this.state.minorChords,
-      this.state.seventhChords,
-      this.state.sixthChords,
-      this.state.suspendedChords,
-      this.state.slashChords,
-      this.state.diminishedChords,
-      this.state.augmentedChords,
-      this.state.triadChords,
-    ];
-    let finalSelectedChords = [];
-    for (let i = 0; i < allChords.length; i++) {
-      if (allChords[i].isSelected) {
-        finalSelectedChords.push(allChords[i].chordText);
-      }
-    }
-
     // Check if atleast one chord selected
-    if (finalSelectedChords.length < 2) {
-      this.flashAlert("Select atleast two chords");
+    if (this.state.displaySelectedChords.length < 2) {
+      this.flashAlert("Choose atleast two chords");
       return;
     }
 
-    this.props.navigation.navigate("Play", {
-      chords: finalSelectedChords,
+    this.props.navigation.navigate("IntermediateConfig", {
+      chords: this.state.displaySelectedChords,
     });
   };
 
@@ -133,11 +115,6 @@ class IntermediateScreen extends Component {
     if (this.state.displaySelectedChords.length >= 6) {
       this.flashAlert("Choose atmost 6 chords only");
       return;
-    } else {
-      if (this.state.displaySelectedChords.length < 2) {
-        this.flashAlert("Choose atleast 2 chords");
-        return;
-      }
     }
     let newChordsState = [...chordState.chords];
     let chordIndex = chordState.chords.findIndex(
@@ -515,4 +492,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default IntermediateScreen;
+export default IntermediateChordsScreen;
