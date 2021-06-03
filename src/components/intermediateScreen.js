@@ -81,6 +81,8 @@ class IntermediateScreen extends Component {
       augmentedChords,
       triadChords,
 
+      displaySelectedChords: [],
+
       activeSections: [],
     };
   }
@@ -98,10 +100,21 @@ class IntermediateScreen extends Component {
   };
 
   confirmConfig = () => {
+    const allChords = [
+      this.state.majorChords,
+      this.state.minorChords,
+      this.state.seventhChords,
+      this.state.sixthChords,
+      this.state.suspendedChords,
+      this.state.slashChords,
+      this.state.diminishedChords,
+      this.state.augmentedChords,
+      this.state.triadChords,
+    ];
     let finalSelectedChords = [];
-    for (let i = 0; i < this.state.chords.length; i++) {
-      if (this.state.chords[i].isSelected) {
-        finalSelectedChords.push(this.state.chords[i].chordText);
+    for (let i = 0; i < allChords.length; i++) {
+      if (allChords[i].isSelected) {
+        finalSelectedChords.push(allChords[i].chordText);
       }
     }
 
@@ -117,6 +130,10 @@ class IntermediateScreen extends Component {
   };
 
   selectChord = (chordObj, setStateFunc, chordState) => {
+    if (this.state.displaySelectedChords.length >= 6) {
+      this.flashAlert("Choose atmost 6 chords only");
+      return;
+    }
     let newChordsState = [...chordState.chords];
     let chordIndex = chordState.chords.findIndex(
       (findChord) => findChord === chordObj
@@ -125,6 +142,31 @@ class IntermediateScreen extends Component {
       ...newChordsState[chordIndex],
     };
     newSelectedChord.isSelected = !newSelectedChord.isSelected;
+    if (newSelectedChord.isSelected) {
+      // Selecting
+      this.setState((prevState) => {
+        const displaySelectedChords = [
+          ...prevState.displaySelectedChords,
+          newSelectedChord.chordText,
+        ];
+
+        return {
+          displaySelectedChords,
+        };
+      });
+    } else {
+      // Unselecting
+      this.setState((prevState) => {
+        let displaySelectedChords = [...prevState.displaySelectedChords];
+        const index = displaySelectedChords.indexOf(newSelectedChord.chordText);
+        if (index !== -1) {
+          displaySelectedChords.splice(index, 1);
+          return {
+            displaySelectedChords,
+          };
+        }
+      });
+    }
     newChordsState[chordIndex] = newSelectedChord;
     setStateFunc(newChordsState);
   };
@@ -351,29 +393,26 @@ class IntermediateScreen extends Component {
   render = () => {
     return (
       <View style={styles.screenStyling}>
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "row",
-          }}
-        >
+        <View style={styles.headerStyling}>
           <MaterialCommunityIcons
             name="playlist-music"
             color={color.secondary}
             size={40 * windowHeightRatio}
           />
-          <Text
-            style={{
-              color: color.secondary,
-              paddingVertical: 5,
-              fontWeight: "bold",
-              fontSize: 40 * windowWidthRatio,
-            }}
-          >
-            Choose Chords
-          </Text>
+          <Text style={styles.headerTextStyling}>Pick Chords</Text>
         </View>
+        {this.state.displaySelectedChords.length > 0 && (
+          <View style={styles.selectedChordsViewStyling}>
+            {this.state.displaySelectedChords.map((selectedChord) => (
+              <Text
+                key={selectedChord}
+                style={styles.selectedChordsTextStyling}
+              >
+                {selectedChord}
+              </Text>
+            ))}
+          </View>
+        )}
         <Accordion
           containerStyle={{ flex: 1 }}
           touchableComponent={TouchableOpacity}
@@ -385,7 +424,6 @@ class IntermediateScreen extends Component {
           keyExtractor={this._keyExtractor}
           renderAsFlatList
         />
-        <View>{/*Show selected chords here*/}</View>
         <TouchableOpacity
           style={styles.touchableOpacityButtonStyling}
           onPress={this.confirmConfig}
@@ -421,6 +459,33 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 15,
+  },
+  headerTextStyling: {
+    color: color.secondary,
+    paddingVertical: 5,
+    fontWeight: "bold",
+    fontSize: 40 * windowWidthRatio,
+  },
+  headerStyling: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  selectedChordsTextStyling: {
+    color: color.tertiary,
+    padding: 2,
+    fontSize: 15 * windowHeightRatio,
+    fontWeight: "bold",
+  },
+  selectedChordsViewStyling: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: color.secondary,
+    marginHorizontal: 10,
+    borderRadius: 5,
+    paddingVertical: 8 * windowHeightRatio,
   },
   headerTextAccordion: {
     fontSize: 15 * windowHeightRatio,
