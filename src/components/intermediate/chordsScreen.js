@@ -112,10 +112,6 @@ class IntermediateChordsScreen extends Component {
   };
 
   selectChord = (chordObj, setStateFunc, chordState) => {
-    if (this.state.displaySelectedChords.length >= 6) {
-      this.flashAlert("Choose atmost 6 chords only");
-      return;
-    }
     let newChordsState = [...chordState.chords];
     let chordIndex = chordState.chords.findIndex(
       (findChord) => findChord === chordObj
@@ -126,6 +122,10 @@ class IntermediateChordsScreen extends Component {
     newSelectedChord.isSelected = !newSelectedChord.isSelected;
     if (newSelectedChord.isSelected) {
       // Selecting
+      if (this.state.displaySelectedChords.length >= 6) {
+        this.flashAlert("Choose atmost 6 chords only");
+        return;
+      }
       this.setState((prevState) => {
         const displaySelectedChords = [
           ...prevState.displaySelectedChords,
