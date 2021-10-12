@@ -33,47 +33,27 @@ const App = () => {
         <Stack.Screen
           name="BeginnerConfig"
           component={BeginnerScreen}
-          options={{
-            title: "",
-            headerStyle: { height: Constants.statusBarHeight },
-            headerLeft: null,
-          }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="IntermediateChords"
           component={IntermediateChordsScreen}
-          options={{
-            title: "",
-            headerStyle: { height: Constants.statusBarHeight },
-            headerLeft: null,
-          }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="IntermediateConfig"
           component={IntermediateConfigScreen}
-          options={{
-            title: "",
-            headerStyle: { height: Constants.statusBarHeight },
-            headerLeft: null,
-          }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Play"
           component={PlayScreen}
-          options={{
-            title: "",
-            headerStyle: { height: Constants.statusBarHeight },
-            headerLeft: null,
-          }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Instructions"
           component={InstructionsScreen}
-          options={{
-            title: "",
-            headerStyle: { height: Constants.statusBarHeight },
-            headerLeft: null,
-          }}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
