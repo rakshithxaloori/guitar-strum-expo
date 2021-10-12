@@ -35,7 +35,7 @@ class SplashScreen extends Component {
     this.props.navigation.dispatch(
       CommonActions.reset({
         index: 0,
-        routes: [{ name: "Config" }],
+        routes: [{ name: "Route" }],
       })
     );
   };

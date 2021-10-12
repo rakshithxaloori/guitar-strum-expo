@@ -5,11 +5,11 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Accordion from "react-native-collapsible/Accordion";
 
-import ChordSelect from "./chordSelect";
+import ChordSelect from "../chordSelect";
 
-import { color, windowHeightRatio, windowWidthRatio } from "../constants";
+import { color, windowHeightRatio, windowWidthRatio } from "../../constants";
 
-class IntermediateScreen extends Component {
+class IntermediateChordsScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -81,6 +81,8 @@ class IntermediateScreen extends Component {
       augmentedChords,
       triadChords,
 
+      displaySelectedChords: [],
+
       activeSections: [],
     };
   }
@@ -98,21 +100,14 @@ class IntermediateScreen extends Component {
   };
 
   confirmConfig = () => {
-    let finalSelectedChords = [];
-    for (let i = 0; i < this.state.chords.length; i++) {
-      if (this.state.chords[i].isSelected) {
-        finalSelectedChords.push(this.state.chords[i].chordText);
-      }
-    }
-
     // Check if atleast one chord selected
-    if (finalSelectedChords.length < 2) {
-      this.flashAlert("Select atleast two chords");
+    if (this.state.displaySelectedChords.length < 2) {
+      this.flashAlert("Choose atleast two chords");
       return;
     }
 
-    this.props.navigation.navigate("Play", {
-      chords: finalSelectedChords,
+    this.props.navigation.navigate("IntermediateConfig", {
+      chords: this.state.displaySelectedChords,
     });
   };
 
@@ -125,6 +120,35 @@ class IntermediateScreen extends Component {
       ...newChordsState[chordIndex],
     };
     newSelectedChord.isSelected = !newSelectedChord.isSelected;
+    if (newSelectedChord.isSelected) {
+      // Selecting
+      if (this.state.displaySelectedChords.length >= 6) {
+        this.flashAlert("Choose atmost 6 chords only");
+        return;
+      }
+      this.setState((prevState) => {
+        const displaySelectedChords = [
+          ...prevState.displaySelectedChords,
+          newSelectedChord.chordText,
+        ];
+
+        return {
+          displaySelectedChords,
+        };
+      });
+    } else {
+      // Unselecting
+      this.setState((prevState) => {
+        let displaySelectedChords = [...prevState.displaySelectedChords];
+        const index = displaySelectedChords.indexOf(newSelectedChord.chordText);
+        if (index !== -1) {
+          displaySelectedChords.splice(index, 1);
+          return {
+            displaySelectedChords,
+          };
+        }
+      });
+    }
     newChordsState[chordIndex] = newSelectedChord;
     setStateFunc(newChordsState);
   };
@@ -351,29 +375,26 @@ class IntermediateScreen extends Component {
   render = () => {
     return (
       <View style={styles.screenStyling}>
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "row",
-          }}
-        >
+        <View style={styles.headerStyling}>
           <MaterialCommunityIcons
             name="playlist-music"
             color={color.secondary}
             size={40 * windowHeightRatio}
           />
-          <Text
-            style={{
-              color: color.secondary,
-              paddingVertical: 5,
-              fontWeight: "bold",
-              fontSize: 40 * windowWidthRatio,
-            }}
-          >
-            Choose Chords
-          </Text>
+          <Text style={styles.headerTextStyling}>Pick Chords</Text>
         </View>
+        {this.state.displaySelectedChords.length > 0 && (
+          <View style={styles.selectedChordsViewStyling}>
+            {this.state.displaySelectedChords.map((selectedChord) => (
+              <Text
+                key={selectedChord}
+                style={styles.selectedChordsTextStyling}
+              >
+                {selectedChord}
+              </Text>
+            ))}
+          </View>
+        )}
         <Accordion
           containerStyle={{ flex: 1 }}
           touchableComponent={TouchableOpacity}
@@ -385,7 +406,6 @@ class IntermediateScreen extends Component {
           keyExtractor={this._keyExtractor}
           renderAsFlatList
         />
-        <View>{/*Show selected chords here*/}</View>
         <TouchableOpacity
           style={styles.touchableOpacityButtonStyling}
           onPress={this.confirmConfig}
@@ -422,6 +442,33 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 15,
   },
+  headerTextStyling: {
+    color: color.secondary,
+    paddingVertical: 5,
+    fontWeight: "bold",
+    fontSize: 40 * windowWidthRatio,
+  },
+  headerStyling: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  selectedChordsTextStyling: {
+    color: color.tertiary,
+    padding: 2,
+    fontSize: 15 * windowHeightRatio,
+    fontWeight: "bold",
+  },
+  selectedChordsViewStyling: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: color.secondary,
+    marginHorizontal: 10,
+    borderRadius: 5,
+    paddingVertical: 8 * windowHeightRatio,
+  },
   headerTextAccordion: {
     fontSize: 15 * windowHeightRatio,
     color: color.primary,
@@ -445,4 +492,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default IntermediateScreen;
+export default IntermediateChordsScreen;

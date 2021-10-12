@@ -15,7 +15,7 @@ const slides = [
   {
     key: "2",
     title: "BPM and Chord Changes",
-    text: "BPM varies from 30 to 240 (Hypersonic mode)\n\nStart with 30/60 BPM and 1 chord change if you are a beginner",
+    text: "BPM varies from 30 to 240 (Kage mode - Naruto reference)\n\nStart with 30/60 BPM and 1 chord change if you are a beginner",
     image: require("../../assets/metronome.png"),
   },
   {

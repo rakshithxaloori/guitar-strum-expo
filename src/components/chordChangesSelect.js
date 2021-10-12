@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   viewStyling: {
+    flex: 1,
     margin: 10,
     padding: 10,
   },

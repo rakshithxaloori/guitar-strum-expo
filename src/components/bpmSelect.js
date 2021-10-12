@@ -43,13 +43,15 @@ const BPMSelect = (props) => {
         <View style={styles.textViewStyling}>
           <Text style={styles.textStyling}>{props.bpm + " "} BPM </Text>
           <Text style={[styles.textStyling, { fontWeight: "bold" }]}>
-            {props.bpm >= 180
-              ? "Hypersonic"
+            {props.bpm >= 220
+              ? "Kage"
+              : props.bpm >= 180
+              ? "Jonin"
               : props.bpm >= 120
-              ? "Supersonic"
+              ? "Chunin"
               : props.bpm >= 90
-              ? "Transonic"
-              : "Subsonic"}
+              ? "Genin"
+              : "Academy"}
           </Text>
         </View>
         <TouchableOpacity
@@ -84,6 +86,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
   },
   viewStyling: {
+    flex: 1,
     margin: 10,
     padding: 10,
   },
