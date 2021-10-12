@@ -29,7 +29,7 @@ const PatternSelect = (props) => {
   width = width / 8;
   height = height / 10;
   return (
-    <View style={{ flex: 2 }}>
+    <View style={styles.container}>
       <View style={[styles.touchableArrowStyling, styles.arrowsStyling]}>
         {props.pattern.map((highlight, index) => (
           <TouchArrow
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   arrowsStyling: {
     flexDirection: "row",
   },
+  container: { flex: 2 },
 });
 
 export default PatternSelect;

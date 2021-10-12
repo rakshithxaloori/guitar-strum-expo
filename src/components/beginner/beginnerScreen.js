@@ -4,12 +4,15 @@ import IonIcon from "react-native-vector-icons/Ionicons";
 import AntDesignIcon from "react-native-vector-icons/AntDesign";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 
+import { AdMobBanner } from "expo-ads-admob";
+
 import ChordChangesSelect from "../chordChangesSelect";
 import ChordSelect from "../chordSelect";
 import BPMSelect from "../bpmSelect";
 import PatternSelect from "../patternSelect";
 
-import { color, windowHeightRatio } from "../../constants";
+import { color, windowHeightRatio, windowWidthRatio } from "../../constants";
+import { bannerId } from "../../utils";
 
 class BeginnerScreen extends Component {
   constructor(props) {
@@ -111,25 +114,32 @@ class BeginnerScreen extends Component {
     });
   };
 
+  bannerError = (error) => {
+    console.log(error);
+  };
+
   render = () => {
     return (
       <View style={styles.screenStyling}>
+        <Text style={styles.headerTextStyling}>Tune it!</Text>
         <ChordSelect
           chords={this.state.chords}
           selectChord={this.selectChord}
         />
-        <ChordChangesSelect
-          chordChanges={this.state.chordChanges}
-          setChordChanges={(value) => {
-            this.setState({ chordChanges: value });
-          }}
-        />
-        <BPMSelect
-          bpm={this.state.bpm}
-          setBPM={(bpmValue) => {
-            this.setState({ bpm: bpmValue });
-          }}
-        />
+        <View style={{ flex: 2 }}>
+          <ChordChangesSelect
+            chordChanges={this.state.chordChanges}
+            setChordChanges={(value) => {
+              this.setState({ chordChanges: value });
+            }}
+          />
+          <BPMSelect
+            bpm={this.state.bpm}
+            setBPM={(bpmValue) => {
+              this.setState({ bpm: bpmValue });
+            }}
+          />
+        </View>
         <PatternSelect
           pattern={this.state.pattern}
           changeStrum={(index) => {
@@ -144,6 +154,8 @@ class BeginnerScreen extends Component {
             flexDirection: "row",
             paddingHorizontal: 10,
             paddingVertical: 15 / windowHeightRatio,
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <TouchableOpacity
@@ -169,12 +181,25 @@ class BeginnerScreen extends Component {
           </TouchableOpacity>
         </View>
         <FlashMessage ref="localFlashMessage" />
+        <AdMobBanner
+          bannerSize="fullBanner"
+          adUnitID={bannerId}
+          servePersonalizedAds={false} // true or false
+          onDidFailToReceiveAdWithError={this.bannerError}
+        />
       </View>
     );
   };
 }
 
 const styles = StyleSheet.create({
+  headerTextStyling: {
+    color: color.secondary,
+    paddingVertical: 5,
+    fontWeight: "bold",
+    alignSelf: "center",
+    fontSize: 30 * windowWidthRatio,
+  },
   textStyling: {
     fontSize: 20 * windowHeightRatio,
     paddingHorizontal: 5,
@@ -187,7 +212,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   touchableOpacityButtonStyling: {
-    maxHeight: 100 * windowHeightRatio,
+    height: 60 * windowHeightRatio,
     flex: 4,
     flexDirection: "row",
     backgroundColor: color.tertiary,
@@ -197,7 +222,7 @@ const styles = StyleSheet.create({
   },
   screenStyling: {
     flex: 1,
-    paddingVertical: 10,
+    paddingTop: 20,
     backgroundColor: color.primary,
   },
 });

@@ -5,9 +5,12 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Accordion from "react-native-collapsible/Accordion";
 
+import { AdMobBanner } from "expo-ads-admob";
+
 import ChordSelect from "../chordSelect";
 
 import { color, windowHeightRatio, windowWidthRatio } from "../../constants";
+import { bannerId } from "../../utils";
 
 class IntermediateChordsScreen extends Component {
   constructor(props) {
@@ -372,29 +375,25 @@ class IntermediateChordsScreen extends Component {
     return item.title;
   };
 
+  _renderSelectedChord = ({ item }) => (
+    <Text style={styles.selectedChordsTextStyling}>{item}</Text>
+  );
+
+  _keyExtractorSelectedChord = (item) => item;
+
   render = () => {
     return (
       <View style={styles.screenStyling}>
-        <View style={styles.headerStyling}>
-          <MaterialCommunityIcons
-            name="playlist-music"
-            color={color.secondary}
-            size={40 * windowHeightRatio}
-          />
-          <Text style={styles.headerTextStyling}>Pick Chords</Text>
+        <Text style={styles.headerTextStyling}>Pick Chords!</Text>
+
+        <View style={styles.selectedChordsViewStyling}>
+          {this.state.displaySelectedChords.map((selectedChord) => (
+            <Text key={selectedChord} style={styles.selectedChordsTextStyling}>
+              {selectedChord}
+            </Text>
+          ))}
         </View>
-        {this.state.displaySelectedChords.length > 0 && (
-          <View style={styles.selectedChordsViewStyling}>
-            {this.state.displaySelectedChords.map((selectedChord) => (
-              <Text
-                key={selectedChord}
-                style={styles.selectedChordsTextStyling}
-              >
-                {selectedChord}
-              </Text>
-            ))}
-          </View>
-        )}
+
         <Accordion
           containerStyle={{ flex: 1 }}
           touchableComponent={TouchableOpacity}
@@ -418,6 +417,12 @@ class IntermediateChordsScreen extends Component {
           <Text style={styles.textStyling}>Next</Text>
         </TouchableOpacity>
         <FlashMessage ref="localFlashMessage" />
+        <AdMobBanner
+          bannerSize="fullBanner"
+          adUnitID={bannerId}
+          servePersonalizedAds={false} // true or false
+          onDidFailToReceiveAdWithError={this.bannerError}
+        />
       </View>
     );
   };
@@ -432,11 +437,11 @@ const styles = StyleSheet.create({
   },
   touchableOpacityButtonStyling: {
     maxHeight: 100 * windowHeightRatio,
-    // flex: 1,
     flexDirection: "row",
     paddingHorizontal: 30,
     paddingVertical: 15 / windowHeightRatio,
     marginHorizontal: 10,
+    marginVertical: 10,
     backgroundColor: color.tertiary,
     alignItems: "center",
     justifyContent: "center",
@@ -446,15 +451,11 @@ const styles = StyleSheet.create({
     color: color.secondary,
     paddingVertical: 5,
     fontWeight: "bold",
-    fontSize: 40 * windowWidthRatio,
-  },
-  headerStyling: {
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
+    alignSelf: "center",
+    fontSize: 30 * windowWidthRatio,
   },
   selectedChordsTextStyling: {
-    color: color.tertiary,
+    color: color.secondary,
     padding: 2,
     fontSize: 15 * windowHeightRatio,
     fontWeight: "bold",
@@ -464,10 +465,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: color.secondary,
-    marginHorizontal: 10,
-    borderRadius: 5,
-    paddingVertical: 8 * windowHeightRatio,
+    height: 25 * windowHeightRatio,
   },
   headerTextAccordion: {
     fontSize: 15 * windowHeightRatio,
@@ -477,6 +475,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5 * windowWidthRatio,
   },
   headerAccordion: {
+    width: "60%",
+    alignSelf: "center",
     alignItems: "center",
     backgroundColor: color.secondary,
     flexDirection: "row",
@@ -487,7 +487,7 @@ const styles = StyleSheet.create({
   },
   screenStyling: {
     flex: 1,
-    paddingVertical: 10,
+    paddingTop: 20,
     backgroundColor: color.primary,
   },
 });

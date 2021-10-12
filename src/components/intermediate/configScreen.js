@@ -4,11 +4,14 @@ import IonIcon from "react-native-vector-icons/Ionicons";
 import AntDesignIcon from "react-native-vector-icons/AntDesign";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 
+import { AdMobBanner } from "expo-ads-admob";
+
 import ChordChangesSelect from "../chordChangesSelect";
 import BPMSelect from "../bpmSelect";
 import PatternSelect from "../patternSelect";
 
-import { color, windowHeightRatio } from "../../constants";
+import { color, windowHeightRatio, windowWidthRatio } from "../../constants";
+import { bannerId } from "../../utils";
 
 class ConfigScreen extends Component {
   constructor(props) {
@@ -66,6 +69,7 @@ class ConfigScreen extends Component {
   render = () => {
     return (
       <View style={styles.screenStyling}>
+        <Text style={styles.headerTextStyling}>Almost Ready!</Text>
         <ChordChangesSelect
           chordChanges={this.state.chordChanges}
           setChordChanges={(value) => {
@@ -92,6 +96,8 @@ class ConfigScreen extends Component {
             flexDirection: "row",
             paddingHorizontal: 10,
             paddingVertical: 15 / windowHeightRatio,
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <TouchableOpacity
@@ -117,12 +123,25 @@ class ConfigScreen extends Component {
           </TouchableOpacity>
         </View>
         <FlashMessage ref="localFlashMessage" />
+        <AdMobBanner
+          bannerSize="fullBanner"
+          adUnitID={bannerId}
+          servePersonalizedAds={false} // true or false
+          onDidFailToReceiveAdWithError={this.bannerError}
+        />
       </View>
     );
   };
 }
 
 const styles = StyleSheet.create({
+  headerTextStyling: {
+    color: color.secondary,
+    paddingVertical: 5,
+    fontWeight: "bold",
+    alignSelf: "center",
+    fontSize: 30 * windowWidthRatio,
+  },
   textStyling: {
     fontSize: 20 * windowHeightRatio,
     paddingHorizontal: 5,
@@ -135,7 +154,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   touchableOpacityButtonStyling: {
-    maxHeight: 100 * windowHeightRatio,
+    height: 60 * windowHeightRatio,
     flex: 4,
     flexDirection: "row",
     backgroundColor: color.tertiary,
@@ -145,8 +164,7 @@ const styles = StyleSheet.create({
   },
   screenStyling: {
     flex: 1,
-    paddingTop: 40,
-    paddingBottom: 20,
+    paddingTop: 20,
     backgroundColor: color.primary,
   },
 });

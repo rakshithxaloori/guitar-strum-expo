@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   },
   screenStyling: {
     flex: 1,
-    paddingVertical: 10,
+    paddingTop: 20,
     backgroundColor: color.primary,
   },
 });

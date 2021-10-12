@@ -6,7 +6,7 @@ import { color, windowHeightRatio } from "../constants";
 
 const ChordChangesSelect = (props) => {
   return (
-    <View style={styles.viewStyling}>
+    <View style={styles.container}>
       <Slider
         minimumTrackTintColor={color.secondary}
         thumbTintColor={color.secondary}
@@ -41,10 +41,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  viewStyling: {
+  container: {
     flex: 1,
     margin: 10,
-    padding: 10,
   },
 });
 
