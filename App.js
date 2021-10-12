@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as Notifications from "expo-notifications";
+import * as Device from "expo-device";
 import Constants from "expo-constants";
 
 import SplashScreen from "./src/components/splashScreen";
@@ -25,6 +26,8 @@ const App = () => {
   const responseListener = useRef();
 
   useEffect(() => {
+    if (!Device.isDevice) return;
+
     registerForPushNotificationsAsync().then((token) => {
       // setExpoPushToken(token);
       console.log(token);
