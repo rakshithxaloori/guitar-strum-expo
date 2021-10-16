@@ -5,15 +5,13 @@ import AntDesignIcon from "react-native-vector-icons/AntDesign";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Constants from "expo-constants";
 
-import { AdMobBanner } from "expo-ads-admob";
-
 import ChordChangesSelect from "../chordChangesSelect";
 import ChordSelect from "../chordSelect";
 import BPMSelect from "../bpmSelect";
 import PatternSelect from "../patternSelect";
 
 import { color, windowHeightRatio, windowWidthRatio } from "../../constants";
-import { bannerId } from "../../utils";
+import AdBanner from "../adBanner";
 
 class BeginnerScreen extends Component {
   constructor(props) {
@@ -182,12 +180,7 @@ class BeginnerScreen extends Component {
           </TouchableOpacity>
         </View>
         <FlashMessage ref="localFlashMessage" />
-        <AdMobBanner
-          bannerSize="fullBanner"
-          adUnitID={bannerId}
-          servePersonalizedAds={false} // true or false
-          onDidFailToReceiveAdWithError={this.bannerError}
-        />
+        <AdBanner />
       </View>
     );
   };

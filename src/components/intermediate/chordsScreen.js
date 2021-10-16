@@ -6,12 +6,10 @@ import FlashMessage, { showMessage } from "react-native-flash-message";
 import Accordion from "react-native-collapsible/Accordion";
 import Constants from "expo-constants";
 
-import { AdMobBanner } from "expo-ads-admob";
-
 import ChordSelect from "../chordSelect";
 
 import { color, windowHeightRatio, windowWidthRatio } from "../../constants";
-import { bannerId } from "../../utils";
+import AdBanner from "../adBanner";
 
 class IntermediateChordsScreen extends Component {
   constructor(props) {
@@ -418,12 +416,7 @@ class IntermediateChordsScreen extends Component {
           <Text style={styles.textStyling}>Next</Text>
         </TouchableOpacity>
         <FlashMessage ref="localFlashMessage" />
-        <AdMobBanner
-          bannerSize="fullBanner"
-          adUnitID={bannerId}
-          servePersonalizedAds={false} // true or false
-          onDidFailToReceiveAdWithError={this.bannerError}
-        />
+        <AdBanner />
       </View>
     );
   };
