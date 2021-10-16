@@ -20,11 +20,11 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Splash"
           component={SplashScreen}
           options={{ headerShown: false }}
-        />
+        /> */}
         <Stack.Screen
           name="Route"
           component={RouteScreen}
