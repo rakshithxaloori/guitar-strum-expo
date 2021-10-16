@@ -1,7 +1,6 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Constants from "expo-constants";
 
 import SplashScreen from "./src/components/splashScreen";
 import PlayScreen from "./src/components/playScreen";

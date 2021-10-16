@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "guitarstrum",
-    "slug": "guitarstrum",
+    "name": "GuitarStrum",
+    "slug": "GuitarStrum",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/guitar-app-icon.png",
@@ -16,7 +16,7 @@
     "assetBundlePatterns": ["**/*"],
     "android": {
       "package": "com.rakshithxaloori.guitarstrum",
-      "versionCode": 7,
+      "versionCode": 9,
       "permissions": [],
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-3940256099942544/6300978111"
