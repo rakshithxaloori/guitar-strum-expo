@@ -4,6 +4,7 @@ import IonIcon from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Accordion from "react-native-collapsible/Accordion";
+import Constants from "expo-constants";
 
 import { AdMobBanner } from "expo-ads-admob";
 
@@ -449,7 +450,8 @@ const styles = StyleSheet.create({
   },
   headerTextStyling: {
     color: color.secondary,
-    paddingVertical: 5,
+    paddingTop: Constants.statusBarHeight,
+    paddingBottom: 5,
     fontWeight: "bold",
     alignSelf: "center",
     fontSize: 30 * windowWidthRatio,

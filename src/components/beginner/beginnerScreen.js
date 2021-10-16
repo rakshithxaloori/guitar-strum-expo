@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import AntDesignIcon from "react-native-vector-icons/AntDesign";
 import FlashMessage, { showMessage } from "react-native-flash-message";
+import Constants from "expo-constants";
 
 import { AdMobBanner } from "expo-ads-admob";
 
@@ -195,7 +196,8 @@ class BeginnerScreen extends Component {
 const styles = StyleSheet.create({
   headerTextStyling: {
     color: color.secondary,
-    paddingVertical: 5,
+    paddingTop: Constants.statusBarHeight,
+    paddingBottom: 5,
     fontWeight: "bold",
     alignSelf: "center",
     fontSize: 30 * windowWidthRatio,

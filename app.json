@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "guitar-chord-changes",
-    "slug": "guitar-chord-changes",
+    "name": "guitarstrum",
+    "slug": "guitarstrum",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/guitar-app-icon.png",
@@ -15,9 +15,12 @@
     },
     "assetBundlePatterns": ["**/*"],
     "android": {
-      "package": "com.rakshithxaloori.guitarstrumchordchanges",
-      "versionCode": 9,
-      "permissions": []
+      "package": "com.rakshithxaloori.guitarstrum",
+      "versionCode": 7,
+      "permissions": [],
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-3940256099942544/6300978111"
+      }
     }
   }
 }
