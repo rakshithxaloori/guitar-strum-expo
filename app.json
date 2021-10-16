@@ -16,10 +16,10 @@
     "assetBundlePatterns": ["**/*"],
     "android": {
       "package": "com.rakshithxaloori.guitarstrum",
-      "versionCode": 10,
+      "versionCode": 11,
       "permissions": [],
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-3940256099942544/6300978111"
+        "googleMobileAdsAppId": "ca-app-pub-8538556251087145~3901670384"
       }
     }
   }
