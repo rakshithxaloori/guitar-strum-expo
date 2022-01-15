@@ -6,10 +6,10 @@ import FlashMessage, { showMessage } from "react-native-flash-message";
 import Accordion from "react-native-collapsible/Accordion";
 import Constants from "expo-constants";
 
-import ChordSelect from "../chordSelect";
+import ChordSelect from "../../components/chordSelect";
 
 import { color, windowHeightRatio, windowWidthRatio } from "../../constants";
-import AdBanner from "../adBanner";
+import AdBanner from "../../components/adBanner";
 
 class IntermediateChordsScreen extends Component {
   constructor(props) {
@@ -354,10 +354,9 @@ class IntermediateChordsScreen extends Component {
           name="music-circle-outline"
           color={color.primary}
           size={20 * windowHeightRatio}
+          style={{ position: "absolute", left: 10 }}
         />
-        <Text style={styles.headerTextAccordion}>
-          {section.title + " Chords"}
-        </Text>
+        <Text style={styles.headerTextAccordion}>{section.title}</Text>
       </View>
     );
   };

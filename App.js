@@ -2,16 +2,16 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import SplashScreen from "./src/components/splashScreen";
-import PlayScreen from "./src/components/playScreen";
-import InstructionsScreen from "./src/components/instructionsScreen";
+import SplashScreen from "./src/screens/splashScreen";
+import PlayScreen from "./src/screens/playScreen";
+import InstructionsScreen from "./src/screens/instructionsScreen";
 
-import RouteScreen from "./src/components/routeScreen";
+import RouteScreen from "./src/screens/routeScreen";
 
-import BeginnerScreen from "./src/components/beginner/beginnerScreen";
+import BeginnerScreen from "./src/screens/beginnerScreen";
 
-import IntermediateChordsScreen from "./src/components/intermediate/chordsScreen";
-import IntermediateConfigScreen from "./src/components/intermediate/configScreen";
+import IntermediateChordsScreen from "./src/screens/intermediate/chordsScreen";
+import IntermediateConfigScreen from "./src/screens/intermediate/configScreen";
 
 const Stack = createStackNavigator();
 

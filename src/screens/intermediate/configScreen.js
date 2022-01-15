@@ -5,12 +5,12 @@ import AntDesignIcon from "react-native-vector-icons/AntDesign";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Constants from "expo-constants";
 
-import ChordChangesSelect from "../chordChangesSelect";
-import BPMSelect from "../bpmSelect";
-import PatternSelect from "../patternSelect";
+import ChordChangesSelect from "../../components/chordChangesSelect";
+import BPMSelect from "../../components/bpmSelect";
+import PatternSelect from "../../components/patternSelect";
 
 import { color, windowHeightRatio, windowWidthRatio } from "../../constants";
-import AdBanner from "../adBanner";
+import AdBanner from "../../components/adBanner";
 
 class ConfigScreen extends Component {
   constructor(props) {

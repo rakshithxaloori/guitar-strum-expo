@@ -4,7 +4,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { Audio } from "expo-av";
 import { activateKeepAwake, deactivateKeepAwake } from "expo-keep-awake";
 
-import Bar from "./bar";
+import Bar from "../components/bar";
 import Timer from "../assets/timer";
 
 import { color, windowHeightRatio } from "../constants";
