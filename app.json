@@ -2,7 +2,7 @@
   "expo": {
     "name": "GuitarStrum",
     "slug": "GuitarStrum",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/guitar-app-icon.png",
     "splash": {
@@ -22,5 +22,13 @@
         "googleMobileAdsAppId": "ca-app-pub-8538556251087145~3901670384"
       }
     }
-  }
+  },
+  "plugins": [
+    [
+      "expo-notifications",
+      {
+        "icon": "./assets/notification-icon.png"
+      }
+    ]
+  ]
 }

@@ -65,7 +65,4 @@ const App = () => {
   );
 };
 
-//       title: "She misses you! 🎸",
-//       body: "Pick her up, practise and maybe have some good time? 🎶"
-
 export default App;

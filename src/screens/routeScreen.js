@@ -11,9 +11,9 @@ const RouteScreen = () => {
   return (
     <View style={styles.viewStyling}>
       <IonIcon
-        name="notifications"
+        name="notifications-circle-outline"
         style={{ position: "absolute", top: 20, right: 20 }}
-        size={30}
+        size={40}
         onPress={() => {
           navigation.navigate("Notifications");
         }}
