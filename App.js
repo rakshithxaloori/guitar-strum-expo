@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import SplashScreen from "./src/screens/splashScreen";
 import PlayScreen from "./src/screens/playScreen";
 import InstructionsScreen from "./src/screens/instructionsScreen";
+import NotificationsScreen from "./src/screens/notificationScreen";
 
 import RouteScreen from "./src/screens/routeScreen";
 
@@ -52,6 +53,11 @@ const App = () => {
         <Stack.Screen
           name="Instructions"
           component={InstructionsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Notifications"
+          component={NotificationsScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

@@ -2,6 +2,7 @@ import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import EntypoIcon from "react-native-vector-icons/Entypo";
+import IonIcon from "react-native-vector-icons/Ionicons";
 
 import { color, windowHeightRatio, windowWidthRatio } from "../constants";
 
@@ -9,6 +10,14 @@ const RouteScreen = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.viewStyling}>
+      <IonIcon
+        name="notifications"
+        style={{ position: "absolute", top: 20, right: 20 }}
+        size={30}
+        onPress={() => {
+          navigation.navigate("Notifications");
+        }}
+      />
       <Text style={styles.headerTextStyling}>Your Guitar Jedi rank is ...</Text>
       <TouchableOpacity
         style={[
