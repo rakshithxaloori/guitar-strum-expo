@@ -16,6 +16,7 @@
     "expo-ads-admob": "~12.0.0",
     "expo-av": "~10.2.0",
     "expo-constants": "~13.0.0",
+    "expo-dev-client": "~0.8.0",
     "expo-keep-awake": "~10.0.1",
     "prop-types": "^15.7.2",
     "react": "17.0.1",
