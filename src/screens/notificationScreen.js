@@ -3,12 +3,23 @@ import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import * as SecureStorage from "expo-secure-store";
 import * as Notifications from "expo-notifications";
-import Constants from "expo-constants";
 import IonIcon from "react-native-vector-icons/Ionicons";
 
 import { color } from "../constants";
+import {
+  registerForPushNotificationsAsync,
+  schedulePushNotification,
+} from "../utils";
 
 const STORAGE_TIME_STR = "time";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: true,
+  }),
+});
 
 const prettyTime = (time) => {
   let timeStr = "";
@@ -31,11 +42,15 @@ const NotificationsScreen = () => {
   const date = new Date();
   const [show, setShow] = React.useState(false);
   const [time, setTime] = React.useState(date);
-  const notificationListener = React.useRef();
-  const responseListener = React.useRef();
+  // const notificationListener = React.useRef();
+  // const responseListener = React.useRef();
 
   React.useEffect(() => {
     const setTimeFromStorage = async () => {
+      //
+      const notifs = await Notifications.getAllScheduledNotificationsAsync();
+      console.log(notifs);
+      //
       const getTime = await SecureStorage.getItemAsync(STORAGE_TIME_STR);
       if (getTime !== null) {
         const savedTime = new Date(getTime);
@@ -44,27 +59,26 @@ const NotificationsScreen = () => {
     };
 
     setTimeFromStorage();
-    registerForPushNotificationsAsync().then((token) =>
-      setExpoPushToken(token)
-    );
 
-    notificationListener.current =
-      Notifications.addNotificationReceivedListener((notification) => {
-        console.log("Notification received!");
-      });
+    registerForPushNotificationsAsync().then((token) => console.log(token));
 
-    responseListener.current =
-      Notifications.addNotificationResponseReceivedListener((response) => {
-        console.log("Notification response");
-        console.log(response);
-      });
+    // notificationListener.current =
+    //   Notifications.addNotificationReceivedListener((notification) => {
+    //     console.log("Notification received!");
+    //   });
 
-    return () => {
-      Notifications.removeNotificationSubscription(
-        notificationListener.current
-      );
-      Notifications.removeNotificationSubscription(responseListener.current);
-    };
+    // responseListener.current =
+    //   Notifications.addNotificationResponseReceivedListener((response) => {
+    //     console.log("Notification response");
+    //     console.log(response);
+    //   });
+
+    // return () => {
+    //   Notifications.removeNotificationSubscription(
+    //     notificationListener.current
+    //   );
+    //   Notifications.removeNotificationSubscription(responseListener.current);
+    // };
   }, []);
 
   const onChange = async (response, timestamp) => {
@@ -78,7 +92,11 @@ const NotificationsScreen = () => {
 
   const setNotification = async () => {
     await Notifications.cancelAllScheduledNotificationsAsync();
-    await schedulePushNotification(time);
+    await schedulePushNotification({
+      hour: time.getHours(),
+      minute: time.getMinutes(),
+      repeats: true,
+    });
   };
 
   return (
@@ -155,45 +173,3 @@ const styles = StyleSheet.create({
 });
 
 export default NotificationsScreen;
-
-async function schedulePushNotification(trigger) {
-  await Notifications.scheduleNotificationAsync({
-    content: {
-      title: "It misses you! 🎸",
-      body: "Pick it up, practise and maybe have some good time? 🎶",
-    },
-    trigger: trigger,
-  });
-}
-
-async function registerForPushNotificationsAsync() {
-  let token;
-  if (Constants.isDevice) {
-    const { status: existingStatus } =
-      await Notifications.getPermissionsAsync();
-    let finalStatus = existingStatus;
-    if (existingStatus !== "granted") {
-      const { status } = await Notifications.requestPermissionsAsync();
-      finalStatus = status;
-    }
-    if (finalStatus !== "granted") {
-      alert("Failed to get push token for push notification!");
-      return;
-    }
-    token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log(token);
-  } else {
-    alert("Must use physical device for Push Notifications");
-  }
-
-  if (Platform.OS === "android") {
-    Notifications.setNotificationChannelAsync("default", {
-      name: "default",
-      importance: Notifications.AndroidImportance.MAX,
-      vibrationPattern: [0, 250, 250, 250],
-      lightColor: "#FF231F7C",
-    });
-  }
-
-  return token;
-}

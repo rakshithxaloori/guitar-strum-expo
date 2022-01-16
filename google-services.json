@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "105302659157",
+    "project_id": "guitarstrum-8078d",
+    "storage_bucket": "guitarstrum-8078d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105302659157:android:f5864ec22dc4bd589584dc",
+        "android_client_info": {
+          "package_name": "com.rakshithxaloori.guitarstrum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "105302659157-92r7rf6ohe6tsqb7nqfa4i7q1f83qpd5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rakshithxaloori.guitarstrum",
+            "certificate_hash": "2228085cc43a86c10c1b8a9e2256e2ee76f5ba2c"
+          }
+        },
+        {
+          "client_id": "105302659157-kjajni280fm4ts47sb056pbj55urvsdq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8pNEgEwDmv_CyDShnsKczhplCvoRhl5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "105302659157-kjajni280fm4ts47sb056pbj55urvsdq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

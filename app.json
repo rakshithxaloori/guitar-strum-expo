@@ -20,7 +20,8 @@
       "permissions": [],
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-8538556251087145~3901670384"
-      }
+      },
+      "googleServicesFile": "./google-services.json"
     }
   },
   "plugins": [
