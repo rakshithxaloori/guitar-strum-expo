@@ -6,12 +6,13 @@ import { bannerId } from "../utils";
 const bannerError = (error) => {
   console.log(error);
 };
+console.log(bannerId);
 
 const AdBanner = () => (
   <AdMobBanner
     bannerSize="fullBanner"
     adUnitID={bannerId}
-    servePersonalizedAds={false} // true or false
+    servePersonalizedAds={true} // true or false
     onDidFailToReceiveAdWithError={bannerError}
   />
 );

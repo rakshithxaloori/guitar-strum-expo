@@ -25,7 +25,6 @@ const RouteScreen = () => {
           { backgroundColor: color.secondary },
         ]}
         onPress={() => {
-          console.log("PADAWAN");
           navigation.navigate("BeginnerConfig");
         }}
       >

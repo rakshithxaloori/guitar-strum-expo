@@ -1,6 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import * as Notifications from "expo-notifications";
 
 import SplashScreen from "./src/screens/splashScreen";
 import PlayScreen from "./src/screens/playScreen";
@@ -13,10 +14,43 @@ import BeginnerScreen from "./src/screens/beginnerScreen";
 
 import IntermediateChordsScreen from "./src/screens/intermediate/chordsScreen";
 import IntermediateConfigScreen from "./src/screens/intermediate/configScreen";
+import { registerForPushNotificationsAsync } from "./src/utils";
 
 const Stack = createStackNavigator();
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
 const App = () => {
+  const notificationListener = React.useRef();
+  const responseListener = React.useRef();
+
+  React.useEffect(() => {
+    registerForPushNotificationsAsync().then((token) => console.log(token));
+
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener((notification) => {
+        console.log("Notification received!");
+      });
+
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener((response) => {
+        console.log("Notification response");
+        console.log(response);
+      });
+
+    return () => {
+      Notifications.removeNotificationSubscription(
+        notificationListener.current
+      );
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, []);
   return (
     <NavigationContainer>
       <Stack.Navigator>

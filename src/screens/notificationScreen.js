@@ -6,20 +6,9 @@ import * as Notifications from "expo-notifications";
 import IonIcon from "react-native-vector-icons/Ionicons";
 
 import { color } from "../constants";
-import {
-  registerForPushNotificationsAsync,
-  schedulePushNotification,
-} from "../utils";
+import { schedulePushNotification } from "../utils";
 
 const STORAGE_TIME_STR = "time";
-
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: true,
-    shouldSetBadge: true,
-  }),
-});
 
 const prettyTime = (time) => {
   let timeStr = "";
@@ -42,8 +31,6 @@ const NotificationsScreen = () => {
   const date = new Date();
   const [show, setShow] = React.useState(false);
   const [time, setTime] = React.useState(date);
-  // const notificationListener = React.useRef();
-  // const responseListener = React.useRef();
 
   React.useEffect(() => {
     const setTimeFromStorage = async () => {
@@ -59,38 +46,18 @@ const NotificationsScreen = () => {
     };
 
     setTimeFromStorage();
-
-    registerForPushNotificationsAsync().then((token) => console.log(token));
-
-    // notificationListener.current =
-    //   Notifications.addNotificationReceivedListener((notification) => {
-    //     console.log("Notification received!");
-    //   });
-
-    // responseListener.current =
-    //   Notifications.addNotificationResponseReceivedListener((response) => {
-    //     console.log("Notification response");
-    //     console.log(response);
-    //   });
-
-    // return () => {
-    //   Notifications.removeNotificationSubscription(
-    //     notificationListener.current
-    //   );
-    //   Notifications.removeNotificationSubscription(responseListener.current);
-    // };
   }, []);
 
   const onChange = async (response, timestamp) => {
     if (response.type === "set") {
       setTime(timestamp);
-      await SecureStorage.setItemAsync(STORAGE_TIME_STR, timestamp.toString());
-      await setNotification();
+      await setNotification(timestamp);
     }
     setShow(false);
   };
 
-  const setNotification = async () => {
+  const setNotification = async (timestamp) => {
+    await SecureStorage.setItemAsync(STORAGE_TIME_STR, timestamp.toString());
     await Notifications.cancelAllScheduledNotificationsAsync();
     await schedulePushNotification({
       hour: time.getHours(),
