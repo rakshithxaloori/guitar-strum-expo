@@ -1,16 +1,14 @@
-import { Platform } from "react-native";
+import { Platform, Alert } from "react-native";
+import * as SecureStorage from "expo-secure-store";
 import * as Notifications from "expo-notifications";
+import * as Device from "expo-device";
 import Constants from "expo-constants";
-
-// Dev & Test
-// export const bannerId = "ca-app-pub-3940256099942544/6300978111"; // Test ID, Replace with your-admob-unit-id
-
-// Prod
-// export const bannerId = "ca-app-pub-8538556251087145/7102435793";
 
 export const bannerId = process.env.BANNER_ID;
 
-export async function schedulePushNotification(trigger) {
+export const STORAGE_TIME_STR = "time";
+
+async function _schedulePushNotification(trigger) {
   const response = await Notifications.scheduleNotificationAsync({
     content: {
       title: "It misses you! 🎸",
@@ -21,9 +19,20 @@ export async function schedulePushNotification(trigger) {
   console.log(response);
 }
 
+export const setNotification = async (timestamp) => {
+  await SecureStorage.setItemAsync(STORAGE_TIME_STR, timestamp.toString());
+  await Notifications.cancelAllScheduledNotificationsAsync();
+
+  await _schedulePushNotification({
+    hour: timestamp.getHours(),
+    minute: timestamp.getMinutes(),
+    repeats: true,
+  });
+};
+
 export async function registerForPushNotificationsAsync() {
   let token;
-  if (Constants.isDevice) {
+  if (Device.isDevice) {
     const { status: existingStatus } =
       await Notifications.getPermissionsAsync();
     let finalStatus = existingStatus;
@@ -32,12 +41,15 @@ export async function registerForPushNotificationsAsync() {
       finalStatus = status;
     }
     if (finalStatus !== "granted") {
-      alert("Failed to get push token for push notification!");
+      Alert.alert("Failed to get push token for push notification!");
       return;
     }
-    token = (await Notifications.getExpoPushTokenAsync()).data;
+    token = await Notifications.getExpoPushTokenAsync({
+      experienceId: `rakshith.aloori/${Constants.manifest.slug}`,
+    });
+    token = token.data;
   } else {
-    alert("Must use physical device for Push Notifications");
+    Alert.alert("Must use physical device for Push Notifications");
   }
 
   if (Platform.OS === "android") {

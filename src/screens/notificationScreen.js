@@ -2,13 +2,10 @@ import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import * as SecureStorage from "expo-secure-store";
-import * as Notifications from "expo-notifications";
 import IonIcon from "react-native-vector-icons/Ionicons";
 
 import { color } from "../constants";
-import { schedulePushNotification } from "../utils";
-
-const STORAGE_TIME_STR = "time";
+import { setNotification, STORAGE_TIME_STR } from "../utils";
 
 const prettyTime = (time) => {
   let timeStr = "";
@@ -34,10 +31,6 @@ const NotificationsScreen = () => {
 
   React.useEffect(() => {
     const setTimeFromStorage = async () => {
-      //
-      const notifs = await Notifications.getAllScheduledNotificationsAsync();
-      console.log(notifs);
-      //
       const getTime = await SecureStorage.getItemAsync(STORAGE_TIME_STR);
       if (getTime !== null) {
         const savedTime = new Date(getTime);
@@ -54,16 +47,6 @@ const NotificationsScreen = () => {
       await setNotification(timestamp);
     }
     setShow(false);
-  };
-
-  const setNotification = async (timestamp) => {
-    await SecureStorage.setItemAsync(STORAGE_TIME_STR, timestamp.toString());
-    await Notifications.cancelAllScheduledNotificationsAsync();
-    await schedulePushNotification({
-      hour: time.getHours(),
-      minute: time.getMinutes(),
-      repeats: true,
-    });
   };
 
   return (

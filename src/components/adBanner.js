@@ -4,9 +4,8 @@ import { AdMobBanner } from "expo-ads-admob";
 import { bannerId } from "../utils";
 
 const bannerError = (error) => {
-  console.log(error);
+  console.log("BANNER ERROR", error, bannerId);
 };
-console.log(bannerId);
 
 const AdBanner = () => (
   <AdMobBanner
