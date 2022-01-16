@@ -4,7 +4,8 @@
     "development": {
       "developmentClient": true,
       "distribution": "internal"
-    }
+    },
+    "production": {}
   },
   "submit": {
     "release": {}
