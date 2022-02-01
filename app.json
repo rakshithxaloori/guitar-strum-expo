@@ -16,7 +16,7 @@
     "assetBundlePatterns": ["**/*"],
     "android": {
       "package": "com.rakshithxaloori.guitarstrum",
-      "versionCode": 14,
+      "versionCode": 15,
       "permissions": [],
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-8538556251087145~3901670384"
