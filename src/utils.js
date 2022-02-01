@@ -26,7 +26,7 @@ export const setNotification = async (timestamp) => {
   await _schedulePushNotification({
     hour: timestamp.getHours(),
     minute: timestamp.getMinutes(),
-    repeats: true,
+    type: "daily",
   });
 };
 
