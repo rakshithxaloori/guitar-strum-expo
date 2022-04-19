@@ -1,0 +1,11 @@
+{
+  "screen": {
+    "home": {
+      "header": "Choose a path ...",
+      "beginner": "Beginner",
+      "custom": "Custom"
+    },
+    "beginner": {},
+    "custom": {}
+  }
+}

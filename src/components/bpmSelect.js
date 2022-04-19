@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Slider from "@react-native-community/slider";
-import Icon from "react-native-vector-icons/AntDesign";
+import { AntDesign } from "@expo/vector-icons";
 
 import { color, windowHeightRatio } from "../constants";
 
@@ -34,7 +34,7 @@ const BPMSelect = (props) => {
             if (props.bpm > minBPMValue) props.setBPM(props.bpm - 1);
           }}
         >
-          <Icon
+          <AntDesign
             name="minuscircle"
             color={color.secondary}
             size={25 * windowHeightRatio}
@@ -60,7 +60,7 @@ const BPMSelect = (props) => {
             if (props.bpm < maxBPMValue) props.setBPM(props.bpm + 1);
           }}
         >
-          <Icon
+          <AntDesign
             name="pluscircle"
             color={color.secondary}
             size={25 * windowHeightRatio}

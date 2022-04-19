@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import IonIcon from "react-native-vector-icons/Ionicons";
+import { Ionicons } from "@expo/vector-icons";
 
 import { color } from "../constants";
 import { checkNotification, setNotification } from "../utils";
@@ -58,7 +58,7 @@ const NotificationsScreen = () => {
         <Text style={{ textDecorationLine: "underline" }}>
           {prettyTime(time)}
         </Text>
-        <IonIcon
+        <Ionicons
           name="alarm-outline"
           style={{ paddingLeft: 5 }}
           size={17}
@@ -71,7 +71,7 @@ const NotificationsScreen = () => {
           setShow(true);
         }}
       >
-        <IonIcon
+        <Ionicons
           name="alarm-outline"
           style={{ paddingRight: 5 }}
           size={22}

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import IonIcon from "react-native-vector-icons/Ionicons";
-import AntDesignIcon from "react-native-vector-icons/AntDesign";
+import { Ionicons, AntDesign } from "@expo/vector-icons";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Constants from "expo-constants";
 
@@ -161,7 +160,7 @@ class BeginnerScreen extends Component {
             style={styles.touchableOpacityInstructionsStyling}
             onPress={() => this.props.navigation.navigate("Instructions")}
           >
-            <AntDesignIcon
+            <AntDesign
               name="questioncircleo"
               color={color.secondary}
               size={40 * windowHeightRatio}
@@ -171,7 +170,7 @@ class BeginnerScreen extends Component {
             style={styles.touchableOpacityButtonStyling}
             onPress={this.confirmConfig}
           >
-            <IonIcon
+            <Ionicons
               name="musical-note"
               color={color.primary}
               size={20 * windowHeightRatio}

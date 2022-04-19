@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import IonIcon from "react-native-vector-icons/Ionicons";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Accordion from "react-native-collapsible/Accordion";
 import Constants from "expo-constants";
@@ -407,7 +406,7 @@ class IntermediateChordsScreen extends Component {
           style={styles.touchableOpacityButtonStyling}
           onPress={this.confirmConfig}
         >
-          <IonIcon
+          <Ionicons
             name="musical-note"
             color={color.primary}
             size={20 * windowHeightRatio}

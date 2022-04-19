@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import { Ionicons } from "@expo/vector-icons";
 import { Audio } from "expo-av";
 import { activateKeepAwake, deactivateKeepAwake } from "expo-keep-awake";
 
@@ -151,7 +151,7 @@ class PlayScreen extends Component {
           style={styles.touchableOpacityStyling}
           onPress={() => this.props.navigation.goBack()}
         >
-          <Icon
+          <Ionicons
             name="musical-note"
             color={color.primary}
             size={20 * windowHeightRatio}

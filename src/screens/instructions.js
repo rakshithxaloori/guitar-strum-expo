@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import { Ionicons } from "@expo/vector-icons";
 import AppIntroSlider from "react-native-app-intro-slider";
 
 import { color, windowHeightRatio, windowWidthRatio } from "../constants";
@@ -40,7 +40,7 @@ const InstructionsScreen = (props) => {
   const _renderNextButton = () => {
     return (
       <View style={styles.icon}>
-        <Icon
+        <Ionicons
           name="arrow-forward-circle-outline"
           color={color.primary}
           size={45 * windowHeightRatio}
@@ -52,7 +52,7 @@ const InstructionsScreen = (props) => {
   const _renderPrevButton = () => {
     return (
       <View style={styles.icon}>
-        <Icon
+        <Ionicons
           name="arrow-back-circle-outline"
           color={color.primary}
           size={45 * windowHeightRatio}
@@ -64,7 +64,7 @@ const InstructionsScreen = (props) => {
   const _renderDoneButton = () => {
     return (
       <View style={styles.icon}>
-        <Icon
+        <Ionicons
           name="checkmark-circle-outline"
           color={color.primary}
           size={45 * windowHeightRatio}

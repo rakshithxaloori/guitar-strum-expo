@@ -1,16 +1,17 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import EntypoIcon from "react-native-vector-icons/Entypo";
-import IonIcon from "react-native-vector-icons/Ionicons";
+import { useTranslation } from "react-i18next";
+import { Ionicons } from "@expo/vector-icons";
 
 import { color, windowHeightRatio, windowWidthRatio } from "../constants";
 
 const RouteScreen = () => {
   const navigation = useNavigation();
+  const { t } = useTranslation();
   return (
     <View style={styles.viewStyling}>
-      <IonIcon
+      <Ionicons
         name="notifications-circle-outline"
         style={{ position: "absolute", top: 20, right: 20 }}
         size={40}
@@ -18,7 +19,7 @@ const RouteScreen = () => {
           navigation.navigate("Notifications");
         }}
       />
-      <Text style={styles.headerTextStyling}>Your Guitar Jedi rank is ...</Text>
+      <Text style={styles.headerTextStyling}>{t("screen.home.header")}</Text>
       <TouchableOpacity
         style={[
           styles.touchableOpacityButtonStyling,
@@ -28,7 +29,7 @@ const RouteScreen = () => {
           navigation.navigate("BeginnerConfig");
         }}
       >
-        <Text style={styles.textStyling}>Padawan</Text>
+        <Text style={styles.textStyling}>Beginner</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={[
@@ -39,34 +40,8 @@ const RouteScreen = () => {
           navigation.navigate("IntermediateChords");
         }}
       >
-        <Text style={styles.textStyling}>Jedi Knight</Text>
+        <Text style={styles.textStyling}>Custom</Text>
       </TouchableOpacity>
-      <View
-        style={{
-          flexDirection: "row",
-          backgroundColor: color.secondary,
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 10 * windowHeightRatio,
-          margin: 5 * windowHeightRatio,
-          borderRadius: 15,
-        }}
-      >
-        <EntypoIcon
-          name="info-with-circle"
-          color={color.primary}
-          size={10 * windowHeightRatio}
-        />
-        <Text
-          style={{
-            padding: 3,
-            color: color.primary,
-            fontSize: 10 * windowHeightRatio,
-          }}
-        >
-          Jedi Master rank coming soon!
-        </Text>
-      </View>
     </View>
   );
 };
