@@ -2,8 +2,8 @@ import "./i18n";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { StatusBar } from "expo-status-bar";
 
-import SplashScreen from "./src/screens/splash";
 import PlayScreen from "./src/screens/play";
 import InstructionsScreen from "./src/screens/instructions";
 import NotificationsScreen from "./src/screens/notification";
@@ -12,9 +12,11 @@ import HomeScreen from "./src/screens/home";
 
 import BeginnerScreen from "./src/screens/beginner";
 
-import IntermediateChordsScreen from "./src/screens/intermediate/chordsScreen";
-import IntermediateConfigScreen from "./src/screens/intermediate/configScreen";
+import ChordsScreen from "./src/screens/custom/chords";
+import ConfigScreen from "./src/screens/custom/config";
 import { checkNotification } from "./src/utils";
+import { color } from "./src/constants";
+import FlashMessage from "react-native-flash-message";
 
 const Stack = createStackNavigator();
 
@@ -25,11 +27,6 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
-          name="Splash"
-          component={SplashScreen}
-          options={{ headerShown: false }}
-        /> */}
         <Stack.Screen
           name="Route"
           component={HomeScreen}
@@ -41,13 +38,13 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="IntermediateChords"
-          component={IntermediateChordsScreen}
+          name="CustomChords"
+          component={ChordsScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="IntermediateConfig"
-          component={IntermediateConfigScreen}
+          name="CustomConfig"
+          component={ConfigScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -66,6 +63,8 @@ const App = () => {
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
+      <StatusBar backgroundColor={color.primary} />
+      <FlashMessage position="bottom" />
     </NavigationContainer>
   );
 };

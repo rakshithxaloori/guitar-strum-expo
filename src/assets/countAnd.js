@@ -9,13 +9,13 @@ const CountAnd = () => {
     for (var i = 0; i < 8; i++) {
       if (i % 2 === 0) {
         textList.push(
-          <Text key={i} style={styles.textStyling} textAnchor="middle">
+          <Text key={i} style={styles.text} textAnchor="middle">
             {(i / 2 + 1).toString()}
           </Text>
         );
       } else {
         textList.push(
-          <Text key={i} style={styles.textStyling} textAnchor="middle">
+          <Text key={i} style={styles.text} textAnchor="middle">
             {"&"}
           </Text>
         );
@@ -25,17 +25,17 @@ const CountAnd = () => {
     return textList;
   };
 
-  return <View style={styles.listStyling}>{renderItems()}</View>;
+  return <View style={styles.list}>{renderItems()}</View>;
 };
 
 const styles = StyleSheet.create({
-  textStyling: {
+  text: {
     flex: 1,
     fontSize: 25 * windowHeightRatio,
     color: color.tertiary,
     textAlign: "center",
   },
-  listStyling: {
+  list: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",

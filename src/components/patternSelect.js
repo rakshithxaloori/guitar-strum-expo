@@ -1,22 +1,41 @@
 import React from "react";
-import { View, TouchableOpacity, StyleSheet, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 import { Svg } from "react-native-svg";
 
 import Arrow from "../assets/arrow";
 import CountAnd from "../assets/countAnd";
+import { color, windowHeightRatio } from "../constants";
 
-const TouchArrow = ({ index, highlight, changeStrum, width, height }) => {
+const TouchArrow = ({
+  index,
+  highlight,
+  patternType,
+  pattern,
+  changePattern,
+  width,
+  height,
+}) => {
   return (
     <TouchableOpacity
-      style={styles.touchableArrowStyling}
+      style={styles.touchableArrow}
       onPress={() => {
-        changeStrum(index);
+        const newPattern = [...pattern];
+        newPattern[index] = newPattern[index] === 0 ? 1 : 0;
+        changePattern(newPattern);
       }}
     >
       <Svg viewBox={`-5 0 ${width} ${height}`}>
         <Arrow
           opaque={true}
-          direction={index % 2 === 0}
+          direction={
+            patternType === 0 ? index % 2 === 0 : patternType % 2 === 0
+          }
           highlight={highlight}
         />
       </Svg>
@@ -24,19 +43,67 @@ const TouchArrow = ({ index, highlight, changeStrum, width, height }) => {
   );
 };
 
-const PatternSelect = (props) => {
+const PatternSelect = ({
+  patternType,
+  setPatternType,
+  pattern,
+  changePattern,
+}) => {
   let { width, height } = Dimensions.get("window");
   width = width / 8;
   height = height / 10;
   return (
     <View style={styles.container}>
-      <View style={[styles.touchableArrowStyling, styles.arrowsStyling]}>
-        {props.pattern.map((highlight, index) => (
+      <View
+        style={{
+          width: "100%",
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <Text
+          style={[
+            styles.arrow,
+            patternType === 0
+              ? { color: color.primary, backgroundColor: color.secondary }
+              : {},
+          ]}
+          onPress={() => setPatternType(0)}
+        >
+          {"↑ ↓"}
+        </Text>
+        <Text
+          style={[
+            styles.arrow,
+            patternType === 1
+              ? { color: color.primary, backgroundColor: color.secondary }
+              : {},
+          ]}
+          onPress={() => setPatternType(1)}
+        >
+          {"↑ ↑"}
+        </Text>
+        <Text
+          style={[
+            styles.arrow,
+            patternType === 2
+              ? { color: color.primary, backgroundColor: color.secondary }
+              : {},
+          ]}
+          onPress={() => setPatternType(2)}
+        >
+          {"↓ ↓"}
+        </Text>
+      </View>
+      <View style={[styles.touchableArrow, styles.arrows]}>
+        {pattern.map((highlight, index) => (
           <TouchArrow
             key={index}
             index={index}
             highlight={highlight}
-            changeStrum={props.changeStrum}
+            patternType={patternType}
+            pattern={pattern}
+            changePattern={changePattern}
             width={width}
             height={height}
           />
@@ -48,12 +115,19 @@ const PatternSelect = (props) => {
 };
 
 const styles = StyleSheet.create({
-  touchableArrowStyling: {
+  touchableArrow: {
     flex: 2,
     alignItems: "center",
   },
-  arrowsStyling: {
+  arrows: {
     flexDirection: "row",
+  },
+  arrow: {
+    fontSize: 25 * windowHeightRatio,
+    paddingHorizontal: 5,
+    paddingBottom: 5,
+    color: color.secondary,
+    borderRadius: (25 * windowHeightRatio) / 2,
   },
   container: { flex: 2 },
 });

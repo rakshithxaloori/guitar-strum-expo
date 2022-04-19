@@ -17,7 +17,7 @@ const ChordBar = (props) => {
         }
       }
       chordsList.push(
-        <Text key={i} style={styles.textStyling}>
+        <Text key={i} style={styles.text}>
           {textStr}
         </Text>
       );
@@ -26,11 +26,11 @@ const ChordBar = (props) => {
     }
     return chordsList;
   };
-  return <View style={styles.listStyling}>{renderChords()}</View>;
+  return <View style={styles.list}>{renderChords()}</View>;
 };
 
 const styles = StyleSheet.create({
-  textStyling: {
+  text: {
     flex: 1,
     color: color.primary,
     fontSize: 25 * windowHeightRatio,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     width: 3,
     backgroundColor: color.primary,
   },
-  listStyling: {
+  list: {
     flex: 1,
     flexDirection: "row",
     backgroundColor: color.tertiary,

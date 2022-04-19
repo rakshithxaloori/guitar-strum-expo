@@ -42,16 +42,16 @@ class SplashScreen extends Component {
 
   render = () => {
     return (
-      <View style={styles.mainContainerStyling}>
-        <View style={styles.rootViewStyling}>
-          <View style={[styles.childViewStyling, { flex: 3 }]}>
+      <View style={styles.mainContainer}>
+        <View style={styles.rootView}>
+          <View style={[styles.childView, { flex: 3 }]}>
             <Image
               source={require("../../assets/guitar-splash-icon.png")}
               style={{ width: "120%", resizeMode: "contain" }}
             />
           </View>
-          <View style={[styles.childViewStyling, { flex: 1 }]}>
-            <Text style={styles.textStyling}>
+          <View style={[styles.childView, { flex: 1 }]}>
+            <Text style={styles.text}>
               {
                 // Dispaying suggestions with 2 * P of fun facts
                 Math.floor(Math.random() * 3) === 0
@@ -72,14 +72,14 @@ class SplashScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  mainContainerStyling: {
+  mainContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     paddingTop: Platform.OS === "ios" ? 20 : 0,
   },
 
-  rootViewStyling: {
+  rootView: {
     justifyContent: "center",
     flex: 1,
     margin: 10,
@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
     height: "100%",
   },
 
-  childViewStyling: {
+  childView: {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: color.tertiary,
     flex: 1,
     paddingHorizontal: 10,
   },
-  textStyling: {
+  text: {
     textAlign: "center",
     color: color.primary,
     fontSize: 13 * windowHeightRatio,

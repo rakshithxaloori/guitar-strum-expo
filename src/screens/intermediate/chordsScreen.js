@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import FlashMessage, { showMessage } from "react-native-flash-message";
+import { showMessage } from "react-native-flash-message";
 import Accordion from "react-native-collapsible/Accordion";
-import Constants from "expo-constants";
 
 import ChordSelect from "../../components/chordSelect";
 
@@ -373,19 +372,19 @@ class IntermediateChordsScreen extends Component {
   };
 
   _renderSelectedChord = ({ item }) => (
-    <Text style={styles.selectedChordsTextStyling}>{item}</Text>
+    <Text style={styles.selectedChordsText}>{item}</Text>
   );
 
   _keyExtractorSelectedChord = (item) => item;
 
   render = () => {
     return (
-      <View style={styles.screenStyling}>
-        <Text style={styles.headerTextStyling}>Pick Chords!</Text>
+      <View style={styles.screen}>
+        <Text style={styles.headerText}>Pick Chords!</Text>
 
-        <View style={styles.selectedChordsViewStyling}>
+        <View style={styles.selectedChordsView}>
           {this.state.displaySelectedChords.map((selectedChord) => (
-            <Text key={selectedChord} style={styles.selectedChordsTextStyling}>
+            <Text key={selectedChord} style={styles.selectedChordsText}>
               {selectedChord}
             </Text>
           ))}
@@ -403,7 +402,7 @@ class IntermediateChordsScreen extends Component {
           renderAsFlatList
         />
         <TouchableOpacity
-          style={styles.touchableOpacityButtonStyling}
+          style={styles.touchableOpacityButton}
           onPress={this.confirmConfig}
         >
           <Ionicons
@@ -411,9 +410,8 @@ class IntermediateChordsScreen extends Component {
             color={color.primary}
             size={20 * windowHeightRatio}
           />
-          <Text style={styles.textStyling}>Next</Text>
+          <Text style={styles.text}>Next</Text>
         </TouchableOpacity>
-        <FlashMessage ref="localFlashMessage" />
         <AdBanner />
       </View>
     );
@@ -421,13 +419,13 @@ class IntermediateChordsScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  textStyling: {
+  text: {
     fontSize: 20 * windowHeightRatio,
     paddingHorizontal: 5,
     color: color.primary,
     fontWeight: "bold",
   },
-  touchableOpacityButtonStyling: {
+  touchableOpacityButton: {
     maxHeight: 100 * windowHeightRatio,
     flexDirection: "row",
     paddingHorizontal: 30,
@@ -439,21 +437,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 15,
   },
-  headerTextStyling: {
+  headerText: {
     color: color.secondary,
-    paddingTop: Constants.statusBarHeight,
     paddingBottom: 5,
     fontWeight: "bold",
     alignSelf: "center",
     fontSize: 30 * windowWidthRatio,
   },
-  selectedChordsTextStyling: {
+  selectedChordsText: {
     color: color.secondary,
     padding: 2,
     fontSize: 15 * windowHeightRatio,
     fontWeight: "bold",
   },
-  selectedChordsViewStyling: {
+  selectedChordsView: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
@@ -478,7 +475,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     borderRadius: 15,
   },
-  screenStyling: {
+  screen: {
     flex: 1,
     paddingTop: 20,
     backgroundColor: color.primary,

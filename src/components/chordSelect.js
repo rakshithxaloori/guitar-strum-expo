@@ -6,14 +6,14 @@ import { color, windowHeightRatio, windowWidthRatio } from "../constants";
 const ChordsSelect = (props) => {
   return (
     <View>
-      <View style={styles.viewStyling}>
+      <View style={styles.view}>
         {props.chords.map((chordObj, index) => (
           <TouchableOpacity
             key={index}
             style={
               chordObj.isSelected
-                ? styles.touchableOpacitySelectedStyling
-                : styles.touchableOpacityNormalStyling
+                ? styles.touchableOpacitySelected
+                : styles.touchableOpacityNormal
             }
             onPress={() => {
               props.selectChord(chordObj);
@@ -21,9 +21,7 @@ const ChordsSelect = (props) => {
           >
             <Text
               style={
-                chordObj.isSelected
-                  ? styles.textSelectedStyling
-                  : styles.textNormalStyling
+                chordObj.isSelected ? styles.textSelected : styles.textNormal
               }
             >
               {chordObj.chordText}
@@ -36,14 +34,14 @@ const ChordsSelect = (props) => {
 };
 
 const inheritStyles = StyleSheet.create({
-  touchableStyling: {
+  touchable: {
     padding: 7,
     margin: 5,
     width: 75 * windowWidthRatio,
     borderWidth: 3 * windowWidthRatio,
     borderRadius: 15,
   },
-  textStyling: {
+  text: {
     justifyContent: "center",
     alignSelf: "center",
     fontSize: 15 * windowHeightRatio,
@@ -51,26 +49,26 @@ const inheritStyles = StyleSheet.create({
 });
 
 const styles = StyleSheet.create({
-  textNormalStyling: {
-    ...inheritStyles.textStyling,
+  textNormal: {
+    ...inheritStyles.text,
     color: color.secondary,
   },
-  textSelectedStyling: {
-    ...inheritStyles.textStyling,
+  textSelected: {
+    ...inheritStyles.text,
     color: color.primary,
     fontWeight: "bold",
   },
-  touchableOpacityNormalStyling: {
-    ...inheritStyles.touchableStyling,
+  touchableOpacityNormal: {
+    ...inheritStyles.touchable,
     backgroundColor: color.primary,
     borderColor: color.secondary,
   },
-  touchableOpacitySelectedStyling: {
-    ...inheritStyles.touchableStyling,
+  touchableOpacitySelected: {
+    ...inheritStyles.touchable,
     backgroundColor: color.secondary,
     borderColor: color.secondary,
   },
-  viewStyling: {
+  view: {
     flexDirection: "row",
     flexWrap: "wrap",
     padding: 10,

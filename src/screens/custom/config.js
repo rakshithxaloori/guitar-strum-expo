@@ -16,6 +16,7 @@ class ConfigScreen extends Component {
 
     this.state = {
       bpm: 60,
+      patternType: 0,
       pattern: [0, 0, 0, 0, 0, 0, 0, 0],
       chordChanges: 1,
       open: false,
@@ -58,6 +59,7 @@ class ConfigScreen extends Component {
     this.props.navigation.navigate("Play", {
       chords: this.props.route.params.chords,
       bpm: this.state.bpm,
+      patternType: this.state.patternType,
       pattern: this.state.pattern,
       chordChanges: this.state.chordChanges,
     });
@@ -80,12 +82,10 @@ class ConfigScreen extends Component {
           }}
         />
         <PatternSelect
+          patternType={this.state.patternType}
+          setPatternType={(type) => this.setState({ patternType: type })}
           pattern={this.state.pattern}
-          changeStrum={(index) => {
-            const newPattern = [...this.state.pattern];
-            newPattern[index] = newPattern[index] === 0 ? 1 : 0;
-            this.setState({ pattern: newPattern });
-          }}
+          changePattern={(pattern) => this.setState({ pattern })}
         />
         <View
           style={{

@@ -10,19 +10,23 @@ import { color, windowHeightRatio, windowWidthRatio } from "../constants";
 
 const Bar = (props) => {
   return (
-    <View style={styles.barStyling}>
+    <View style={styles.bar}>
       <View style={styles.horizontalLine}></View>
       <ChordBar chords={props.chords} />
 
-      <View style={[styles.arrowsStyling, { flexDirection: "row" }]}>
+      <View style={[styles.arrows, { flexDirection: "row" }]}>
         {props.pattern.map((patternVal, index) => (
-          <View key={index} style={styles.arrowStyling}>
+          <View key={index} style={styles.arrow}>
             <Svg
               viewBox={`0 0 ${35 * windowWidthRatio} ${80 * windowHeightRatio}`}
             >
               <Arrow
                 opaque={patternVal === 1}
-                direction={index % 2 === 0}
+                direction={
+                  props.patternType === 0
+                    ? index % 2 === 0
+                    : props.patternType % 2 === 0
+                }
                 highlight={
                   index === props.beatIndex % 8 &&
                   props.barIndex === Math.floor(props.beatIndex / 8)
@@ -44,19 +48,19 @@ const styles = StyleSheet.create({
     borderBottomColor: color.secondary,
     borderBottomWidth: 5,
   },
-  arrowStyling: {
+  arrow: {
     flex: 1,
     paddingTop: 15,
     alignItems: "center",
     justifyContent: "center",
   },
-  arrowsStyling: {
+  arrows: {
     flex: 2,
     // flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "center",
   },
-  barStyling: {
+  bar: {
     flex: 1,
     // borderColor: color.secondary,
     // borderWidth: 2,

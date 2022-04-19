@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
-import FlashMessage, { showMessage } from "react-native-flash-message";
-import Constants from "expo-constants";
+import { showMessage } from "react-native-flash-message";
+import { withTranslation } from "react-i18next";
 
 import ChordChangesSelect from "../components/chordChangesSelect";
 import ChordSelect from "../components/chordSelect";
@@ -37,6 +37,7 @@ class BeginnerScreen extends Component {
     this.state = {
       chords: chords,
       bpm: 60,
+      patternType: 2,
       pattern: [0, 0, 0, 0, 0, 0, 0, 0],
       chordChanges: 1,
       open: false,
@@ -58,7 +59,7 @@ class BeginnerScreen extends Component {
   confirmConfig = () => {
     // Check if atleast one strum selected
     if (this.state.pattern.indexOf(1) === -1) {
-      this.flashAlert("Select atleast one strum");
+      this.flashAlert(this.props.t("screen.beginner.flash.strum"));
       return;
     }
 
@@ -70,7 +71,9 @@ class BeginnerScreen extends Component {
 
     if (patternCount < this.state.chordChanges) {
       this.flashAlert(
-        `Select more strums for ${this.state.chordChanges} chord changes in a bar`,
+        this.props.t("screen.beginner.flash.pattern", {
+          changes: this.state.chordChanges,
+        }),
         true
       );
       return;
@@ -85,13 +88,14 @@ class BeginnerScreen extends Component {
 
     // Check if atleast one chord selected
     if (finalSelectedChords.length < 2) {
-      this.flashAlert("Select atleast two chords");
+      this.flashAlert(this.props.t("screen.beginner.flash.chords"));
       return;
     }
 
     this.props.navigation.navigate("Play", {
       chords: finalSelectedChords,
       bpm: this.state.bpm,
+      patternType: this.state.patternType,
       pattern: this.state.pattern,
       chordChanges: this.state.chordChanges,
     });
@@ -118,8 +122,10 @@ class BeginnerScreen extends Component {
 
   render = () => {
     return (
-      <View style={styles.screenStyling}>
-        <Text style={styles.headerTextStyling}>Tune it!</Text>
+      <View style={styles.screen}>
+        <Text style={styles.headerText}>
+          {this.props.t("screen.beginner.header")}
+        </Text>
         <ChordSelect
           chords={this.state.chords}
           selectChord={this.selectChord}
@@ -139,12 +145,10 @@ class BeginnerScreen extends Component {
           />
         </View>
         <PatternSelect
+          patternType={this.state.patternType}
+          setPatternType={(type) => this.setState({ patternType: type })}
           pattern={this.state.pattern}
-          changeStrum={(index) => {
-            const newPattern = [...this.state.pattern];
-            newPattern[index] = newPattern[index] === 0 ? 1 : 0;
-            this.setState({ pattern: newPattern });
-          }}
+          changePattern={(pattern) => this.setState({ pattern })}
         />
         <View
           style={{
@@ -157,7 +161,7 @@ class BeginnerScreen extends Component {
           }}
         >
           <TouchableOpacity
-            style={styles.touchableOpacityInstructionsStyling}
+            style={styles.instructions}
             onPress={() => this.props.navigation.navigate("Instructions")}
           >
             <AntDesign
@@ -166,19 +170,17 @@ class BeginnerScreen extends Component {
               size={40 * windowHeightRatio}
             />
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.touchableOpacityButtonStyling}
-            onPress={this.confirmConfig}
-          >
+          <TouchableOpacity style={styles.button} onPress={this.confirmConfig}>
             <Ionicons
               name="musical-note"
               color={color.primary}
               size={20 * windowHeightRatio}
             />
-            <Text style={styles.textStyling}>Play</Text>
+            <Text style={styles.text}>
+              {this.props.t("screen.beginner.button")}
+            </Text>
           </TouchableOpacity>
         </View>
-        <FlashMessage ref="localFlashMessage" />
         <AdBanner />
       </View>
     );
@@ -186,26 +188,25 @@ class BeginnerScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  headerTextStyling: {
+  headerText: {
     color: color.secondary,
-    paddingTop: Constants.statusBarHeight,
     paddingBottom: 5,
     fontWeight: "bold",
     alignSelf: "center",
     fontSize: 30 * windowWidthRatio,
   },
-  textStyling: {
+  text: {
     fontSize: 20 * windowHeightRatio,
     paddingHorizontal: 5,
     color: color.primary,
     fontWeight: "bold",
   },
-  touchableOpacityInstructionsStyling: {
+  instructions: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
-  touchableOpacityButtonStyling: {
+  button: {
     height: 60 * windowHeightRatio,
     flex: 4,
     flexDirection: "row",
@@ -214,11 +215,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 15,
   },
-  screenStyling: {
+  screen: {
     flex: 1,
     paddingTop: 20,
     backgroundColor: color.primary,
   },
 });
 
-export default BeginnerScreen;
+export default withTranslation()(BeginnerScreen);

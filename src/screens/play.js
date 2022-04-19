@@ -136,6 +136,7 @@ class PlayScreen extends Component {
           beatIndex={this.state.beatIndex}
           chords={this.state.chordsBar[i]}
           pattern={this.props.route.params.pattern}
+          patternType={this.props.route.params.patternType}
         />
       );
     }
@@ -145,10 +146,10 @@ class PlayScreen extends Component {
 
   render = () => {
     return (
-      <View style={styles.screenStyling}>
+      <View style={styles.screen}>
         <View style={{ flex: 4 }}>{this.renderBars()}</View>
         <TouchableOpacity
-          style={styles.touchableOpacityStyling}
+          style={styles.touchableOpacity}
           onPress={() => this.props.navigation.goBack()}
         >
           <Ionicons
@@ -156,7 +157,7 @@ class PlayScreen extends Component {
             color={color.primary}
             size={20 * windowHeightRatio}
           />
-          <Text style={styles.textStyling}>Go Back</Text>
+          <Text style={styles.text}>Go Back</Text>
         </TouchableOpacity>
       </View>
     );
@@ -164,13 +165,13 @@ class PlayScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  textStyling: {
+  text: {
     fontSize: 20 * windowHeightRatio,
     paddingHorizontal: 5,
     color: color.primary,
     fontWeight: "bold",
   },
-  touchableOpacityStyling: {
+  touchableOpacity: {
     flexDirection: "row",
     margin: 25,
     padding: 15,
@@ -179,7 +180,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 15,
   },
-  screenStyling: {
+  screen: {
     flex: 1,
     paddingTop: 20,
     backgroundColor: color.primary,

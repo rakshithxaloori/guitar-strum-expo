@@ -10,7 +10,7 @@ const BPMSelect = (props) => {
   const maxBPMValue = 240;
 
   return (
-    <View style={styles.viewStyling}>
+    <View style={styles.view}>
       <Slider
         minimumTrackTintColor={color.secondary}
         thumbTintColor={color.secondary}
@@ -29,7 +29,7 @@ const BPMSelect = (props) => {
         }}
       >
         <TouchableOpacity
-          style={styles.iconTouchableStyling}
+          style={styles.iconTouchable}
           onPress={() => {
             if (props.bpm > minBPMValue) props.setBPM(props.bpm - 1);
           }}
@@ -40,9 +40,9 @@ const BPMSelect = (props) => {
             size={25 * windowHeightRatio}
           />
         </TouchableOpacity>
-        <View style={styles.textViewStyling}>
-          <Text style={styles.textStyling}>{props.bpm + " "} BPM </Text>
-          <Text style={[styles.textStyling, { fontWeight: "bold" }]}>
+        <View style={styles.textView}>
+          <Text style={styles.text}>{props.bpm + " "} BPM </Text>
+          <Text style={[styles.text, { fontWeight: "bold" }]}>
             {props.bpm >= 220
               ? "Speed of Light"
               : props.bpm >= 180
@@ -55,7 +55,7 @@ const BPMSelect = (props) => {
           </Text>
         </View>
         <TouchableOpacity
-          style={styles.iconTouchableStyling}
+          style={styles.iconTouchable}
           onPress={() => {
             if (props.bpm < maxBPMValue) props.setBPM(props.bpm + 1);
           }}
@@ -72,20 +72,20 @@ const BPMSelect = (props) => {
 };
 
 const styles = StyleSheet.create({
-  textStyling: {
+  text: {
     color: color.secondary,
     fontSize: 14 * windowHeightRatio,
     alignItems: "center",
     justifyContent: "center",
   },
-  textViewStyling: {
+  textView: {
     alignItems: "center",
     justifyContent: "center",
   },
-  iconTouchableStyling: {
+  iconTouchable: {
     paddingHorizontal: 25,
   },
-  viewStyling: {
+  view: {
     flex: 1,
     margin: 10,
     padding: 10,

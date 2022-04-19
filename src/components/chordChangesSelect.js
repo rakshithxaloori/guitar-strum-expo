@@ -17,11 +17,11 @@ const ChordChangesSelect = (props) => {
         maximumValue={4}
         onValueChange={(value) => props.setChordChanges(value)}
       />
-      <View style={styles.textViewStyling}>
-        <Text style={[styles.textStyling, { fontWeight: "bold" }]}>
+      <View style={styles.textView}>
+        <Text style={[styles.text, { fontWeight: "bold" }]}>
           {props.chordChanges + " "}
         </Text>
-        <Text style={styles.textStyling}>
+        <Text style={styles.text}>
           Chord {props.chordChanges === 1 ? "Change" : "Changes"} in a Bar
         </Text>
       </View>
@@ -30,13 +30,13 @@ const ChordChangesSelect = (props) => {
 };
 
 const styles = StyleSheet.create({
-  textStyling: {
+  text: {
     color: color.secondary,
     fontSize: 14 * windowHeightRatio,
     alignItems: "center",
     justifyContent: "center",
   },
-  textViewStyling: {
+  textView: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",

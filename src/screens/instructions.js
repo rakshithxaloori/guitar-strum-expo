@@ -1,32 +1,34 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useTranslation } from "react-i18next";
 import AppIntroSlider from "react-native-app-intro-slider";
 
 import { color, windowHeightRatio, windowWidthRatio } from "../constants";
 
-const slides = [
-  {
-    key: "1",
-    title: "Chords",
-    text: "Choose atleast two chords\n\nStart with A, D or E if you are a beginner",
-    image: require("../../assets/D.png"),
-  },
-  {
-    key: "2",
-    title: "BPM and Chord Changes",
-    text: "BPM varies from 30 to 240 (Kage mode - Naruto reference)\n\nStart with 30/60 BPM and 1 chord change if you are a beginner",
-    image: require("../../assets/metronome.png"),
-  },
-  {
-    key: "3",
-    title: "Strumming Pattern",
-    text: "Choose atleast 2 strums for 1 chord change, an up or down from a set, an up or down from another",
-    image: require("../../assets/bar.png"),
-  },
-];
-
 const InstructionsScreen = (props) => {
+  const { t } = useTranslation();
+  const slides = [
+    {
+      key: "1",
+      title: t("screen.instructions.1.title"),
+      text: t("screen.instructions.1.text"),
+      image: require("../../assets/D.png"),
+    },
+    {
+      key: "2",
+      title: t("screen.instructions.2.title"),
+      text: t("screen.instructions.2.text"),
+      image: require("../../assets/metronome.png"),
+    },
+    {
+      key: "3",
+      title: t("screen.instructions.3.title"),
+      text: t("screen.instructions.3.text"),
+      image: require("../../assets/bar.png"),
+    },
+  ];
+
   const renderItem = ({ item }) => {
     return (
       <View style={styles.slide}>

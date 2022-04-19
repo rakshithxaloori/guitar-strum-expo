@@ -28,7 +28,12 @@
     [
       "expo-notifications",
       {
-        "icon": "./assets/notification-icon.png"
+        "icon": "./assets/notification-icon.png",
+        "color": "#ffffff"
+      },
+      "expo-ads-admob",
+      {
+        "userTrackingPermission": "This identifier will be used to deliver personalized ads to you."
       }
     ]
   ]
