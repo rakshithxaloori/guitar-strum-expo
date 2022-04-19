@@ -1,50 +1,25 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import * as Notifications from "expo-notifications";
-import * as SecureStorage from "expo-secure-store";
 
-import SplashScreen from "./src/screens/splashScreen";
-import PlayScreen from "./src/screens/playScreen";
-import InstructionsScreen from "./src/screens/instructionsScreen";
-import NotificationsScreen from "./src/screens/notificationScreen";
+import SplashScreen from "./src/screens/splash";
+import PlayScreen from "./src/screens/play";
+import InstructionsScreen from "./src/screens/instructions";
+import NotificationsScreen from "./src/screens/notification";
 
-import RouteScreen from "./src/screens/routeScreen";
+import HomeScreen from "./src/screens/home";
 
-import BeginnerScreen from "./src/screens/beginnerScreen";
+import BeginnerScreen from "./src/screens/beginner";
 
 import IntermediateChordsScreen from "./src/screens/intermediate/chordsScreen";
 import IntermediateConfigScreen from "./src/screens/intermediate/configScreen";
-import {
-  registerForPushNotificationsAsync,
-  setNotification,
-  STORAGE_TIME_STR,
-} from "./src/utils";
+import { checkNotification } from "./src/utils";
 
 const Stack = createStackNavigator();
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-  }),
-});
-
 const App = () => {
   React.useEffect(() => {
-    const regToken = async () => {
-      await registerForPushNotificationsAsync();
-      const getTime = await SecureStorage.getItemAsync(STORAGE_TIME_STR);
-      if (getTime === null) {
-        let date = new Date();
-        date.setHours(18);
-        date.setMinutes(0);
-        await setNotification(date);
-      }
-    };
-
-    regToken();
+    checkNotification();
   }, []);
   return (
     <NavigationContainer>
@@ -56,7 +31,7 @@ const App = () => {
         /> */}
         <Stack.Screen
           name="Route"
-          component={RouteScreen}
+          component={HomeScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen

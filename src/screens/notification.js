@@ -1,11 +1,10 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import * as SecureStorage from "expo-secure-store";
 import IonIcon from "react-native-vector-icons/Ionicons";
 
 import { color } from "../constants";
-import { setNotification, STORAGE_TIME_STR } from "../utils";
+import { checkNotification, setNotification } from "../utils";
 
 const prettyTime = (time) => {
   let timeStr = "";
@@ -30,15 +29,7 @@ const NotificationsScreen = () => {
   const [time, setTime] = React.useState(date);
 
   React.useEffect(() => {
-    const setTimeFromStorage = async () => {
-      const getTime = await SecureStorage.getItemAsync(STORAGE_TIME_STR);
-      if (getTime !== null) {
-        const savedTime = new Date(getTime);
-        setTime(savedTime);
-      }
-    };
-
-    setTimeFromStorage();
+    checkNotification();
   }, []);
 
   const onChange = async (response, timestamp) => {
