@@ -1772,6 +1772,73 @@
     lodash.pick "^4.4.0"
     lodash.template "^4.5.0"
 
+"@formatjs/ecma402-abstract@1.11.4":
+  version "1.11.4"
+  resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.11.4.tgz#b962dfc4ae84361f9f08fbce411b4e4340930eda"
+  integrity sha512-EBikYFp2JCdIfGEb5G9dyCkTGDmC57KSHhRQOC3aYxoPWVZvfWCDjZwkGYHN7Lis/fmuWl906bnNTJifDQ3sXw==
+  dependencies:
+    "@formatjs/intl-localematcher" "0.2.25"
+    tslib "^2.1.0"
+
+"@formatjs/intl-datetimeformat@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-datetimeformat/-/intl-datetimeformat-5.0.1.tgz#d38906ecd7ee77069253ff7fa76bc76f57991bd5"
+  integrity sha512-RiXVsr9GwqaVaFCsPVMToBZJPvBJyNeA/n/wKKw/4it4tztWRkxHL6kmZ8DbrKWchzRjA0fPMMz5dfBZVu7QXA==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.11.4"
+    "@formatjs/intl-localematcher" "0.2.25"
+    tslib "^2.1.0"
+
+"@formatjs/intl-getcanonicallocales@1.9.2", "@formatjs/intl-getcanonicallocales@^1.9.2":
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-getcanonicallocales/-/intl-getcanonicallocales-1.9.2.tgz#5aab5f6ac2d923933538085eec20a19c393b6ebf"
+  integrity sha512-69WTStIJI2ikErOU1Il4NQKLVV8f2x6awr7+/dZz0uihuI7uQRcZtI6k/BBt4EtYaEl6w65YjUF93VuE015C0w==
+  dependencies:
+    tslib "^2.1.0"
+
+"@formatjs/intl-locale@^2.4.47":
+  version "2.4.47"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-locale/-/intl-locale-2.4.47.tgz#7bf66960e55e7dfa77fcc7c02ee06aea29f92eb6"
+  integrity sha512-yEpjx6RgVVG3pPsxb/jydhnq/A02KmjMste5U/wWxscRK0sny8LPIoBwgkOQycRoMRLNlLemJaQB7VbHZJ9OVg==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.11.4"
+    "@formatjs/intl-getcanonicallocales" "1.9.2"
+    tslib "^2.1.0"
+
+"@formatjs/intl-localematcher@0.2.25":
+  version "0.2.25"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-localematcher/-/intl-localematcher-0.2.25.tgz#60892fe1b271ec35ba07a2eb018a2dd7bca6ea3a"
+  integrity sha512-YmLcX70BxoSopLFdLr1Ds99NdlTI2oWoLbaUW2M406lxOIPzE1KQhRz2fPUkq34xVZQaihCoU29h0KK7An3bhA==
+  dependencies:
+    tslib "^2.1.0"
+
+"@formatjs/intl-numberformat@^7.4.3":
+  version "7.4.3"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-numberformat/-/intl-numberformat-7.4.3.tgz#dbf15fb6c8341088f1d526cf24d54f5388b478d1"
+  integrity sha512-oxhLCw00YO7brwMPqGD+ui5gdeWoMiRhqsRSqwsDSRd03aJ/N3/VZQDoxGIn3IM9bhlPM5W0ckXiXuOMFLszjw==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.11.4"
+    "@formatjs/intl-localematcher" "0.2.25"
+    tslib "^2.1.0"
+
+"@formatjs/intl-pluralrules@^4.3.3":
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-pluralrules/-/intl-pluralrules-4.3.3.tgz#9dc5a96175d89c8887f003eacef457a1f3003caf"
+  integrity sha512-NLZN8gf2qLpCuc0m565IbKLNUarEGOzk0mkdTkE4XTuNCofzoQTurW6lL3fmDlneAoYl2FiTdHa5q4o2vZF50g==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.11.4"
+    "@formatjs/intl-localematcher" "0.2.25"
+    tslib "^2.1.0"
+
+"@formatjs/intl-relativetimeformat@^10.0.1":
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-relativetimeformat/-/intl-relativetimeformat-10.0.1.tgz#ed5e3df104a97e3ac6386ea7e5e34adb54ac8e74"
+  integrity sha512-AABPQtPjFilXegQsnmVHrSlzjFNUffAEk5DgowY6b7WSwDI7g2W6QgW903/lbZ58emhphAbgHdtKeUBXqTiLpw==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.11.4"
+    "@formatjs/intl-localematcher" "0.2.25"
+    tslib "^2.1.0"
+
 "@hapi/hoek@^9.0.0":
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.2.1.tgz#9551142a1980503752536b5050fd99f4a7f13b17"
@@ -6424,7 +6491,7 @@ ts-interface-checker@^0.1.9:
   resolved "https://registry.yarnpkg.com/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz#784fd3d679722bc103b1b4b8030bcddb5db2a699"
   integrity sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==
 
-tslib@^2.0.1:
+tslib@^2.0.1, tslib@^2.1.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==

@@ -8,6 +8,12 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@formatjs/intl-datetimeformat": "^5.0.1",
+    "@formatjs/intl-getcanonicallocales": "^1.9.2",
+    "@formatjs/intl-locale": "^2.4.47",
+    "@formatjs/intl-numberformat": "^7.4.3",
+    "@formatjs/intl-pluralrules": "^4.3.3",
+    "@formatjs/intl-relativetimeformat": "^10.0.1",
     "@react-native-community/datetimepicker": "4.0.0",
     "@react-native-community/masked-view": "0.1.10",
     "@react-native-community/slider": "4.1.12",

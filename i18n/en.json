@@ -5,7 +5,41 @@
       "beginner": "Beginner",
       "custom": "Custom"
     },
-    "beginner": {},
-    "custom": {}
-  }
+    "beginner": {
+      "header": "Tune it!",
+      "button": "Play",
+      "flash": {
+        "strum": "Select atleast one strum",
+        "pattern": "Select more strums for {{changes}} chord changes in a bar",
+        "chords": "Select atleast two chords"
+      }
+    },
+    "custom": {},
+    "instructions": {
+      "1": {
+        "title": "Chords",
+        "text": "Choose atleast two chords\n\nStart with A, D or E if you are a beginner"
+      },
+      "2": {
+        "title": "BPM and Chord Changes",
+        "text": "BPM varies from 30 to 240\n\nStart with 30/60 BPM and 1 chord change if you are a beginner"
+      },
+      "3": {
+        "title": "Strumming Pattern",
+        "text": "Choose atleast 2 strums for 1 chord change, an up or down from a set, an up or down from another"
+      }
+    }
+  },
+  "components": {
+    "bpm": {
+      "speed": {
+        "light": "Speed of Light",
+        "hypersonic": "Hypersonic",
+        "supersonic": "Supersonic",
+        "transonic": "Transonic",
+        "subsonic": "Subsonicw"
+      }
+    }
+  },
+  "utils": { "notification": {} }
 }

@@ -70,7 +70,7 @@ const locale =
   Localization.locale.search(/-|_/) !== -1
     ? Localization.locale.slice(0, 2)
     : Localization.locale;
-
+console.log(locale);
 i18n.use(initReactI18next).init({
   resources,
   lng: locale,

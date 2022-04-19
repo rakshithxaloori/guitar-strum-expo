@@ -44,14 +44,14 @@ const BPMSelect = (props) => {
           <Text style={styles.textStyling}>{props.bpm + " "} BPM </Text>
           <Text style={[styles.textStyling, { fontWeight: "bold" }]}>
             {props.bpm >= 220
-              ? "Kage"
+              ? "Speed of Light"
               : props.bpm >= 180
-              ? "Jonin"
+              ? "Hypersonic"
               : props.bpm >= 120
-              ? "Chunin"
+              ? "Supersonic"
               : props.bpm >= 90
-              ? "Genin"
-              : "Academy"}
+              ? "Transonic"
+              : "Subsonic"}
           </Text>
         </View>
         <TouchableOpacity
