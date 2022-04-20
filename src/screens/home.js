@@ -9,8 +9,14 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
+import * as Linking from "expo-linking";
 
-import { color, windowHeightRatio, windowWidthRatio } from "../constants";
+import {
+  color,
+  MAIL_ADDRESS,
+  windowHeightRatio,
+  windowWidthRatio,
+} from "../constants";
 import AdBanner from "../components/adBanner";
 
 const RouteScreen = () => {
@@ -18,18 +24,6 @@ const RouteScreen = () => {
   const { t } = useTranslation();
   return (
     <View style={styles.view}>
-      <Ionicons
-        name="notifications-circle-outline"
-        style={{
-          position: "absolute",
-          top: StatusBar.currentHeight + 10,
-          right: StatusBar.currentHeight,
-        }}
-        size={40}
-        onPress={() => {
-          navigation.navigate("Notifications");
-        }}
-      />
       <Text style={styles.headerText}>{t("screen.home.header")}</Text>
       <TouchableOpacity
         style={[styles.button, { backgroundColor: color.secondary }]}
@@ -53,7 +47,33 @@ const RouteScreen = () => {
         />
         <Text style={styles.text}>{t("screen.home.custom")}</Text>
       </TouchableOpacity>
-      <AdBanner style={{ position: "absolute", bottom: 0 }} />
+      <View style={{ position: "absolute", bottom: 0 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            margin: 10,
+          }}
+        >
+          <Ionicons
+            name="mail"
+            style={styles.mailIcon}
+            size={40}
+            onPress={() => {
+              Linking.openURL(`mailto: ${MAIL_ADDRESS}`);
+            }}
+          />
+          <Ionicons
+            name="notifications-circle-outline"
+            style={styles.bellIcon}
+            size={40}
+            onPress={() => {
+              navigation.navigate("Notifications");
+            }}
+          />
+        </View>
+        <AdBanner />
+      </View>
     </View>
   );
 };
@@ -81,6 +101,17 @@ const styles = StyleSheet.create({
     padding: 20,
     fontWeight: "bold",
     fontSize: 40 * windowWidthRatio,
+  },
+  bellIcon: {
+    // alignSelf: "flex-end",
+    // position: "relative",
+    // top: StatusBar.currentHeight + 10,
+    // right: StatusBar.currentHeight,
+  },
+  mailIcon: {
+    // position: "absolute",
+    // bottom: StatusBar.currentHeight + 10,
+    // left: StatusBar.currentHeight,
   },
   view: {
     flex: 1,
