@@ -3,7 +3,7 @@ import { AdMobBanner } from "expo-ads-admob";
 
 import { bannerId } from "../utils";
 
-const AdBanner = () => {
+const AdBanner = ({ style = {} }) => {
   const bannerError = (error) => {
     console.log("BANNER ERROR", error, bannerId);
   };
@@ -14,6 +14,7 @@ const AdBanner = () => {
       adUnitID={bannerId}
       servePersonalizedAds={true} // true or false
       onDidFailToReceiveAdWithError={bannerError}
+      style={style}
     />
   );
 };

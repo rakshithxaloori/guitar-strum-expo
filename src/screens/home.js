@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 
 import { color, windowHeightRatio, windowWidthRatio } from "../constants";
+import AdBanner from "../components/adBanner";
 
 const RouteScreen = () => {
   const navigation = useNavigation();
@@ -52,6 +53,7 @@ const RouteScreen = () => {
         />
         <Text style={styles.text}>{t("screen.home.custom")}</Text>
       </TouchableOpacity>
+      <AdBanner style={{ position: "absolute", bottom: 0 }} />
     </View>
   );
 };
