@@ -1,4 +1,5 @@
 import * as Notifications from "expo-notifications";
+import { t } from "i18next";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -13,8 +14,8 @@ export const bannerId = process.env.BANNER_ID;
 async function _schedulePushNotification(timestamp) {
   const response = await Notifications.scheduleNotificationAsync({
     content: {
-      title: "It misses you! 🎸",
-      body: "Pick it up, practise and maybe have some good time? 🎶",
+      title: t("utils.notification.title"),
+      body: t("utils.notification.body"),
     },
     trigger: {
       hour: timestamp.getHours(),
@@ -22,7 +23,7 @@ async function _schedulePushNotification(timestamp) {
       repeats: true,
     },
   });
-  console.log("Notification scheduled", response);
+  console.log("Notification scheduled", timestamp, response);
 }
 
 export const setNotification = async (timestamp = new Date()) => {
@@ -32,5 +33,14 @@ export const setNotification = async (timestamp = new Date()) => {
 
 export const checkNotification = async () => {
   const notifs = await Notifications.getAllScheduledNotificationsAsync();
-  if (notifs.length !== 1) setNotification();
+
+  const date = new Date();
+  if (notifs.length !== 1) {
+    await setNotification(date);
+  } else {
+    const notif = notifs[0];
+    date.setHours(notif.trigger.hour);
+    date.setMinutes(notif.trigger.minute);
+  }
+  return date;
 };

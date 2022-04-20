@@ -1,28 +1,29 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Slider from "@react-native-community/slider";
+import { useTranslation } from "react-i18next";
 
 import { color, windowHeightRatio } from "../constants";
 
-const ChordChangesSelect = (props) => {
+const ChordChangesSelect = ({ chordChanges, setChordChanges }) => {
+  const { t } = useTranslation();
   return (
     <View style={styles.container}>
       <Slider
         minimumTrackTintColor={color.secondary}
         thumbTintColor={color.secondary}
         maximumTrackTintColor={color.tertiary}
-        value={props.chordChanges}
+        value={chordChanges}
         step={1}
         minimumValue={1}
         maximumValue={4}
-        onValueChange={(value) => props.setChordChanges(value)}
+        onValueChange={(value) => setChordChanges(value)}
       />
       <View style={styles.textView}>
-        <Text style={[styles.text, { fontWeight: "bold" }]}>
-          {props.chordChanges + " "}
-        </Text>
         <Text style={styles.text}>
-          Chord {props.chordChanges === 1 ? "Change" : "Changes"} in a Bar
+          {t("components.chordchanges.changes", {
+            count: chordChanges,
+          })}
         </Text>
       </View>
     </View>

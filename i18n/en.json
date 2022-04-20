@@ -27,6 +27,10 @@
           "duplicate": "Chord already selected",
           "max": "Choose not more than six chords"
         }
+      },
+      "config": {
+        "header": "Almost Ready!",
+        "button": "Play"
       }
     },
     "instructions": {
@@ -42,18 +46,36 @@
         "title": "Strumming Pattern",
         "text": "Choose atleast 2 strums for 1 chord change, an up or down from a set, an up or down from another"
       }
+    },
+    "notification": {
+      "title": "Set a time and we'll remind you to practise!",
+      "time": "Guitar practise everyday at {{notiftime, datetime}}",
+      "button": "Set Time"
+    },
+    "play": {
+      "button": "Go Back"
     }
   },
   "components": {
     "bpm": {
+      "value": "{{bpm, number}} BPM",
       "speed": {
         "light": "Speed of Light",
         "hypersonic": "Hypersonic",
         "supersonic": "Supersonic",
         "transonic": "Transonic",
-        "subsonic": "Subsonicw"
+        "subsonic": "Subsonic"
       }
+    },
+    "chordchanges": {
+      "changes_one": "{{count, number}} Chord Change in a Bar",
+      "changes_other": "{{count, number}} Chord Changes in a Bar"
     }
   },
-  "utils": { "notification": {} }
+  "utils": {
+    "notification": {
+      "title": "It misses you! 🎸",
+      "body": "Pick it up, practise and maybe have some good time? 🎶"
+    }
+  }
 }

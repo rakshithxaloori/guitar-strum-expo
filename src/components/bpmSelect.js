@@ -1,11 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Slider from "@react-native-community/slider";
+import { useTranslation } from "react-i18next";
 import { AntDesign } from "@expo/vector-icons";
 
 import { color, windowHeightRatio } from "../constants";
 
 const BPMSelect = (props) => {
+  const { t } = useTranslation();
   const minBPMValue = 30;
   const maxBPMValue = 240;
 
@@ -41,17 +43,19 @@ const BPMSelect = (props) => {
           />
         </TouchableOpacity>
         <View style={styles.textView}>
-          <Text style={styles.text}>{props.bpm + " "} BPM </Text>
+          <Text style={styles.text}>
+            {t("components.bpm.value", { bpm: props.bpm })}
+          </Text>
           <Text style={[styles.text, { fontWeight: "bold" }]}>
             {props.bpm >= 220
-              ? "Speed of Light"
+              ? t("components.bpm.speed.light")
               : props.bpm >= 180
-              ? "Hypersonic"
+              ? t("components.bpm.speed.hypersonic")
               : props.bpm >= 120
-              ? "Supersonic"
+              ? t("components.bpm.speed.supersonic")
               : props.bpm >= 90
-              ? "Transonic"
-              : "Subsonic"}
+              ? t("components.bpm.speed.transonic")
+              : t("components.bpm.speed.subsonic")}
           </Text>
         </View>
         <TouchableOpacity

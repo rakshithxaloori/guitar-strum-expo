@@ -2,34 +2,24 @@ import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Ionicons } from "@expo/vector-icons";
+import { useTranslation } from "react-i18next";
 
 import { color } from "../constants";
 import { checkNotification, setNotification } from "../utils";
 
-const prettyTime = (time) => {
-  let timeStr = "";
-  const hours = time.getHours();
-  const minutes = time.getMinutes();
-
-  if (hours === 0) timeStr = "12";
-  else timeStr = `${hours > 12 ? hours - 12 : hours}`;
-
-  if (minutes < 10) timeStr += `:0${minutes}`;
-  else timeStr += `:${minutes}`;
-
-  if (hours >= 12) timeStr += " PM";
-  else timeStr += " AM";
-
-  return timeStr;
-};
-
 const NotificationsScreen = () => {
+  const { t } = useTranslation();
   const date = new Date();
   const [show, setShow] = React.useState(false);
   const [time, setTime] = React.useState(date);
 
   React.useEffect(() => {
-    checkNotification();
+    const getNotifTime = async () => {
+      const notifTime = await checkNotification();
+      setTime(notifTime);
+    };
+
+    getNotifTime();
   }, []);
 
   const onChange = async (response, timestamp) => {
@@ -40,11 +30,11 @@ const NotificationsScreen = () => {
     setShow(false);
   };
 
+  console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>
-        Set a time and we'll remind you to practise!
-      </Text>
+      <Text style={styles.title}>{t("screen.notification.title")}</Text>
       <View
         style={{
           flexDirection: "row",
@@ -54,9 +44,20 @@ const NotificationsScreen = () => {
           alignItems: "center",
         }}
       >
-        <Text>Guitar practise everyday at </Text>
         <Text style={{ textDecorationLine: "underline" }}>
-          {prettyTime(time)}
+          {t("screen.notification.time", {
+            notiftime: new Date(
+              time.getTime() - time.getTimezoneOffset() * 60000
+            ),
+            formatParams: {
+              notiftime: {
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+              },
+            },
+          })}
         </Text>
         <Ionicons
           name="alarm-outline"
@@ -77,7 +78,7 @@ const NotificationsScreen = () => {
           size={22}
           color={color.primary}
         />
-        <Text style={styles.btnText}>Set Time</Text>
+        <Text style={styles.btnText}>{t("screen.notification.button")}</Text>
       </TouchableOpacity>
       {show && (
         <DateTimePicker

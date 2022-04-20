@@ -37,7 +37,7 @@ class BeginnerScreen extends Component {
     this.state = {
       chords: chords,
       bpm: 60,
-      patternType: 2,
+      patternType: 0,
       pattern: [0, 0, 0, 0, 0, 0, 0, 0],
       chordChanges: 1,
       open: false,

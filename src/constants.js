@@ -22,3 +22,5 @@ export const color = { ...palatte_three };
 
 export const windowWidthRatio = Dimensions.get("window").width / 360;
 export const windowHeightRatio = Dimensions.get("window").height / 640;
+
+export const MAIL_ADDRESS = "thejunto.dev@gmail.com";

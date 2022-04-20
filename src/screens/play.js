@@ -3,6 +3,8 @@ import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Audio } from "expo-av";
 import { activateKeepAwake, deactivateKeepAwake } from "expo-keep-awake";
+import { withTranslation } from "react-i18next";
+import { t } from "i18next";
 
 import Bar from "../components/bar";
 import Timer from "../assets/timer";
@@ -157,7 +159,7 @@ class PlayScreen extends Component {
             color={color.primary}
             size={20 * windowHeightRatio}
           />
-          <Text style={styles.text}>Go Back</Text>
+          <Text style={styles.text}>{t("screen.play.button")}</Text>
         </TouchableOpacity>
       </View>
     );

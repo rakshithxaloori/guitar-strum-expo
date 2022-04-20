@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { showMessage } from "react-native-flash-message";
+import { withTranslation } from "react-i18next";
 
 import ChordChangesSelect from "../../components/chordChangesSelect";
 import BPMSelect from "../../components/bpmSelect";
@@ -68,7 +69,9 @@ class ConfigScreen extends Component {
   render = () => {
     return (
       <View style={styles.screen}>
-        <Text style={styles.headerText}>Almost Ready!</Text>
+        <Text style={styles.headerText}>
+          {this.props.t("screen.custom.config.header")}
+        </Text>
         <ChordChangesSelect
           chordChanges={this.state.chordChanges}
           setChordChanges={(value) => {
@@ -116,7 +119,9 @@ class ConfigScreen extends Component {
               color={color.primary}
               size={20 * windowHeightRatio}
             />
-            <Text style={styles.text}>Play</Text>
+            <Text style={styles.text}>
+              {this.props.t("screen.custom.config.button")}
+            </Text>
           </TouchableOpacity>
         </View>
         <AdBanner />
@@ -160,4 +165,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ConfigScreen;
+export default withTranslation()(ConfigScreen);
