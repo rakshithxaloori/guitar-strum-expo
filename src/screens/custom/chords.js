@@ -32,7 +32,7 @@ const ChordsScreen = (props) => {
   };
 
   const confirmChords = () => {
-    // Check if atleast one chord selected
+    // Check if at least one chord selected
     if (chords.length < 2) {
       flashAlert(t("screen.custom.chords.flash.min"));
       return;

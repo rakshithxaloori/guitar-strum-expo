@@ -57,7 +57,7 @@ class BeginnerScreen extends Component {
   };
 
   confirmConfig = () => {
-    // Check if atleast one strum selected
+    // Check if at least one strum selected
     if (this.state.pattern.indexOf(1) === -1) {
       this.flashAlert(this.props.t("screen.beginner.flash.strum"));
       return;
@@ -86,7 +86,7 @@ class BeginnerScreen extends Component {
       }
     }
 
-    // Check if atleast one chord selected
+    // Check if at least one chord selected
     if (finalSelectedChords.length < 2) {
       this.flashAlert(this.props.t("screen.beginner.flash.chords"));
       return;

@@ -1,0 +1,82 @@
+{
+  "screen": {
+    "home": {
+      "header": "Elige un camino...",
+      "beginner": "Principiante",
+      "custom": "Costumbre",
+      "help": "Ayuda con las traducciones"
+    },
+    "beginner": {
+      "header": "¡Afinarlo!",
+      "button": "Jugar",
+      "flash": {
+        "strum": "Seleccione al menos un rasgueo",
+        "pattern": "Seleccionar más rasgueos para {{changes, number}} cambios de acordes en un compás",
+        "chords": "Seleccione al menos dos acordes"
+      }
+    },
+    "custom": {
+      "chords": {
+        "header": "¡Elige acordes!",
+        "button": {
+          "add": "Agregar",
+          "next": "próximo"
+        },
+        "flash": {
+          "empty": "Elige un acorde",
+          "min": "Elige al menos dos acordes",
+          "duplicate": "Acorde ya seleccionado",
+          "max": "Elija no más de seis acordes"
+        }
+      },
+      "config": {
+        "header": "¡Casi listo!",
+        "button": "Jugar"
+      }
+    },
+    "instructions": {
+      "1": {
+        "title": "acordes",
+        "text": "Elige al menos dos acordes\n\nSi eres principiante, comienza con A, D o E"
+      },
+      "2": {
+        "title": "Cambios de acordes y BPM",
+        "text": "BPM varía de 30 a 240\n\nSi eres principiante, comienza con 30/60 BPM y 1 cambio de acorde."
+      },
+      "3": {
+        "title": "Patrón de rasgueo",
+        "text": "Elija al menos 2 rasgueos para 1 cambio de acorde, uno arriba o abajo de un conjunto, uno arriba o abajo de otro"
+      }
+    },
+    "notification": {
+      "title": "¡Fija un tiempo y te recordaremos que practiques!",
+      "time": "Práctica de guitarra todos los días en {{notiftime, datetime}}",
+      "button": "Fijar tiempo"
+    },
+    "play": {
+      "button": "Regresa"
+    }
+  },
+  "components": {
+    "bpm": {
+      "value": "{{bpm, number}} BPM",
+      "speed": {
+        "light": "Velocidad de la luz",
+        "hypersonic": "Hipersónico",
+        "supersonic": "Supersónico",
+        "transonic": "transónico",
+        "subsonic": "Subsónico"
+      }
+    },
+    "chordchanges": {
+      "changes_one": "{{count, number}} Cambio de acorde en un compás",
+      "changes_other": "{{count, number}} Cambios de acordes en un compás"
+    }
+  },
+  "utils": {
+    "notification": {
+      "title": "¡Te extraña! 🎸",
+      "body": "¿Recogerlo, practicar y tal vez pasar un buen rato? 🎶"
+    }
+  }
+}

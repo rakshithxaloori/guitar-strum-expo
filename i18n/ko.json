@@ -1,0 +1,82 @@
+{
+  "screen": {
+    "home": {
+      "header": "경로를 선택하십시오 ...",
+      "beginner": "초보자",
+      "custom": "관습",
+      "help": "번역 도움말"
+    },
+    "beginner": {
+      "header": "조정해!",
+      "button": "놀다",
+      "flash": {
+        "strum": "스트럼을 하나 이상 선택하세요.",
+        "pattern": "한 마디에서 {{changes, number}} 코드 변경을 위해 더 많은 스트럼 선택",
+        "chords": "코드를 두 개 이상 선택하세요."
+      }
+    },
+    "custom": {
+      "chords": {
+        "header": "코드를 선택하십시오!",
+        "button": {
+          "add": "추가하다",
+          "next": "다음"
+        },
+        "flash": {
+          "empty": "코드 선택",
+          "min": "최소 2개의 코드를 선택하세요.",
+          "duplicate": "이미 선택된 코드",
+          "max": "6개 이하의 코드를 선택하십시오."
+        }
+      },
+      "config": {
+        "header": "거의 준비되었습니다!",
+        "button": "놀다"
+      }
+    },
+    "instructions": {
+      "1": {
+        "title": "화음",
+        "text": "2개 이상의 코드를 선택하십시오\n\n초보자라면 A, D, E로 시작하세요."
+      },
+      "2": {
+        "title": "BPM 및 코드 변경",
+        "text": "BPM은 30에서 240까지 다양합니다\n\n초보자라면 30/60 BPM과 1 코드 체인지로 시작하십시오."
+      },
+      "3": {
+        "title": "스트러밍 패턴",
+        "text": "1개의 코드 변경에 대해 최소 2개의 스트럼을 선택하고, 세트에서 위 또는 아래로, 다른 세트에서 위 또는 아래로 선택"
+      }
+    },
+    "notification": {
+      "title": "시간을 설정하면 연습할 수 있도록 알려드립니다!",
+      "time": "{{notiftime, datetime}} 에서 매일 기타 연습",
+      "button": "시간 설정"
+    },
+    "play": {
+      "button": "돌아가기"
+    }
+  },
+  "components": {
+    "bpm": {
+      "value": "{{bpm, number}} BPM",
+      "speed": {
+        "light": "빛의 속도",
+        "hypersonic": "극초음속",
+        "supersonic": "초음속",
+        "transonic": "트랜소닉",
+        "subsonic": "아음속"
+      }
+    },
+    "chordchanges": {
+      "changes_one": "{{count, number}} 마디의 코드 변경",
+      "changes_other": "{{count, number}} 마디의 코드 변경"
+    }
+  },
+  "utils": {
+    "notification": {
+      "title": "당신이 그리워요! 🎸",
+      "body": "그것을 선택하고 연습하고 좋은 시간을 보내시겠습니까? 🎶"
+    }
+  }
+}

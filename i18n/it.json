@@ -1,0 +1,82 @@
+{
+  "screen": {
+    "home": {
+      "header": "Scegli un percorso...",
+      "beginner": "Principiante",
+      "custom": "Costume",
+      "help": "Aiuto con le traduzioni"
+    },
+    "beginner": {
+      "header": "Accordalo!",
+      "button": "Giocare",
+      "flash": {
+        "strum": "Seleziona almeno una pennata",
+        "pattern": "Seleziona più strimpellate per {{changes, number}} cambi di accordo in una misura",
+        "chords": "Seleziona almeno due accordi"
+      }
+    },
+    "custom": {
+      "chords": {
+        "header": "Scegli accordi!",
+        "button": {
+          "add": "Aggiungere",
+          "next": "Prossimo"
+        },
+        "flash": {
+          "empty": "Scegli un accordo",
+          "min": "Scegli almeno due accordi",
+          "duplicate": "Accordo già selezionato",
+          "max": "Scegli non più di sei accordi"
+        }
+      },
+      "config": {
+        "header": "Quasi pronti!",
+        "button": "Giocare"
+      }
+    },
+    "instructions": {
+      "1": {
+        "title": "Accordi",
+        "text": "Scegli almeno due accordi\n\nSe sei un principiante, inizia con A, D o E"
+      },
+      "2": {
+        "title": "BPM e cambi di accordi",
+        "text": "BPM varia da 30 a 240\n\nSe sei un principiante, inizia con 30/60 BPM e 1 cambio di accordo"
+      },
+      "3": {
+        "title": "Modello di strimpellamento",
+        "text": "Scegli almeno 2 strimpellate per 1 cambio di accordo, un alto o un basso da un set, un alto o un basso da un altro"
+      }
+    },
+    "notification": {
+      "title": "Fissa un orario e ti ricordiamo di fare pratica!",
+      "time": "Pratica di chitarra tutti i giorni alle {{notiftime, datetime}}",
+      "button": "Tempo impostato"
+    },
+    "play": {
+      "button": "Torna indietro"
+    }
+  },
+  "components": {
+    "bpm": {
+      "value": "{{bpm, number}} BPM",
+      "speed": {
+        "light": "Velocità della luce",
+        "hypersonic": "Ipersonico",
+        "supersonic": "Supersonico",
+        "transonic": "Transonico",
+        "subsonic": "Subsonico"
+      }
+    },
+    "chordchanges": {
+      "changes_one": "{{count, number}} Cambio di accordo in una misura",
+      "changes_other": "{{count, number}} Modifiche agli accordi in una misura"
+    }
+  },
+  "utils": {
+    "notification": {
+      "title": "Mi manchi! 🎸",
+      "body": "Raccoglilo, esercitati e magari divertiti? 🎶"
+    }
+  }
+}

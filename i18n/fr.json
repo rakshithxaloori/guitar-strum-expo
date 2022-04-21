@@ -1,0 +1,82 @@
+{
+  "screen": {
+    "home": {
+      "header": "Choisissez un chemin...",
+      "beginner": "Débutant",
+      "custom": "Coutume",
+      "help": "Aide aux traductions"
+    },
+    "beginner": {
+      "header": "Accordez-le !",
+      "button": "Joue",
+      "flash": {
+        "strum": "Sélectionnez au moins une corde",
+        "pattern": "Sélectionnez plus de strums pour {{changes, number}} changements d'accords dans une mesure",
+        "chords": "Sélectionnez au moins deux accords"
+      }
+    },
+    "custom": {
+      "chords": {
+        "header": "Choisissez des accords !",
+        "button": {
+          "add": "Ajouter",
+          "next": "Suivant"
+        },
+        "flash": {
+          "empty": "Choisissez un accord",
+          "min": "Choisissez au moins deux accords",
+          "duplicate": "Accord déjà sélectionné",
+          "max": "Ne choisissez pas plus de six accords"
+        }
+      },
+      "config": {
+        "header": "Presque prêt!",
+        "button": "Joue"
+      }
+    },
+    "instructions": {
+      "1": {
+        "title": "Accords",
+        "text": "Choisissez au moins deux accords\n\nSi vous êtes débutant, commencez par A, D ou E"
+      },
+      "2": {
+        "title": "Changements de BPM et d'accords",
+        "text": "BPM varie de 30 à 240\n\nSi vous êtes débutant, commencez par 30/60 BPM et 1 changement d'accord"
+      },
+      "3": {
+        "title": "Motif de grattage",
+        "text": "Choisissez au moins 2 strums pour 1 changement d'accord, un haut ou un bas d'un ensemble, un haut ou un bas d'un autre"
+      }
+    },
+    "notification": {
+      "title": "Fixez une heure et nous vous rappellerons de vous entraîner !",
+      "time": "Entraînement de guitare tous les jours à {{notiftime, datetime}}",
+      "button": "Régler le temps"
+    },
+    "play": {
+      "button": "Retourner"
+    }
+  },
+  "components": {
+    "bpm": {
+      "value": "{{bpm, number}} BPM",
+      "speed": {
+        "light": "Vitesse de la lumière",
+        "hypersonic": "Hypersonique",
+        "supersonic": "Supersonique",
+        "transonic": "Transonique",
+        "subsonic": "Subsonique"
+      }
+    },
+    "chordchanges": {
+      "changes_one": "{{count, number}} Changement d'accord dans une mesure",
+      "changes_other": "{{count, number}} changements d'accords dans une mesure"
+    }
+  },
+  "utils": {
+    "notification": {
+      "title": "Tu manques ! 🎸",
+      "body": "Prenez-le, entraînez-vous et passez peut-être du bon temps ? 🎶"
+    }
+  }
+}

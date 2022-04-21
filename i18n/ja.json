@@ -1,0 +1,82 @@
+{
+  "screen": {
+    "home": {
+      "header": "パスを選択してください...",
+      "beginner": "初心者",
+      "custom": "カスタム",
+      "help": "翻訳を手伝ってください"
+    },
+    "beginner": {
+      "header": "調整してください！",
+      "button": "遊ぶ",
+      "flash": {
+        "strum": "少なくとも1つのストラムを選択します",
+        "pattern": "バーの{{changes, number}}コード変更のストラムをさらに選択します",
+        "chords": "少なくとも2つのコードを選択してください"
+      }
+    },
+    "custom": {
+      "chords": {
+        "header": "コードを選んでください！",
+        "button": {
+          "add": "追加",
+          "next": "次"
+        },
+        "flash": {
+          "empty": "コードを選択してください",
+          "min": "少なくとも2つのコードを選択してください",
+          "duplicate": "コードはすでに選択されています",
+          "max": "6つ以下のコードを選択してください"
+        }
+      },
+      "config": {
+        "header": "ほとんど準備ができている！",
+        "button": "遊ぶ"
+      }
+    },
+    "instructions": {
+      "1": {
+        "title": "和音",
+        "text": "少なくとも2つのコードを選択してください\n\n初心者の場合は、A、D、またはEから始めてください"
+      },
+      "2": {
+        "title": "BPMとコードの変更",
+        "text": "BPMは30から240まで変化します\n\n初心者の場合は、30/60BPMと1つのコード変更から始めてください。"
+      },
+      "3": {
+        "title": "ストラムパターン",
+        "text": "1つのコード変更、セットからのアップまたはダウン、別のセットからのアップまたはダウンに対して、少なくとも2つのストラムを選択します"
+      }
+    },
+    "notification": {
+      "title": "時間を設定してください。練習するように通知します。",
+      "time": "{{notiftime, datetime}}で毎日ギターの練習",
+      "button": "設定時間"
+    },
+    "play": {
+      "button": "戻る"
+    }
+  },
+  "components": {
+    "bpm": {
+      "value": "{{bpm, number}} BPM",
+      "speed": {
+        "light": "光の速度",
+        "hypersonic": "極超音速",
+        "supersonic": "超音速",
+        "transonic": "遷音速",
+        "subsonic": "亜音速"
+      }
+    },
+    "chordchanges": {
+      "changes_one": "{{count, number}}バーのコード変更",
+      "changes_other": "{{count, number}}バーのコード変更"
+    }
+  },
+  "utils": {
+    "notification": {
+      "title": "あなたがいなくて寂しいです！ 🎸",
+      "body": "それを手に取って練習し、楽しい時間を過ごしませんか？ 🎶"
+    }
+  }
+}

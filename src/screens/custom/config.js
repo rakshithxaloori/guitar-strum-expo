@@ -37,9 +37,9 @@ class ConfigScreen extends Component {
   };
 
   confirmConfig = () => {
-    // Check if atleast one strum selected
+    // Check if at least one strum selected
     if (this.state.pattern.indexOf(1) === -1) {
-      this.flashAlert("Select atleast one strum");
+      this.flashAlert("Select at least one strum");
       return;
     }
 

@@ -3,15 +3,16 @@
     "home": {
       "header": "Choose a path ...",
       "beginner": "Beginner",
-      "custom": "Custom"
+      "custom": "Custom",
+      "help": "Help with translations"
     },
     "beginner": {
       "header": "Tune it!",
       "button": "Play",
       "flash": {
-        "strum": "Select atleast one strum",
+        "strum": "Select at least one strum",
         "pattern": "Select more strums for {{changes, number}} chord changes in a bar",
-        "chords": "Select atleast two chords"
+        "chords": "Select at least two chords"
       }
     },
     "custom": {
@@ -23,7 +24,7 @@
         },
         "flash": {
           "empty": "Choose a chord",
-          "min": "Choose atleast two chords",
+          "min": "Choose at least two chords",
           "duplicate": "Chord already selected",
           "max": "Choose not more than six chords"
         }
@@ -36,7 +37,7 @@
     "instructions": {
       "1": {
         "title": "Chords",
-        "text": "Choose atleast two chords\n\nIf you are a beginner, start with A, D or E"
+        "text": "Choose at least two chords\n\nIf you are a beginner, start with A, D or E"
       },
       "2": {
         "title": "BPM and Chord Changes",
@@ -44,7 +45,7 @@
       },
       "3": {
         "title": "Strumming Pattern",
-        "text": "Choose atleast 2 strums for 1 chord change, an up or down from a set, an up or down from another"
+        "text": "Choose at least 2 strums for 1 chord change, an up or down from a set, an up or down from another"
       }
     },
     "notification": {

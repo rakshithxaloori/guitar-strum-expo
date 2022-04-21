@@ -1,0 +1,82 @@
+{
+  "screen": {
+    "home": {
+      "header": "Wählen Sie einen Weg ...",
+      "beginner": "Anfänger",
+      "custom": "Benutzerdefiniert",
+      "help": "Hilfe bei Übersetzungen"
+    },
+    "beginner": {
+      "header": "Stimmen Sie es ab!",
+      "button": "Spiel",
+      "flash": {
+        "strum": "Wählen Sie mindestens einen Schlag aus",
+        "pattern": "Wähle mehr Strums für {{changes, number}} Akkordwechsel in einem Takt",
+        "chords": "Wählen Sie mindestens zwei Akkorde aus"
+      }
+    },
+    "custom": {
+      "chords": {
+        "header": "Wähle Akkorde!",
+        "button": {
+          "add": "Hinzufügen",
+          "next": "Nächste"
+        },
+        "flash": {
+          "empty": "Wähle einen Akkord",
+          "min": "Wähle mindestens zwei Akkorde",
+          "duplicate": "Akkord bereits ausgewählt",
+          "max": "Wählen Sie nicht mehr als sechs Akkorde"
+        }
+      },
+      "config": {
+        "header": "Fast bereit!",
+        "button": "Spiel"
+      }
+    },
+    "instructions": {
+      "1": {
+        "title": "Akkorde",
+        "text": "Wähle mindestens zwei Akkorde\n\nWenn Sie Anfänger sind, beginnen Sie mit A, D oder E"
+      },
+      "2": {
+        "title": "BPM und Akkordwechsel",
+        "text": "BPM variiert von 30 bis 240\n\nWenn Sie Anfänger sind, beginnen Sie mit 30/60 BPM und 1 Akkordwechsel"
+      },
+      "3": {
+        "title": "Strumming-Muster",
+        "text": "Wählen Sie mindestens 2 Strums für 1 Akkordwechsel, ein Auf oder Ab aus einem Satz, ein Auf oder Ab aus einem anderen"
+      }
+    },
+    "notification": {
+      "title": "Legen Sie eine Uhrzeit fest und wir erinnern Sie ans Üben!",
+      "time": "Gitarrenübungen jeden Tag um {{notiftime, datetime}}",
+      "button": "Zeit einstellen"
+    },
+    "play": {
+      "button": "Geh zurück"
+    }
+  },
+  "components": {
+    "bpm": {
+      "value": "{{bpm, number}} BPM",
+      "speed": {
+        "light": "Lichtgeschwindigkeit",
+        "hypersonic": "Hyperschall",
+        "supersonic": "Überschall",
+        "transonic": "Transsonisch",
+        "subsonic": "Unterschall"
+      }
+    },
+    "chordchanges": {
+      "changes_one": "{{count, number}} Akkordwechsel in einem Takt",
+      "changes_other": "{{count, number}} Akkordwechsel in einem Takt"
+    }
+  },
+  "utils": {
+    "notification": {
+      "title": "Es vermisst dich! 🎸",
+      "body": "Abholen, üben und vielleicht eine gute Zeit haben? 🎶"
+    }
+  }
+}
