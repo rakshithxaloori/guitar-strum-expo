@@ -73,7 +73,7 @@ const locale =
 console.log(locale);
 i18n.use(initReactI18next).init({
   resources,
-  lng: "ru",
+  lng: locale,
   fallbackLng: "en",
 });
 
