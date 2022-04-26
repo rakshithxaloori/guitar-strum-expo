@@ -7,7 +7,7 @@ git checkout -b production
 expo eject
 
 # Copy manifest files
-rsync -a manifest/manifest/android/ android/app/src/
+rsync -a manifest/android/ android/app/src/
 
 # Build the profile - KEY STEP (envs)
 eas build --profile production --platform android
