@@ -14,7 +14,7 @@ git add -A
 git commit -m "production"
 
 # Build the profile - KEY STEP (envs)
-eas build --profile preview --platform android
+eas build --profile production --platform android
 
 # Checkout to main
 git checkout main

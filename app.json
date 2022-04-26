@@ -22,6 +22,9 @@
         "googleMobileAdsAppId": "ca-app-pub-8538556251087145~3901670384"
       },
       "googleServicesFile": "./google-services.json"
+    },
+    "ios": {
+      "bundleIdentifier": "com.rakshithxaloori.guitarstrum"
     }
   },
   "plugins": [
@@ -30,7 +33,9 @@
       {
         "icon": "./assets/notification-icon.png",
         "color": "#ffffff"
-      },
+      }
+    ],
+    [
       "expo-ads-admob",
       {
         "userTrackingPermission": "This identifier will be used to deliver personalized ads to you."
