@@ -9,12 +9,12 @@ expo eject
 # Copy manifest files
 rsync -a manifest/android/ android/app/src/
 
-# Build the profile - KEY STEP (envs)
-eas build --profile preview --platform android
-
 # Commit locally
 git add -A
 git commit -m "production"
+
+# Build the profile - KEY STEP (envs)
+eas build --profile preview --platform android
 
 # Checkout to main
 git checkout main
