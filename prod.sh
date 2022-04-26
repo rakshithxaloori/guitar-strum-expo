@@ -10,7 +10,7 @@ expo eject
 rsync -a manifest/android/ android/app/src/
 
 # Build the profile - KEY STEP (envs)
-eas build --profile production --platform android
+eas build --profile preview --platform android
 
 # Commit locally
 git add -A
