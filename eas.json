@@ -1,11 +1,17 @@
 {
   "build": {
-    "release": {},
     "development": {
       "developmentClient": true,
       "distribution": "internal"
     },
-    "production": {}
+    "production": {
+      "releaseChannel": "prod-v1"
+    },
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      }
+    }
   },
   "submit": {
     "release": {}
